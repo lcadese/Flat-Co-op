@@ -5,4 +5,4 @@ https://docs.google.com/presentation/d/1lBpntEKT-qJhh_yhGnO01gX-YvSJ_nLBGLA6onix
 ## Model
 At the bottom of doc
 ## Spreadsheet
-In github
+In github repository
