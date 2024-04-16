@@ -12,7 +12,7 @@ create table users
 (
  userID char(10) not null,
  familyName char(50) not null,
- fistName char(50) not null,
+ firstName char(50) not null,
  phoneNumber char(20),
  Email char(100),
  dateOfBirth date not null,
@@ -59,7 +59,7 @@ create table payment
  taskID char(10),
  userID char(10),
  amount Numeric(10),
- played bool not null,
+ payed bool not null,
  constraint payment_pk primary key (taskID,userID),
  constraint payment_users_fk foreign key (userID) references users(userID),
  constraint payment_task_fk foreign key (taskID) references task(taskID)
