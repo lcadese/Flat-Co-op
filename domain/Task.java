@@ -5,27 +5,27 @@ package domain;
  * @author haydenaish
  */
 public class Task {
-    private String id;
-    private String name;
+    private String taskID;
+    private String taskName;
     private String description;
     private String date;
     private User assignedTo;
     private Flat flat;
 
     public String getId() {
-        return id;
+        return taskID;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.taskID = id;
     }
 
     public String getName() {
-        return name;
+        return taskName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.taskName = name;
     }
 
     public String getDescription() {

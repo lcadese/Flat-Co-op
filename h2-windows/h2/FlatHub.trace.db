@@ -1,0 +1,1384 @@
+2024-04-13 15:42:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]if exists drop table payments"; SQL statement:
+if exists drop table payments [42000-220]
+2024-04-13 15:42:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]if exists drop table payments"; SQL statement:
+if exists drop table payments [42000-220]
+2024-04-13 15:42:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]if exists drop table payments"; SQL statement:
+if exists drop table payments [42000-220]
+2024-04-13 15:43:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]if exists drop table payments"; SQL statement:
+if exists drop table payments [42000-220]
+2024-04-13 15:43:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]if exists drop table task"; SQL statement:
+if exists drop table task [42000-220]
+2024-04-13 15:43:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]if exists drop table assigned"; SQL statement:
+if exists drop table assigned [42000-220]
+2024-04-13 15:43:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]if exists drop table flat"; SQL statement:
+if exists drop table flat [42000-220]
+2024-04-13 15:46:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table [*]user"; expected "identifier"; SQL statement:
+create table user [42001-220]
+2024-04-13 15:46:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "(\000d\000a [*]user_id:char(10) not null\000d\000a)"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+(
+ user_id:char(10) not null
+) [42001-220]
+2024-04-13 15:46:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table [*]user\000d\000a(\000d\000a user_id:char(10) not null\000d\000a)"; expected "identifier"; SQL statement:
+create table user
+(
+ user_id:char(10) not null
+) [42001-220]
+2024-04-13 15:46:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table [*]user\000d\000a(\000d\000a user_id:char(10)\000d\000a)"; expected "identifier"; SQL statement:
+create table user
+(
+ user_id:char(10)
+) [42001-220]
+2024-04-13 15:47:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table [*]user\000d\000a(\000d\000a user_id char(10)\000d\000a)"; expected "identifier"; SQL statement:
+create table user
+(
+ user_id char(10)
+) [42001-220]
+2024-04-13 15:47:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table [*]user\000d\000a(\000d\000a user_id char(10)\000d\000a)"; expected "identifier"; SQL statement:
+create table user
+(
+ user_id char(10)
+) [42001-220]
+2024-04-13 15:52:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table users\000d\000a(\000d\000a userID char(10),\000d\000a familyName char(50) not null,\000d\000a fistName char(50) not null,\000d\000a phoneNumber char(20),\000d\000a Email char(100),\000d\000a dateOfBirth[*]: date not null,\000d\000a flatID char(10)\000d\000a)"; expected "IDENTITY, BIGSERIAL, SERIAL, data type"; SQL statement:
+create table users
+(
+ userID char(10),
+ familyName char(50) not null,
+ fistName char(50) not null,
+ phoneNumber char(20),
+ Email char(100),
+ dateOfBirth: date not null,
+ flatID char(10)
+) [42001-220]
+2024-04-13 15:59:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FLAT" not found; SQL statement:
+create table users
+(
+ userID char(10) not null,
+ familyName char(50) not null,
+ fistName char(50) not null,
+ phoneNumber char(20),
+ Email char(100),
+ dateOfBirth date not null,
+ flatID char(10),
+ constraint users_pk primary key (userID),
+ constraint users_flat_fk foreign key (flatID) references flat(flatID)
+) [42102-220]
+2024-04-13 15:59:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+create table flat
+(
+ flatID char(10) not null,
+ location char(200) not null,
+ name char(50) not null,
+ host char(10) not null,
+ constraint flat_pk primary key (flatID),
+ constraint users_flat_fk foreign key (host) references users(userID )
+) [42102-220]
+2024-04-13 16:00:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table flat\000d\000a(\000d\000a flatID char(10) not null,\000d\000a location char(200) not null,\000d\000a name char(50) not null,\000d\000a host char(10) not null,\000d\000a constraint flat_pk primary key (flatID),\000d\000a constraint users_flat_fk foreign key (host) references users(userID)\000d\000a)\000d\000a\000d\000a[*]alter table users\000d\000aadd constraint users_flat_fk foreign key (flatID) references flat(flatID)"; SQL statement:
+create table flat
+(
+ flatID char(10) not null,
+ location char(200) not null,
+ name char(50) not null,
+ host char(10) not null,
+ constraint flat_pk primary key (flatID),
+ constraint users_flat_fk foreign key (host) references users(userID)
+)
+
+alter table users
+add constraint users_flat_fk foreign key (flatID) references flat(flatID) [42000-220]
+2024-04-13 16:01:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "USERS_FLAT_FK" already exists; SQL statement:
+alter table users
+add constraint users_flat_fk foreign key (flatID) references flat(flatID) [90045-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:111)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:02:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "USERS_FLAT_FK" already exists; SQL statement:
+alter table users
+add constraint users_flat_fk foreign key (flatID) references flat(flatID) [90045-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:111)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:03:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "FLAT" because "USERS_FLAT_FKD" depends on it; SQL statement:
+drop table if exists flat [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:03:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "USERS" because "USERS_FLAT_FK" depends on it; SQL statement:
+drop table if exists users [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:03:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" already exists; SQL statement:
+create table users
+(
+ userID char(10) not null,
+ familyName char(50) not null,
+ fistName char(50) not null,
+ phoneNumber char(20),
+ Email char(100),
+ dateOfBirth date not null,
+ flatID char(10),
+ constraint users_pk primary key (userID)
+) [42101-220]
+2024-04-13 16:03:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FLAT" already exists; SQL statement:
+create table flat
+(
+ flatID char(10) not null,
+ location char(200) not null,
+ name char(50) not null,
+ host char(10) not null,
+ constraint flat_pk primary key (flatID),
+ constraint users_flat_fk foreign key (host) references users(userID)
+) [42101-220]
+2024-04-13 16:03:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "USERS_FLAT_FKD" already exists; SQL statement:
+alter table users
+add constraint users_flat_fkd foreign key (flatID) references flat(flatID) [90045-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:111)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:03:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "FLAT" because "USERS_FLAT_FKD" depends on it; SQL statement:
+drop table if exists flat [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:03:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "USERS" because "USERS_FLAT_FK" depends on it; SQL statement:
+drop table if exists users [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:03:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" already exists; SQL statement:
+create table users
+(
+ userID char(10) not null,
+ familyName char(50) not null,
+ fistName char(50) not null,
+ phoneNumber char(20),
+ Email char(100),
+ dateOfBirth date not null,
+ flatID char(10),
+ constraint users_pk primary key (userID)
+) [42101-220]
+2024-04-13 16:03:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FLAT" already exists; SQL statement:
+create table flat
+(
+ flatID char(10) not null,
+ location char(200) not null,
+ name char(50) not null,
+ host char(10) not null,
+ constraint flat_pk primary key (flatID),
+ constraint users_flat_fk foreign key (host) references users(userID)
+) [42101-220]
+2024-04-13 16:03:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "USERS_FLAT_FK" already exists; SQL statement:
+alter table users
+add constraint users_flat_fk foreign key (flatID) references flat(flatID) [90045-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:111)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:03:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "FLAT" because "USERS_FLAT_FKD" depends on it; SQL statement:
+drop table if exists flat [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:03:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "USERS" because "USERS_FLAT_FK" depends on it; SQL statement:
+drop table if exists users [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:05:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "USERS_FLAT_FK" not found; SQL statement:
+alter table users
+drop constraint users_flat_fk [90057-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableDropConstraint.update(AlterTableDropConstraint.java:51)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:05:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "FLAT" because "USERS_FLAT_FKD" depends on it; SQL statement:
+drop table if exists flat [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:05:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "USERS" because "USERS_FLAT_FK" depends on it; SQL statement:
+drop table if exists users [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:05:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" already exists; SQL statement:
+create table users
+(
+ userID char(10) not null,
+ familyName char(50) not null,
+ fistName char(50) not null,
+ phoneNumber char(20),
+ Email char(100),
+ dateOfBirth date not null,
+ flatID char(10),
+ constraint users_pk primary key (userID)
+) [42101-220]
+2024-04-13 16:05:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FLAT" already exists; SQL statement:
+create table flat
+(
+ flatID char(10) not null,
+ location char(200) not null,
+ name char(50) not null,
+ host char(10) not null,
+ constraint flat_pk primary key (flatID),
+ constraint users_flat_fk foreign key (host) references users(userID)
+) [42101-220]
+2024-04-13 16:05:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "USERS_FLAT_FK" already exists; SQL statement:
+alter table users
+add constraint users_flat_fk foreign key (flatID) references flat(flatID) [90045-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:111)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:06:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "USERS_FLAT_FK" already exists; SQL statement:
+alter table users
+add constraint users_flat_fk foreign key (flatID) references flat(flatID) [90045-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:111)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:06:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "USERS_FLAT_FK" not found; SQL statement:
+alter table users
+drop constraint users_flat_fk [90057-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableDropConstraint.update(AlterTableDropConstraint.java:51)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:06:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "USERS_FLAT_FK" already exists; SQL statement:
+alter table users
+add constraint users_flat_fk foreign key (flatID) references flat(flatID) [90045-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:111)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:06:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "USERS_FLAT_FK" not found; SQL statement:
+alter table users
+drop constraint users_flat_fk [90057-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableDropConstraint.update(AlterTableDropConstraint.java:51)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:06:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "FLAT" because "FLAT_USERS_FK" depends on it; SQL statement:
+drop table if exists flat [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:06:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "USERS" because "USERS_FLAT_FK" depends on it; SQL statement:
+drop table if exists users [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:06:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" already exists; SQL statement:
+create table users
+(
+ userID char(10) not null,
+ familyName char(50) not null,
+ fistName char(50) not null,
+ phoneNumber char(20),
+ Email char(100),
+ dateOfBirth date not null,
+ flatID char(10),
+ constraint users_pk primary key (userID)
+) [42101-220]
+2024-04-13 16:06:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FLAT" already exists; SQL statement:
+create table flat
+(
+ flatID char(10) not null,
+ location char(200) not null,
+ name char(50) not null,
+ host char(10) not null,
+ constraint flat_pk primary key (flatID),
+ constraint users_flat_fk foreign key (host) references users(userID)
+) [42101-220]
+2024-04-13 16:06:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "FLAT_USERS_FK" already exists; SQL statement:
+alter table users
+add constraint flat_users_fk foreign key (flatID) references flat(flatID) [90045-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:111)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:06:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "USERS_FLAT_FK" not found; SQL statement:
+alter table users
+drop constraint users_flat_fk [90057-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableDropConstraint.update(AlterTableDropConstraint.java:51)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:06:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "FLAT" because "FLAT_USERS_FK" depends on it; SQL statement:
+drop table if exists flat [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:06:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "USERS" because "USERS_FLAT_FK" depends on it; SQL statement:
+drop table if exists users [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:06:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" already exists; SQL statement:
+create table users
+(
+ userID char(10) not null,
+ familyName char(50) not null,
+ fistName char(50) not null,
+ phoneNumber char(20),
+ Email char(100),
+ dateOfBirth date not null,
+ flatID char(10),
+ constraint users_pk primary key (userID)
+) [42101-220]
+2024-04-13 16:06:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FLAT" already exists; SQL statement:
+create table flat
+(
+ flatID char(10) not null,
+ location char(200) not null,
+ name char(50) not null,
+ host char(10) not null,
+ constraint flat_pk primary key (flatID),
+ constraint users_flat_fk foreign key (host) references users(userID)
+) [42101-220]
+2024-04-13 16:06:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "FLAT_USERS_FK" already exists; SQL statement:
+alter table users
+add constraint flat_users_fk foreign key (flatID) references flat(flatID) [90045-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:111)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:07:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]if exists alter table users\000d\000adrop constraint flat_users_fk"; SQL statement:
+if exists alter table users
+drop constraint flat_users_fk [42000-220]
+2024-04-13 16:07:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "FLAT" because "FLAT_USERS_FK" depends on it; SQL statement:
+drop table if exists flat [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:07:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "USERS" because "USERS_FLAT_FK" depends on it; SQL statement:
+drop table if exists users [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:07:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" already exists; SQL statement:
+create table users
+(
+ userID char(10) not null,
+ familyName char(50) not null,
+ fistName char(50) not null,
+ phoneNumber char(20),
+ Email char(100),
+ dateOfBirth date not null,
+ flatID char(10),
+ constraint users_pk primary key (userID)
+) [42101-220]
+2024-04-13 16:07:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FLAT" already exists; SQL statement:
+create table flat
+(
+ flatID char(10) not null,
+ location char(200) not null,
+ name char(50) not null,
+ host char(10) not null,
+ constraint flat_pk primary key (flatID),
+ constraint users_flat_fk foreign key (host) references users(userID)
+) [42101-220]
+2024-04-13 16:07:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "FLAT_USERS_FK" already exists; SQL statement:
+alter table users
+add constraint flat_users_fk foreign key (flatID) references flat(flatID) [90045-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:111)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:07:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table users\000d\000a[*]if exists\000d\000adrop constraint flat_users_fk"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+alter table users
+if exists
+drop constraint flat_users_fk [42001-220]
+2024-04-13 16:07:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "FLAT" because "FLAT_USERS_FK" depends on it; SQL statement:
+drop table if exists flat [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:07:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "USERS" because "USERS_FLAT_FK" depends on it; SQL statement:
+drop table if exists users [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:07:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" already exists; SQL statement:
+create table users
+(
+ userID char(10) not null,
+ familyName char(50) not null,
+ fistName char(50) not null,
+ phoneNumber char(20),
+ Email char(100),
+ dateOfBirth date not null,
+ flatID char(10),
+ constraint users_pk primary key (userID)
+) [42101-220]
+2024-04-13 16:07:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FLAT" already exists; SQL statement:
+create table flat
+(
+ flatID char(10) not null,
+ location char(200) not null,
+ name char(50) not null,
+ host char(10) not null,
+ constraint flat_pk primary key (flatID),
+ constraint users_flat_fk foreign key (host) references users(userID)
+) [42101-220]
+2024-04-13 16:07:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "FLAT_USERS_FK" already exists; SQL statement:
+alter table users
+add constraint flat_users_fk foreign key (flatID) references flat(flatID) [90045-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:111)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:14:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table task\000d\000a(\000d\000a taskID char(10),\000d\000a taskName char(50) not null[*].\000d\000a description text not null,\000d\000a flatID char(10) not null,\000d\000a requestedDate timestamp not null,\000d\000a constraint task_pk primary key (taskID),\000d\000a constraint task_flat_fk foreign key (flatID) references flat(flatID)\000d\000a)"; expected "AS, DEFAULT, GENERATED, ON UPDATE, AUTO_INCREMENT, DEFAULT ON NULL, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, NULL, CHECK, REFERENCES, AUTO_INCREMENT, ,, )"; SQL statement:
+create table task
+(
+ taskID char(10),
+ taskName char(50) not null.
+ description text not null,
+ flatID char(10) not null,
+ requestedDate timestamp not null,
+ constraint task_pk primary key (taskID),
+ constraint task_flat_fk foreign key (flatID) references flat(flatID)
+) [42001-220]
+2024-04-13 16:14:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table assigned\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a completed bool not null,\000d\000a constraint assigned_pk primary key (taskID,userID),\000d\000a constraint assigned_task_fk foreign key (taskID) references flat(taskID)\000d\000a [*]constraint assigned_user_fk foreign key (userID) references flat(userID)\000d\000a)"; expected "INDEX, ON, NOT DEFERRABLE, DEFERRABLE, NOCHECK, CHECK, ,, )"; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool not null,
+ constraint assigned_pk primary key (taskID,userID),
+ constraint assigned_task_fk foreign key (taskID) references flat(taskID)
+ constraint assigned_user_fk foreign key (userID) references flat(userID)
+) [42001-220]
+2024-04-13 16:15:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table assigned\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a completed bool not null,\000d\000a constraint assigned_pk primary key (taskID,userID),\000d\000a constraint assigned_task_fk foreign key (taskID) references flat(taskID)\000d\000a [*]constraint assigned_user_fk foreign key (userID) references flat(userID)\000d\000a)"; expected "INDEX, ON, NOT DEFERRABLE, DEFERRABLE, NOCHECK, CHECK, ,, )"; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool not null,
+ constraint assigned_pk primary key (taskID,userID),
+ constraint assigned_task_fk foreign key (taskID) references flat(taskID)
+ constraint assigned_user_fk foreign key (userID) references flat(userID)
+) [42001-220]
+2024-04-13 16:15:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "TASKID" not found; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool not null,
+ constraint assigned_pk primary key (taskID,userID),
+ constraint assigned_task_fk foreign key (taskID) references flat(taskID),
+ constraint assigned_user_fk foreign key (userID) references flat(userID)
+) [42122-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.table.Table.getColumn(Table.java:759)
+	at org.h2.table.IndexColumn.mapColumns(IndexColumn.java:184)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:219)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.ddl.CommandWithColumns.createConstraints(CommandWithColumns.java:83)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:134)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:15:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table assigned\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a completed bool not null,\000d\000a constraint assigned_pk primary key (taskID,userID),\000d\000a constraint assigned_task_fk foreign key (taskID) references task(taskID),\000d\000a constraint assigned_user_fk foreign key (userID) references [*]user(userID)\000d\000a)"; expected "identifier"; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool not null,
+ constraint assigned_pk primary key (taskID,userID),
+ constraint assigned_task_fk foreign key (taskID) references task(taskID),
+ constraint assigned_user_fk foreign key (userID) references user(userID)
+) [42001-220]
+2024-04-13 16:16:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Unknown data type: "BOOLEN"; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed boolen not null,
+ constraint assigned_pk primary key (taskID,userID),
+ constraint assigned_task_fk foreign key (taskID) references task(taskID),
+ constraint assigned_user_fk foreign key (userID) references user(userID)
+) [50004-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.readIfDataType1(Parser.java:6367)
+	at org.h2.command.Parser.readIfDataType(Parser.java:6205)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:6187)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:6066)
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:9496)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:9436)
+	at org.h2.command.Parser.parseCreate(Parser.java:6905)
+	at org.h2.command.Parser.parsePrepared(Parser.java:771)
+	at org.h2.command.Parser.parse(Parser.java:697)
+	at org.h2.command.Parser.parse(Parser.java:669)
+	at org.h2.command.Parser.prepareCommand(Parser.java:577)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:634)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:557)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:16:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table assigned\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a completed bool not null,\000d\000a constraint assigned_pk primary key (taskID,userID),\000d\000a constraint assigned_task_fk foreign key (taskID) references task(taskID),\000d\000a constraint assigned_user_fk foreign key (userID) references [*]user(userID)\000d\000a)"; expected "identifier"; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool not null,
+ constraint assigned_pk primary key (taskID,userID),
+ constraint assigned_task_fk foreign key (taskID) references task(taskID),
+ constraint assigned_user_fk foreign key (userID) references user(userID)
+) [42001-220]
+2024-04-13 16:16:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table assigned\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a completed bool not null,\000d\000a constraint assigned_pk primary key (taskID,userID),\000d\000a[*])"; expected "identifier"; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool not null,
+ constraint assigned_pk primary key (taskID,userID),
+) [42001-220]
+2024-04-13 16:17:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table assigned\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a completed bool not null,\000d\000a[*])"; expected "identifier"; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool not null,
+) [42001-220]
+2024-04-13 16:17:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ASSIGNED" already exists; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool
+) [42101-220]
+2024-04-13 16:17:16 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table assigned\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a completed bool not null,\000d\000a[*])"; expected "identifier"; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool not null,
+) [42001-220]
+2024-04-13 16:17:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table assigned\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a completed bool,\000d\000a[*])"; expected "identifier"; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool,
+) [42001-220]
+2024-04-13 16:17:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table assigned\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a completed bool not null,\000d\000a constraint assigned_pk primary key (taskID,userID),\000d\000a constraint assigned_task_fk foreign key (taskID) references task(taskID),\000d\000a constraint assigned_user_fk foreign key (userID) references [*]user(userID)\000d\000a)"; expected "identifier"; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool not null,
+ constraint assigned_pk primary key (taskID,userID),
+ constraint assigned_task_fk foreign key (taskID) references task(taskID),
+ constraint assigned_user_fk foreign key (userID) references user(userID)
+) [42001-220]
+2024-04-13 16:18:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "TASK" because "ASSIGNED_TASK_FK" depends on it; SQL statement:
+drop table if exists task [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:18:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "FLAT" because "TASK_FLAT_FK" depends on it; SQL statement:
+drop table if exists flat [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:18:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "USERS" because "USERS_FLAT_FK" depends on it; SQL statement:
+drop table if exists users [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:18:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" already exists; SQL statement:
+create table users
+(
+ userID char(10) not null,
+ familyName char(50) not null,
+ fistName char(50) not null,
+ phoneNumber char(20),
+ Email char(100),
+ dateOfBirth date not null,
+ flatID char(10),
+ constraint users_pk primary key (userID)
+) [42101-220]
+2024-04-13 16:18:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FLAT" already exists; SQL statement:
+create table flat
+(
+ flatID char(10) not null,
+ location char(200) not null,
+ name char(50) not null,
+ host char(10) not null,
+ constraint flat_pk primary key (flatID),
+ constraint users_flat_fk foreign key (host) references users(userID)
+) [42101-220]
+2024-04-13 16:18:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TASK" already exists; SQL statement:
+create table task
+(
+ taskID char(10),
+ taskName char(50) not null,
+ description text not null,
+ flatID char(10) not null,
+ requestedDate timestamp not null,
+ constraint task_pk primary key (taskID),
+ constraint task_flat_fk foreign key (flatID) references flat(flatID)
+) [42101-220]
+2024-04-13 16:18:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table assigned\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a completed bool not null,\000d\000a constraint assigned_pk primary key (taskID,userID),\000d\000a constraint assigned_task_fk foreign key (taskID) references task(taskID),\000d\000a constraint assigned_user_fk foreign key (userID) references [*]user(userID)\000d\000a)"; expected "identifier"; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool not null,
+ constraint assigned_pk primary key (taskID,userID),
+ constraint assigned_task_fk foreign key (taskID) references task(taskID),
+ constraint assigned_user_fk foreign key (userID) references user(userID)
+) [42001-220]
+2024-04-13 16:18:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table assigned\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a completed bool not null,\000d\000a constraint assigned_pk primary key (taskID,userID),\000d\000a constraint assigned_task_fk foreign key (taskID) references task(taskID),\000d\000a constraint assigned_user_fk foreign key (userID) references [*]user(userID)\000d\000a)"; expected "identifier"; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool not null,
+ constraint assigned_pk primary key (taskID,userID),
+ constraint assigned_task_fk foreign key (taskID) references task(taskID),
+ constraint assigned_user_fk foreign key (userID) references user(userID)
+) [42001-220]
+2024-04-13 16:18:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table assigned\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a completed bool not null,\000d\000a constraint assigned_pk primary key (taskID,userID),\000d\000a constraint assigned_user_fk foreign key (userID) references [*]user(userID)\000d\000a)"; expected "identifier"; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool not null,
+ constraint assigned_pk primary key (taskID,userID),
+ constraint assigned_user_fk foreign key (userID) references user(userID)
+) [42001-220]
+2024-04-13 16:21:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "TASK" because "ASSIGNED_TASK_FK" depends on it; SQL statement:
+drop table if exists task [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:21:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "FLAT" because "TASK_FLAT_FK" depends on it; SQL statement:
+drop table if exists flat [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:21:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "USERS" because "USERS_FLAT_FK" depends on it; SQL statement:
+drop table if exists users [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-13 16:21:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" already exists; SQL statement:
+create table users
+(
+ userID char(10) not null,
+ familyName char(50) not null,
+ fistName char(50) not null,
+ phoneNumber char(20),
+ Email char(100),
+ dateOfBirth date not null,
+ flatID char(10),
+ constraint users_pk primary key (userID)
+) [42101-220]
+2024-04-13 16:21:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "FLAT" already exists; SQL statement:
+create table flat
+(
+ flatID char(10) not null,
+ location char(200) not null,
+ name char(50) not null,
+ host char(10) not null,
+ constraint flat_pk primary key (flatID),
+ constraint users_flat_fk foreign key (host) references users(userID)
+) [42101-220]
+2024-04-13 16:21:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TASK" already exists; SQL statement:
+create table task
+(
+ taskID char(10),
+ taskName char(50) not null,
+ description text not null,
+ flatID char(10) not null,
+ requestedDate timestamp not null,
+ constraint task_pk primary key (taskID),
+ constraint task_flat_fk foreign key (flatID) references flat(flatID)
+) [42101-220]
+2024-04-13 16:21:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table assigned\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a completed bool not null,\000d\000a constraint assigned_pk primary key (taskID,userID),\000d\000a constraint assigned_user_fk foreign key (userID) references [*]user(userID),\000d\000a constraint assigned_task_fk foreign key (taskID) references user(taskID)\000d\000a)"; expected "identifier"; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool not null,
+ constraint assigned_pk primary key (taskID,userID),
+ constraint assigned_user_fk foreign key (userID) references user(userID),
+ constraint assigned_task_fk foreign key (taskID) references user(taskID)
+) [42001-220]
+2024-04-13 16:21:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table assigned\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a completed bool not null,\000d\000a constraint assigned_pk primary key (taskID,userID),\000d\000a constraint assigned_user_fk foreign key (userID) references [*]user(userID),\000d\000a constraint assigned_task_fk foreign key (taskID) references user(taskID)\000d\000a)"; expected "identifier"; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool not null,
+ constraint assigned_pk primary key (taskID,userID),
+ constraint assigned_user_fk foreign key (userID) references user(userID),
+ constraint assigned_task_fk foreign key (taskID) references user(taskID)
+) [42001-220]
+2024-04-13 16:23:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table assigned\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a completed bool not null,\000d\000a constraint assigned_pk primary key (taskID,userID),\000d\000a constraint assigned_user_fk foreign key (userID) references users(userID),\000d\000a constraint assigned_task_fk foreign key (taskID) references [*]user(taskID)\000d\000a)"; expected "identifier"; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool not null,
+ constraint assigned_pk primary key (taskID,userID),
+ constraint assigned_user_fk foreign key (userID) references users(userID),
+ constraint assigned_task_fk foreign key (taskID) references user(taskID)
+) [42001-220]
+2024-04-13 16:23:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table assigned\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a completed bool not null,\000d\000a constraint assigned_pk primary key (taskID,userID),\000d\000a constraint assigned_users_fk foreign key (userID) references users(userID),\000d\000a constraint assigned_task_fk foreign key (taskID) references [*]user(taskID)\000d\000a)"; expected "identifier"; SQL statement:
+create table assigned
+(
+ taskID char(10),
+ userID char(10),
+ completed bool not null,
+ constraint assigned_pk primary key (taskID,userID),
+ constraint assigned_users_fk foreign key (userID) references users(userID),
+ constraint assigned_task_fk foreign key (taskID) references user(taskID)
+) [42001-220]
+2024-04-13 16:25:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "ASSIGNED_PK" already exists; SQL statement:
+create table payment
+(
+ taskID char(10),
+ userID char(10),
+ amount Numeric(10),
+ played bool not null,
+ constraint assigned_pk primary key (taskID,userID),
+ constraint assigned_users_fk foreign key (userID) references users(userID),
+ constraint assigned_task_fk foreign key (taskID) references task(taskID)
+) [90045-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:111)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.ddl.CommandWithColumns.createConstraints(CommandWithColumns.java:83)
+	at org.h2.command.ddl.CreateTable.update(CreateTable.java:134)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)

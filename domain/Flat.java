@@ -1,5 +1,4 @@
 package domain;
-
 /**
  *
  * @author haydenaish
@@ -8,7 +7,7 @@ public class Flat {
     private String id;
     private String address;
     private String name;
-    private String host;
+    private User host;
 
     public String getId() {
         return id;
@@ -34,11 +33,11 @@ public class Flat {
         this.name = name;
     }
 
-    public String getHost() {
+    public User getHost() {
         return host;
     }
 
-    public void setHost(String host) {
+    public void setHost(User host) {
         this.host = host;
     }
 }

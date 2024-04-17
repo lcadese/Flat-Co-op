@@ -13,9 +13,7 @@ create table users
  userID char(10) not null,
  familyName char(50) not null,
  firstName char(50) not null,
- phoneNumber char(20),
  Email char(100),
- dateOfBirth date not null,
  flatID char(10),
  constraint users_pk primary key (userID)
 );
