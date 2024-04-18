@@ -20,8 +20,8 @@ public class Server extends Jooby {
 		install(new OpenAPIModule());
 
 		// provide our OAS specification to the Swagger UI
-		assets("/FlatHub.json", "FlatHub.json");
-		assets("/FlatHub.yaml", "FlatHub.yaml");
+		assets("/openapi.json", "FlatHub.json");
+		assets("/openapi.yaml", "FlatHub.yaml");
 
 		// redirect requests to / to /swagger
 		get("/", ctx -> ctx.sendRedirect("/swagger"));
