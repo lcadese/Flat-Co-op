@@ -11,7 +11,43 @@ info:
     email: cadli971@student.otago.ac.nz
 servers:
   - url: 'http://localhost:3000'
-paths: {}
+paths:
+  /user/signup:
+    post:
+      summary: Sign Up
+      operationId: user-signup
+      responses:
+        '201':
+          description: 'User is successfully created '
+        '409':
+          description: That username already exists
+      description: 'User is able to create an account '
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      tags:
+        - User
+  '/user/login{userId}':
+    get:
+      summary: Login
+      tags:
+        - User
+      responses:
+        '200':
+          description: User login is correct
+        '404':
+          description: User login is incorrect
+      operationId: user-login
+      description: 'User is able to login from their account '
+    parameters:
+      - schema:
+          type: string
+        name: userId
+        in: path
+        required: true
+        description: The users Id
 components:
   schemas:
     User:
@@ -19,6 +55,8 @@ components:
       x-stoplight:
         id: d12ebby776lka
       type: object
+      x-tags:
+        - User
       properties:
         userId:
           type: string
@@ -35,12 +73,6 @@ components:
         email:
           type: string
           description: email of user
-        phoneNumber:
-          type: string
-          description: phoneNumber of user
-        age:
-          type: string
-          description: age of user
         flatId:
           $ref: '#/components/schemas/Flat'
           description: References FlatID
@@ -50,16 +82,14 @@ components:
         - firstName
         - lastName
         - email
-        - phoneNumber
-        - age
         - flatId
-      x-tags:
-        - User
     Flat:
       title: Flat
       x-stoplight:
         id: ycqcfje1hu3au
       type: object
+      x-tags:
+        - User
       properties:
         flatId:
           type: string
@@ -78,8 +108,6 @@ components:
         - location
         - name
         - host
-      x-tags:
-        - User
     Task:
       title: Task
       x-stoplight:
