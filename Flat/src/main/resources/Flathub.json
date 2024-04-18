@@ -36,7 +36,32 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "type": "object",
+                "maxProperties": 4,
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "description": "username that user has chosen"
+                  },
+                  "firstName": {
+                    "type": "string",
+                    "description": "First Name user has chosen"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "description": "lastName user has chosen"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "email user has chosen"
+                  }
+                },
+                "required": [
+                  "username",
+                  "firstName",
+                  "lastName",
+                  "email"
+                ]
               }
             }
           }
