@@ -1,0 +1,157 @@
+openapi: 3.1.0
+x-stoplight:
+  id: sg61odlapqhwb
+info:
+  title: FlatHub
+  version: '1.0'
+  summary: API for our flat organization app
+  description: API for our flat organization app
+  contact:
+    name: Liam
+    email: cadli971@student.otago.ac.nz
+servers:
+  - url: 'http://localhost:3000'
+paths: {}
+components:
+  schemas:
+    User:
+      title: User
+      x-stoplight:
+        id: d12ebby776lka
+      type: object
+      properties:
+        userId:
+          type: string
+          description: Id of user
+        username:
+          type: string
+          description: username of user
+        firstName:
+          type: string
+          description: firstName of user
+        lastName:
+          type: string
+          description: lastName of user
+        email:
+          type: string
+          description: email of user
+        phoneNumber:
+          type: string
+          description: phoneNumber of user
+        age:
+          type: string
+          description: age of user
+        flatId:
+          $ref: '#/components/schemas/Flat'
+          description: References FlatID
+      required:
+        - userId
+        - username
+        - firstName
+        - lastName
+        - email
+        - phoneNumber
+        - age
+        - flatId
+      x-tags:
+        - User
+    Flat:
+      title: Flat
+      x-stoplight:
+        id: ycqcfje1hu3au
+      type: object
+      properties:
+        flatId:
+          type: string
+          description: The id of the flat
+        location:
+          type: string
+          description: location of the flat
+        name:
+          type: string
+          description: name of the flat
+        host:
+          $ref: '#/components/schemas/User'
+          description: host of the flat
+      required:
+        - flatId
+        - location
+        - name
+        - host
+      x-tags:
+        - User
+    Task:
+      title: Task
+      x-stoplight:
+        id: vy4lmku8e4aql
+      type: object
+      properties:
+        taskId:
+          type: string
+          description: Id for Task
+        taskName:
+          type: string
+          description: Name of Task
+        description:
+          type: string
+          description: description of task
+        flatID:
+          $ref: '#/components/schemas/Flat'
+          description: 'reference to flat '
+        requestedDate:
+          type: string
+          description: Date that task needs to be completed
+      required:
+        - taskId
+        - taskName
+        - description
+        - flatID
+        - requestedDate
+      x-tags:
+        - Task
+    Assigned:
+      title: Assigned
+      x-stoplight:
+        id: pkzjv045fsedu
+      type: object
+      properties:
+        taskId:
+          $ref: '#/components/schemas/Task'
+          description: Reference to task
+        userId:
+          $ref: '#/components/schemas/User'
+          description: reference to user
+        completed:
+          type: boolean
+          description: whether a assigned task is completed
+      required:
+        - taskId
+        - userId
+        - completed
+      x-tags:
+        - Task
+    Payment:
+      title: Payment
+      x-stoplight:
+        id: ip0uj5diusxe3
+      type: object
+      properties:
+        taskId:
+          $ref: '#/components/schemas/Task'
+          description: references task
+        userId:
+          $ref: '#/components/schemas/User'
+          description: References user
+        amount:
+          type: number
+          description: Amount the payment is for
+        payed:
+          type: boolean
+          description: Whether the payment is complete
+      required:
+        - taskId
+        - userId
+        - amount
+        - payed
+      x-tags:
+        - Payment
