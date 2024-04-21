@@ -63,10 +63,14 @@ class UserJbdiDAOTest {
     @Test
     void removeUser()
     {
-        //dao.removeUser(user);
+        dao.removeUser(user);
+        assertThat(dao.getUserByUsername(user.getUsername()),not(is(user)));
+        dao.addUser(user);
     }
 
     @Test
     void checkCredentials() {
+        assertTrue(dao.checkCredentials(user.getUsername(),user.getPassword()));
+        assertFalse(dao.checkCredentials("evil","worse evil"));
     }
 }
