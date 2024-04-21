@@ -1,24 +1,33 @@
 package domain;
 
 public class Assigned {
-    private String task;
-    private String user;
+    private String taskID;
+    private String userID;
     private boolean completed;
 
+    public Assigned(String taskID, String userID, boolean completed) {
+        this.taskID = taskID;
+        this.userID = userID;
+        this.completed = completed;
+    }
+
+    public Assigned() {
+    }
+
     public String getTask() {
-        return task;
+        return taskID;
     }
 
     public void setTask(String task) {
-        this.task = task;
+        this.taskID = task;
     }
 
     public String getUser() {
-        return user;
+        return userID;
     }
 
     public void setUser(String user) {
-        this.user = user;
+        this.userID = user;
     }
 
     public boolean isCompleted() {

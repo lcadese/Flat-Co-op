@@ -1,7 +1,7 @@
 package dao;
 import domain.Flat;
 
-interface FlatDAO {
+public interface FlatDAO {
 
     void addFlat(Flat flat);
     Flat getFlat(String FlatID);

@@ -46,4 +46,11 @@ public class JdbiDaoFactory{
         return JDBI.onDemand(FlatJbdiDAO.class);
     }
 
+    public static AssignedDAO getAssignedDAO(){
+        if(HIKARI_DATA_SOURCE == null) {
+            initialisePool();
+        }
+        return JDBI.onDemand(AssignedJdbiDAO.class);
+    }
+
 }
