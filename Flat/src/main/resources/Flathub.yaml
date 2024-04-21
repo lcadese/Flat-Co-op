@@ -26,26 +26,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              maxProperties: 4
-              properties:
-                username:
-                  type: string
-                  description: username that user has chosen
-                firstName:
-                  type: string
-                  description: First Name user has chosen
-                lastName:
-                  type: string
-                  description: lastName user has chosen
-                email:
-                  type: string
-                  description: email user has chosen
-              required:
-                - username
-                - firstName
-                - lastName
-                - email
+              $ref: '#/components/schemas/User'
       tags:
         - User
   '/user/login{userId}':
@@ -95,6 +76,9 @@ components:
         flatId:
           $ref: '#/components/schemas/Flat'
           description: References FlatID
+        password:
+          type: string
+          description: Password for user
       required:
         - userId
         - username
@@ -102,6 +86,7 @@ components:
         - lastName
         - email
         - flatId
+        - password
     Flat:
       title: Flat
       x-stoplight:
