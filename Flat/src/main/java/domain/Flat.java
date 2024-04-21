@@ -4,17 +4,27 @@ package domain;
  * @author haydenaish
  */
 public class Flat {
-    private String id;
+    private String flatID;
     private String address;
     private String name;
     private String host;
 
-    public String getId() {
-        return id;
+    public Flat() {
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public Flat(String flatID, String address, String name, String host) {
+        this.flatID = flatID;
+        this.address = address;
+        this.name = name;
+        this.host = host;
+    }
+
+    public String getflatID() {
+        return flatID;
+    }
+
+    public void setflatID(String flatID) {
+        this.flatID = flatID;
     }
 
     public String getAddress() {

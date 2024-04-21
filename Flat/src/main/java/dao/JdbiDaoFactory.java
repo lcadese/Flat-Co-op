@@ -39,4 +39,11 @@ public class JdbiDaoFactory{
         return JDBI.onDemand(UserJbdiDAO.class);
     }
 
+    public static FlatDAO getFlatDAO() {
+        if(HIKARI_DATA_SOURCE == null) {
+            initialisePool();
+        }
+        return JDBI.onDemand(FlatJbdiDAO.class);
+    }
+
 }
