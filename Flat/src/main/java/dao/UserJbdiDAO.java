@@ -30,4 +30,7 @@ public interface UserJbdiDAO extends UserDAO {
     @SqlQuery("select exists(select * from Users where username = :user and password = :pass)")
     boolean checkCredentials(@Bind("user") String username,@Bind("pass") String password);
 
+    @Override
+    @SqlUpdate("update users set flatId = :flatID where userID = :userID")
+    void setFlat(@Bind("userID") String userID,@Bind("flatID") String flatID);
 }

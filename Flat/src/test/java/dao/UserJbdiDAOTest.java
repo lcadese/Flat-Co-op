@@ -1,5 +1,6 @@
 package dao;
 
+import domain.Flat;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -72,5 +73,18 @@ class UserJbdiDAOTest {
     void checkCredentials() {
         assertTrue(dao.checkCredentials(user.getUsername(),user.getPassword()));
         assertFalse(dao.checkCredentials("evil","worse evil"));
+    }
+
+    @Test
+    void setFlat() {
+        Flat flat = new Flat("2A","10 downing street","Car bomb",user.getUserID());
+
+        JdbiDaoFactory.getFlatDAO().addFlat(flat);
+
+        dao.setFlat(user.getUserID(), "2A");
+        assertThat(dao.getUserByUsername(user.getUsername()).getFlatID(),is("2A"));
+        dao.setFlat(user.getUserID(), user.getFlatID());
+
+        JdbiDaoFactory.getFlatDAO().removeFlat(flat);
     }
 }
