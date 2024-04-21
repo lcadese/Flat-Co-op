@@ -1382,3 +1382,97 @@ create table payment
 	at org.h2.server.web.WebThread.process(WebThread.java:188)
 	at org.h2.server.web.WebThread.run(WebThread.java:101)
 	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-04-21 18:23:52 database: wrong user or password; user: "FB"
+org.h2.message.DbException: Wrong user name or password [28000-220]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.engine.Engine.openSession(Engine.java:154)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.server.TcpServerThread.run(TcpServerThread.java:175)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 8 more
+2024-04-21 18:24:50 database: wrong user or password; user: "FH"
+org.h2.message.DbException: Wrong user name or password [28000-220]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.engine.Engine.openSession(Engine.java:154)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:338)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:122)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:288)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:808)
+	at org.h2.server.web.WebApp.login(WebApp.java:1039)
+	at org.h2.server.web.WebApp.process(WebApp.java:227)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:177)
+	at org.h2.server.web.WebThread.process(WebThread.java:152)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.h2.jdbc.JdbcSQLInvalidAuthorizationSpecException: Wrong user name or password [28000-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:522)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 16 more
+2024-04-21 19:10:05 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table payment\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a amount Numeric(10),\000d\000a payed bool not null,\000d\000a constraint payment_pk primary key (taskID,userID),\000d\000a constraint payment_users_fk foreign key (userID) references users(userID),\000d\000a constraint payment_task_fk foreign key (taskID) references task(taskID)\000d\000a)\000d\000a\000d\000a[*]INSERT INTO users (userid,familyname,firstname,email,flatid)\000d\000aVALUES ('1','Dave','Dave','Dave@gmail.com',null)"; SQL statement:
+create table payment
+(
+ taskID char(10),
+ userID char(10),
+ amount Numeric(10),
+ payed bool not null,
+ constraint payment_pk primary key (taskID,userID),
+ constraint payment_users_fk foreign key (userID) references users(userID),
+ constraint payment_task_fk foreign key (taskID) references task(taskID)
+)
+
+INSERT INTO users (userid,familyname,firstname,email,flatid)
+VALUES ('1','Dave','Dave','Dave@gmail.com',null) [42000-220]
+2024-04-21 19:10:27 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table payment\000d\000a(\000d\000a taskID char(10),\000d\000a userID char(10),\000d\000a amount Numeric(10),\000d\000a payed bool not null,\000d\000a constraint payment_pk primary key (taskID,userID),\000d\000a constraint payment_users_fk foreign key (userID) references users(userID),\000d\000a constraint payment_task_fk foreign key (taskID) references task(taskID)\000d\000a)\000d\000a\000d\000a[*]INSERT INTO users (userid,lastname,firstname,email,flatid)\000d\000aVALUES ('1','Dave','Dave','Dave@gmail.com',null)"; SQL statement:
+create table payment
+(
+ taskID char(10),
+ userID char(10),
+ amount Numeric(10),
+ payed bool not null,
+ constraint payment_pk primary key (taskID,userID),
+ constraint payment_users_fk foreign key (userID) references users(userID),
+ constraint payment_task_fk foreign key (taskID) references task(taskID)
+)
+
+INSERT INTO users (userid,lastname,firstname,email,flatid)
+VALUES ('1','Dave','Dave','Dave@gmail.com',null) [42000-220]
+2024-04-21 19:20:06 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "FAMILYNAME" not found; SQL statement:
+INSERT INTO users (userid,username,familyname,firstname,email,flatid)
+VALUES ('1','Dave is best','Dave','Dave','Dave@gmail.com',null) [42122-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.table.Table.getColumn(Table.java:759)
+	at org.h2.command.Parser.parseColumn(Parser.java:1300)
+	at org.h2.command.Parser.parseColumnList(Parser.java:1285)
+	at org.h2.command.Parser.parseInsert(Parser.java:1672)
+	at org.h2.command.Parser.parsePrepared(Parser.java:822)
+	at org.h2.command.Parser.parse(Parser.java:697)
+	at org.h2.command.Parser.parse(Parser.java:669)
+	at org.h2.command.Parser.prepareCommand(Parser.java:577)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:634)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:557)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
