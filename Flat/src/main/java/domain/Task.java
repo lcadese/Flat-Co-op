@@ -9,8 +9,7 @@ public class Task {
     private String taskName;
     private String description;
     private String date;
-    private User assignedTo;
-    private Flat flat;
+    private String flatID;
 
     public String getId() {
         return taskID;
@@ -44,20 +43,12 @@ public class Task {
         this.date = date;
     }
 
-    public User getAssignedTo() {
-        return assignedTo;
+    public String getFlat() {
+        return flatID;
     }
 
-    public void setAssignedTo(User assignedTo) {
-        this.assignedTo = assignedTo;
-    }
-
-    public Flat getFlat() {
-        return flat;
-    }
-
-    public void setFlat(Flat flat) {
-        this.flat = flat;
+    public void setFlat(String flatID) {
+        this.flatID = flatID;
     }
     
 }

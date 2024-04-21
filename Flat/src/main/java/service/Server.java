@@ -1,14 +1,21 @@
 package service;
 
+import dao.JdbiDaoFactory;
+import dao.UserDAO;
 import io.jooby.Jooby;
 import io.jooby.OpenAPIModule;
 import io.jooby.ServerOptions;
 import io.jooby.gson.GsonModule;
+import resources.UserResource;
+
 import java.io.IOException;
 
 public class Server extends Jooby {
 
 	public Server() {
+
+		UserDAO userDAO = JdbiDaoFactory.getUserDAO();
+
 		// add dao import
 		// add support for JSON
 		install(new GsonModule());
@@ -25,6 +32,8 @@ public class Server extends Jooby {
 
 		// redirect requests to / to /swagger
 		get("/", ctx -> ctx.sendRedirect("/swagger"));
+
+		mount(new UserResource(userDAO));
 	}
 
 	public static void main(String[] args) throws IOException {

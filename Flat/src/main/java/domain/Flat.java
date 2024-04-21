@@ -7,7 +7,7 @@ public class Flat {
     private String id;
     private String address;
     private String name;
-    private User host;
+    private String host;
 
     public String getId() {
         return id;
@@ -33,11 +33,11 @@ public class Flat {
         this.name = name;
     }
 
-    public User getHost() {
+    public String getHost() {
         return host;
     }
 
-    public void setHost(User host) {
+    public void setHost(String host) {
         this.host = host;
     }
 }

@@ -1,3 +1,5 @@
+package resources;
+
 import dao.UserDAO;
 import domain.ErrorMessage;
 import domain.User;
@@ -37,6 +39,10 @@ public class UserResource extends Jooby {
                         .setResponseCode(StatusCode.NOT_FOUND)
                         .render(new ErrorMessage("User login is incorrect"));
                 }
+            });
+
+            get("/test", ctx -> {
+                return dao.getUserById("1");
             });
 
         });

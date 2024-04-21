@@ -1,5 +1,7 @@
 package domain;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author haydenaish
@@ -7,7 +9,7 @@ package domain;
 public class Payments {
     private Task task;
     private User toUser;
-    private double amount;
+    private BigDecimal amount;
     private boolean payed;
 
     public Task getTask() {
@@ -26,11 +28,11 @@ public class Payments {
         this.toUser = toUser;
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

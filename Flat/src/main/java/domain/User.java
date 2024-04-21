@@ -5,24 +5,40 @@ package domain;
  * @author haydenaish
  */
 public class User {
-    private String id;
+    private String userID;
     private String username;
     private String firstName;
     private String lastName;
     private String email;
-    private Flat flat;
+    private String flatID;
+    private String password;
 
-    public String getId() {
-        return id;
+    public User() {
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public User(String userID, String username, String password, String firstName, String lastName, String email, String flatID) {
+        this.userID = userID;
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.flatID = flatID;
+        this.password = password;
     }
 
-    public String getUsername() {
-        return username;
-    }
+    public String getPassword() {return password;}
+
+    public void setPassword(String password) {this.password = password;}
+
+    public String getUserID() {return userID;}
+
+    public void setUserID(String userID) {this.userID = userID;}
+
+    public String getFlatID() {return flatID;}
+
+    public void setFlatID(String flatID) {this.flatID = flatID;}
+
+    public String getUsername() {return username;}
 
     public void setUsername(String username) {
         this.username = username;
@@ -52,12 +68,6 @@ public class User {
         this.email = email;
     }
 
-    public Flat getFlat() {
-        return flat;
-    }
 
-    public void setFlat(Flat flat) {
-        this.flat = flat;
-    }
-    
+
 }
