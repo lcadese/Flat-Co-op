@@ -1,0 +1,40 @@
+/* COLOR CODES 
+    Bone - #DDD8C4
+    Light Blue - #67AAF9
+    Dark Blue - #16262E
+    Orange - #F28123
+    Coral - #EF767A
+*/
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #16262E;
+    color: #DDD8C4;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: #DDD8C4;
+    color: #16262E;
+  }
+
+  h1 {
+    text-align: center;
+    color: #F28123;
+  }
