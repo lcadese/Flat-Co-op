@@ -1,7 +1,6 @@
 package dao;
 
 import domain.User;
-import org.jdbi.v3.sqlobject.customizer.Bind;
 
 public interface UserDAO {
     User getUserById(String id);
