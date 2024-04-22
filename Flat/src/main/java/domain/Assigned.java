@@ -2,13 +2,12 @@ package domain;
 
 public class Assigned {
     private String taskID;
-    private String userID;
-    private boolean completed;
+    private String userID; 
 
     public Assigned(String taskID, String userID, boolean completed) {
         this.taskID = taskID;
         this.userID = userID;
-        this.completed = completed;
+//        this.completed = completed;
     }
 
     public Assigned() {
@@ -29,15 +28,5 @@ public class Assigned {
     public void setUser(String user) {
         this.userID = user;
     }
-
-    public boolean isCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
-    }
-
-
     
 }

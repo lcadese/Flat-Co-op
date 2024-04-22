@@ -7,25 +7,25 @@ import java.math.BigDecimal;
  * @author haydenaish
  */
 public class Payments {
-    private Task task;
-    private User toUser;
+    private String taskID;
+    private String userID;
     private BigDecimal amount;
     private boolean payed;
 
-    public Task getTask() {
-        return task;
+    public String getTask() {
+        return taskID;
     }
 
-    public void setTask(Task task) {
-        this.task = task;
+    public void setTask(String task) {
+        this.taskID = task;
     }
 
-    public User getToUser() {
-        return toUser;
+    public String getToUser() {
+        return userID;
     }
 
-    public void setToUser(User toUser) {
-        this.toUser = toUser;
+    public void setToUser(String toUser) {
+        this.userID = toUser;
     }
 
     public BigDecimal getAmount() {
