@@ -15,7 +15,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
+      "url": "http://localhost:8080"
     }
   ],
   "paths": {
@@ -46,7 +46,7 @@
         ]
       }
     },
-    "/user/login{userId}": {
+    "/user/login/{userId}": {
       "get": {
         "summary": "Login",
         "tags": [

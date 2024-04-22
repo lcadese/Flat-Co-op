@@ -10,7 +10,7 @@ drop table if exists users;
 
 create table if not exists users
 (
- userID varchar(10) not null,
+ userID varchar(100) not null,
  username varchar(30) not null,
  password varchar(30) not null,
  lastName varchar(50) not null,

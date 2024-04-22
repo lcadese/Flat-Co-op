@@ -5,42 +5,46 @@ import dao.UserDAO;
 import io.jooby.Jooby;
 import io.jooby.OpenAPIModule;
 import io.jooby.ServerOptions;
+import io.jooby.exception.StatusCodeException;
 import io.jooby.gson.GsonModule;
+import io.jooby.handler.Cors;
+import io.jooby.handler.CorsHandler;
+
 import resources.UserResource;
 
 import java.io.IOException;
 
 public class Server extends Jooby {
 
-	public Server() {
+    public Server() {
+        // Initialize the data access object for users
+        UserDAO userDAO = JdbiDaoFactory.getUserDAO();
 
-		UserDAO userDAO = JdbiDaoFactory.getUserDAO();
+        // Setup JSON handling with Gson
+        install(new GsonModule());
 
-		// add dao import
-		// add support for JSON
-		install(new GsonModule());
+        use(new CorsHandler(new Cors().setMethods("GET", "POST", "PUT", "DELETE")));
 
-		// add the resources
-		// mount(dao);
+        // Setup API documentation with Swagger/OpenAPI
+        install(new OpenAPIModule());
+        assets("/openapi.json", "FlatHub.json");
+        assets("/openapi.yaml", "FlatHub.yaml");
 
-		// add the OpenAPI module for Swagger support
-		install(new OpenAPIModule());
+        // Redirect root URL to Swagger UI for easy API documentation access
+        get("/", ctx -> ctx.sendRedirect("/swagger"));
 
-		// provide our OAS specification to the Swagger UI
-		assets("/openapi.json", "FlatHub.json");
-		assets("/openapi.yaml", "FlatHub.yaml");
+        // Mount the resource 
+        mount(new UserResource(userDAO));
 
-		// redirect requests to / to /swagger
-		get("/", ctx -> ctx.sendRedirect("/swagger"));
+        //error handling
+        error(StatusCodeException.class, (ctx, cause, statusCode) -> {
+            ctx.setResponseCode(statusCode).send(cause.getMessage());
+        });
+    }
 
-		mount(new UserResource(userDAO));
-	}
-
-	public static void main(String[] args) throws IOException {
-		// start the server
-		new Server()
-				.setServerOptions(new ServerOptions().setPort(8080))
-				.start();
-	}
-
+    public static void main(String[] args) throws IOException {
+        new Server()
+            .setServerOptions(new ServerOptions().setPort(8080))
+            .start();
+    }
 }

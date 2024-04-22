@@ -10,7 +10,7 @@ info:
     name: Liam
     email: cadli971@student.otago.ac.nz
 servers:
-  - url: 'http://localhost:3000'
+  - url: 'http://localhost:8080'
 paths:
   /user/signup:
     post:
@@ -29,7 +29,7 @@ paths:
               $ref: '#/components/schemas/User'
       tags:
         - User
-  '/user/login{userId}':
+  '/user/login/{userId}':
     get:
       summary: Login
       tags:
