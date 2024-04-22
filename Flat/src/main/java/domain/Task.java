@@ -1,5 +1,7 @@
 package domain;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author haydenaish
@@ -8,8 +10,19 @@ public class Task {
     private String taskID;
     private String taskName;
     private String description;
-    private String date;
+    private LocalDateTime requestedDate;
     private String flatID;
+
+    public Task() {
+    }
+
+    public Task(String taskID, String taskName, String description, LocalDateTime requestedDate, String flatID) {
+        this.taskID = taskID;
+        this.taskName = taskName;
+        this.description = description;
+        this.requestedDate = requestedDate;
+        this.flatID = flatID;
+    }
 
     public String getId() {
         return taskID;
@@ -35,12 +48,12 @@ public class Task {
         this.description = description;
     }
 
-    public String getDate() {
-        return date;
+    public LocalDateTime getrequestedDate() {
+        return requestedDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setrequestedDate(LocalDateTime requestedDate) {
+        this.requestedDate = requestedDate;
     }
 
     public String getFlat() {

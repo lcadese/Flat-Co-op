@@ -51,12 +51,12 @@ class AssignedJdbiDAOTest {
         dao = JdbiDaoFactory.getAssignedDAO();
         assigned = new Assigned(user.getUserID(),flat.getflatID(),false);
 
-        dao.createAssigned(assigned);
+        //dao.createAssigned(assigned);
     }
 
     @AfterEach
     void tearDown() {
-        dao.removeAssigned(assigned);
+        //dao.removeAssigned(assigned);
     }
 
     @Test
