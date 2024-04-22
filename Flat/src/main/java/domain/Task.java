@@ -14,11 +14,11 @@ public class Task {
     private String flatID;
     private boolean completed;
 
-    public Task(String taskID, String taskName, String description, String date, String flatID, boolean completed) {
+    public Task(String taskID, String taskName, String description, LocalDateTime requestedDate, String flatID, boolean completed) {
         this.taskID = taskID;
         this.taskName = taskName;
         this.description = description;
-        this.date = date;
+        this.requestedDate = requestedDate;
         this.flatID = flatID;
         this.completed = completed;
     }
@@ -26,19 +26,6 @@ public class Task {
     public Task() {
     }
     
-    
-
-    public Task() {
-    }
-
-    public Task(String taskID, String taskName, String description, LocalDateTime requestedDate, String flatID) {
-        this.taskID = taskID;
-        this.taskName = taskName;
-        this.description = description;
-        this.requestedDate = requestedDate;
-        this.flatID = flatID;
-    }
-
     public String getId() {
         return taskID;
     }
