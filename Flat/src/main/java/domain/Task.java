@@ -10,6 +10,21 @@ public class Task {
     private String description;
     private String date;
     private String flatID;
+    private boolean completed;
+
+    public Task(String taskID, String taskName, String description, String date, String flatID, boolean completed) {
+        this.taskID = taskID;
+        this.taskName = taskName;
+        this.description = description;
+        this.date = date;
+        this.flatID = flatID;
+        this.completed = completed;
+    }
+
+    public Task() {
+    }
+    
+    
 
     public String getId() {
         return taskID;
@@ -50,5 +65,15 @@ public class Task {
     public void setFlat(String flatID) {
         this.flatID = flatID;
     }
+
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
     
 }

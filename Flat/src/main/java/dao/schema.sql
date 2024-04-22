@@ -1,12 +1,12 @@
---drop table if exists payment;
---drop table if exists assigned;
---drop table if exists task;
+drop table if exists payment;
+drop table if exists assigned;
+drop table if exists task;
 
---alter table if exists users
---drop constraint flat_users_fk;
+alter table if exists users
+drop constraint flat_users_fk;
 
---drop table if exists flat;
---drop table if exists users;
+drop table if exists flat;
+drop table if exists users;
 
 create table if not exists users
 (
@@ -39,6 +39,7 @@ create table task
  taskName varchar(50) not null,
  description text not null,
  flatID varchar(10) not null,
+ completed bool not null,
  requestedDate timestamp not null,
  constraint task_pk primary key (taskID),
  constraint task_flat_fk foreign key (flatID) references flat(flatID)
@@ -48,7 +49,6 @@ create table if not exists assigned
 (
  taskID varchar(10),
  userID varchar(10),
- completed bool not null,
  constraint assigned_pk primary key (taskID,userID),
  constraint assigned_users_fk foreign key (userID) references users(userID),
  constraint assigned_task_fk foreign key (taskID) references task(taskID)
