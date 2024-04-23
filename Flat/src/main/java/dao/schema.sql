@@ -65,5 +65,32 @@ create table if not exists payment
  constraint payment_task_fk foreign key (taskID) references task(taskID)
 );
 
--- INSERT INTO users (userid,username,password,lastname,firstname,email,flatid)
--- VALUES ('1','Dave is best','God','Dave','Dave','Dave@gmail.com',null)
+
+-- Inserting Users without flatID
+INSERT INTO users (userID, username, password, lastName, firstName, Email) VALUES
+('user1', 'johnDoe', 'pass123', 'Doe', 'John', 'john.doe@example.com'),
+('user2', 'janeDoe', 'pass456', 'Doe', 'Jane', 'jane.doe@example.com');
+
+-- Inserting Flats
+INSERT INTO flat (flatID, address, name, host) VALUES
+('flat1', '1234 Main St, Dunedin, NZ', 'Cool Flat', 'user1'),
+('flat2', '5678 Side St, Dunedin, NZ', 'Flat', 'user2');
+
+-- Updating Users to add flatID
+UPDATE users SET flatID = 'flat1' WHERE userID = 'user1';
+UPDATE users SET flatID = 'flat2' WHERE userID = 'user2';
+
+-- Inserting Tasks
+INSERT INTO task (taskID, taskName, description, flatID, completed, requestedDate) VALUES
+('task1', 'Fix Leak', 'Fix the leaking sink in the bathroom.', 'flat1', false, '2024-04-23'),
+('task2', 'Clean Living Room', 'Give the living room a good clean', 'flat2', true, '2024-04-22');
+
+-- Inserting Assignments
+INSERT INTO assigned (taskID, userID) VALUES
+('task1', 'user1'),
+('task2', 'user2');
+
+-- Inserting Payments
+INSERT INTO payment (taskID, userID, amount, payed) VALUES
+('task1', 'user1', 100.00, false),
+('task2', 'user2', 150.00, true);
