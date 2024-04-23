@@ -141,3 +141,14 @@ tasks.register("createGitIgnore") {
 		}
 	}
 }
+
+sourceSets {
+	"static" {
+		resources {
+			srcDirs = ["static"]
+		}
+		java{
+			srcDirs = []
+		}
+	}
+}
