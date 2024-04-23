@@ -39,7 +39,7 @@ class UserJbdiDAOTest {
 
     @AfterEach
     void tearDown() {
-        dao.removeUser(user);
+        dao.removeUser("1");
     }
 
     @Test
@@ -64,7 +64,7 @@ class UserJbdiDAOTest {
     @Test
     void removeUser()
     {
-        dao.removeUser(user);
+        dao.removeUser("1");
         assertThat(dao.getUserByUsername(user.getUsername()),not(is(user)));
         dao.addUser(user);
     }

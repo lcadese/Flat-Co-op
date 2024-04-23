@@ -10,7 +10,7 @@ drop table if exists users;
 
 create table if not exists users
 (
- userID varchar(100) not null,
+ userID varchar(30) not null,
  username varchar(30) not null,
  password varchar(30) not null,
  lastName varchar(50) not null,
@@ -48,7 +48,7 @@ create table task
 create table if not exists assigned
 (
  taskID varchar(10),
- userID varchar(10),
+ userID varchar(30),
  constraint assigned_pk primary key (taskID,userID),
  constraint assigned_users_fk foreign key (userID) references users(userID),
  constraint assigned_task_fk foreign key (taskID) references task(taskID)
@@ -57,7 +57,7 @@ create table if not exists assigned
 create table if not exists payment
 (
  taskID varchar(10),
- userID varchar(10),
+ userID varchar(30),
  amount Numeric(10),
  payed bool not null,
  constraint payment_pk primary key (taskID,userID),

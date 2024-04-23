@@ -18,10 +18,10 @@ paths:
       operationId: user-signup
       responses:
         '201':
-          description: 'User is successfully created '
+          description: User is successfully created
         '409':
           description: That username already exists
-      description: 'User is able to create an account '
+      description: User is able to create an account
       requestBody:
         content:
           application/json:
@@ -29,63 +29,103 @@ paths:
               $ref: '#/components/schemas/User'
       tags:
         - User
-  '/user/login/{userId}':
-    get:
+  /user/login:
+    post:
       summary: Login
-      tags:
-        - User
+      operationId: user-login
       responses:
         '200':
           description: User login is correct
+        '401':
+          description: Invalid username or password
+      description: User is able to login from their account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      tags:
+        - User
+  '/user/{userID}':
+    get:
+      summary: Get User
+      operationId: get-user
+      responses:
+        '200':
+          description: User found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
         '404':
-          description: User login is incorrect
-      operationId: user-login
-      description: 'User is able to login from their account '
-    parameters:
-      - schema:
-          type: string
-        name: userId
-        in: path
-        required: true
-        description: The users Id
+          description: User not found
+      parameters:
+        - name: userID
+          in: path
+          required: true
+          schema:
+            type: string
+      tags:
+        - User
+    delete:
+      summary: Delete User
+      operationId: delete-user
+      responses:
+        '204':
+          description: User deleted successfully
+        '404':
+          description: 'Cannot delete because that userID is not found '
+      parameters:
+        - name: userID
+          in: path
+          required: true
+          schema:
+            type: string
+      tags:
+        - User
+      description: ''
 components:
   schemas:
     User:
       title: User
-      x-stoplight:
-        id: d12ebby776lka
       type: object
-      x-tags:
-        - User
       properties:
-        userId:
+        userID:
           type: string
-          description: Id of user
+          description: ID of the user
         username:
           type: string
-          description: username of user
+          description: Username of the user
         firstName:
           type: string
-          description: firstName of user
+          description: First name of the user
         lastName:
           type: string
-          description: lastName of user
+          description: Last name of the user
         email:
           type: string
-          description: email of user
-        flatId:
-          $ref: '#/components/schemas/Flat'
+          description: Email of the user
+        flatID:
+          type: string
           description: References FlatID
         password:
           type: string
           description: Password for user
       required:
-        - userId
+        - userID
         - username
         - firstName
         - lastName
         - email
-        - flatId
+        - flatID
         - password
     Flat:
       title: Flat

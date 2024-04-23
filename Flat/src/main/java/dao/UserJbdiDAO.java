@@ -22,15 +22,16 @@ public interface UserJbdiDAO extends UserDAO {
     @Override
     @SqlUpdate("INSERT INTO users (userid,username,password,lastname,firstname,email,flatid) values (:userID,:username,:password,:firstName,:lastName,:email,:flatID)")
     public void addUser(@BindBean User user);
+
     @Override
     @SqlUpdate("delete from users where userid = :userID")
-    void removeUser(@BindBean User userid);
+    void removeUser(@Bind("userID") String userID);
 
     @Override
     @SqlQuery("select exists(select * from Users where username = :user and password = :pass)")
-    boolean checkCredentials(@Bind("user") String username,@Bind("pass") String password);
+    boolean checkCredentials(@Bind("user") String username, @Bind("pass") String password);
 
     @Override
     @SqlUpdate("update users set flatId = :flatID where userID = :userID")
-    void setFlat(@Bind("userID") String userID,@Bind("flatID") String flatID);
+    void setFlat(@Bind("userID") String userID, @Bind("flatID") String flatID);
 }
