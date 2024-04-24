@@ -1,12 +1,12 @@
-drop table if exists payment;
-drop table if exists assigned;
-drop table if exists task;
+--drop table if exists payment;
+--drop table if exists assigned;
+--drop table if exists task;
 
-alter table if exists users
-drop constraint flat_users_fk;
+--alter table if exists users
+--drop constraint flat_users_fk;
 
-drop table if exists flat;
-drop table if exists users;
+--drop table if exists flat;
+--drop table if exists users;
 
 create table if not exists users
 (
@@ -33,7 +33,7 @@ create table if not exists flat
 alter table users
 add constraint flat_users_fk foreign key (flatID) references flat(flatID);
 
-create table task
+create table if not exists task
 (
  taskID varchar(10),
  taskName varchar(50) not null,
