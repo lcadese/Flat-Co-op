@@ -5,10 +5,7 @@ import domain.Flat;
 import domain.Task;
 import domain.User;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -31,7 +28,9 @@ class AssignedJdbiDAOTest {
 
     @BeforeAll
     public static void initialise() {
-        JdbiDaoFactory.setJdbcUri("jdbc:h2:mem:tests;INIT=runscript from 'src/main/java/dao/schema.sql'");
+        try {
+            JdbiDaoFactory.setJdbcUri("jdbc:h2:mem:tests;INIT=runscript from 'src/main/java/dao/schema.sql'");
+        }catch(java.lang.IllegalStateException ex){}
         userDAO = JdbiDaoFactory.getUserDAO();
         user = new User("1","Dave is best","God","Dave","Dave","Dave@gmail.com",null);
 
@@ -39,7 +38,7 @@ class AssignedJdbiDAOTest {
         flat = new Flat("1","10 downing street","Car bomb",user.getUserID());
 
         taskDAO = JdbiDaoFactory.getTaskDAO();
-        task = new Task("1","get bags","get Big bags", LocalDateTime.now(),"1",false);
+        task = new Task("1","get bags","get Big bags", LocalDateTime.now(),flat.getflatID(),false);
 
         userDAO.addUser(user);
         flatdao.addFlat(flat);

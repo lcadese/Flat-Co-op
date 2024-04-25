@@ -3,10 +3,8 @@ package dao;
 import domain.Flat;
 import domain.User;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
 import static org.hamcrest.Matchers.not;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -25,7 +23,10 @@ class FlatJbdiDAOTest {
 
     @BeforeAll
     public static void initialise() {
-        JdbiDaoFactory.setJdbcUri("jdbc:h2:mem:tests;INIT=runscript from 'src/main/java/dao/schema.sql'");
+        try {
+            JdbiDaoFactory.setJdbcUri("jdbc:h2:mem:tests;INIT=runscript from 'src/main/java/dao/schema.sql'");
+        }catch(java.lang.IllegalStateException ex){}
+
         userDAO = JdbiDaoFactory.getUserDAO();
         user = new User("1","Dave is best","God","Dave","Dave","Dave@gmail.com",null);
 
@@ -56,7 +57,10 @@ class FlatJbdiDAOTest {
 
     @Test
     void removeFlat() {
-        dao.removeFlat("1");
+        dao.removeFlat(flat);
+        assertThat(dao.getFlat(flat.getflatID()),not(is(flat)));
+        dao.addFlat(flat);
+        dao.removeFlat(flat.getflatID());
         assertThat(dao.getFlat(flat.getflatID()),not(is(flat)));
         dao.addFlat(flat);
     }

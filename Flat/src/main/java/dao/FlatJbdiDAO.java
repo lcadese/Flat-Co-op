@@ -20,4 +20,8 @@ public interface FlatJbdiDAO extends FlatDAO {
     @Override
     @SqlUpdate("delete from flat where flatid = :flatID")
     void removeFlat(@BindBean Flat flat);
+
+    @Override
+    @SqlUpdate("delete from flat where flatid = :flatID")
+    void removeFlat(@Bind("flatID") String flatID);
 }
