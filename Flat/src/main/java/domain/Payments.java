@@ -13,20 +13,30 @@ public class Payments {
     private BigDecimal amount;
     private boolean payed;
 
-    public String getTask() {
+    public Payments(String taskID, String userID, BigDecimal amount, boolean payed) {
+        this.taskID = taskID;
+        this.userID = userID;
+        this.amount = amount;
+        this.payed = payed;
+    }
+
+    public Payments() {
+    }
+
+    public String getTaskID() {
         return taskID;
     }
 
-    public void setTask(String task) {
-        this.taskID = task;
+    public void setTaskID(String taskID) {
+        this.taskID = taskID;
     }
 
-    public String getToUser() {
+    public String getUserID() {
         return userID;
     }
 
-    public void setToUser(String toUser) {
-        this.userID = toUser;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public BigDecimal getAmount() {
