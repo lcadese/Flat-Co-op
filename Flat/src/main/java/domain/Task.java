@@ -81,6 +81,6 @@ public class Task {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return completed == task.completed && Objects.equals(taskID, task.taskID) && Objects.equals(taskName, task.taskName) && Objects.equals(description, task.description) && Objects.equals(requestedDate, task.requestedDate) && Objects.equals(flatID, task.flatID);
+        return completed == task.completed && Objects.equals(taskID, task.taskID) && Objects.equals(taskName, task.taskName) && Objects.equals(description, task.description) && Objects.equals(flatID, task.flatID);
     }
 }
