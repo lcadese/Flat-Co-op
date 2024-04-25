@@ -52,7 +52,6 @@ class FlatJbdiDAOTest {
         Flat u = dao.getFlat(flat.getflatID());
         assertThat(u, Matchers.samePropertyValuesAs(flat, "flatID"));
         assertThat(dao.getFlat("BAD"),is(nullValue()));
-
     }
 
     @Test
