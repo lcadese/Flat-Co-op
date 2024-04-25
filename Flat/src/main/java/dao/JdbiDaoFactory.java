@@ -53,4 +53,18 @@ public class JdbiDaoFactory{
         return JDBI.onDemand(AssignedJdbiDAO.class);
     }
 
+    public static TaskDAO getTaskDAO(){
+        if(HIKARI_DATA_SOURCE == null) {
+            initialisePool();
+        }
+        return JDBI.onDemand(TaskJdbiDAO.class);
+    }
+
+    public static PaymentDAO getPaymentDAO(){
+        if(HIKARI_DATA_SOURCE == null) {
+            initialisePool();
+        }
+        return JDBI.onDemand(PaymentJdbiDAO.class);
+    }
+
 }

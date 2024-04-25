@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.Objects;
+
 /**
  *
  * @author haydenaish
@@ -68,6 +70,12 @@ public class User {
         this.email = email;
     }
 
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userID, user.userID) && Objects.equals(username, user.username) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(flatID, user.flatID) && Objects.equals(password, user.password);
+    }
 
 }

@@ -1,10 +1,12 @@
 package domain;
 
+import java.util.Objects;
+
 public class Assigned {
     private String taskID;
     private String userID; 
 
-    public Assigned(String taskID, String userID, boolean completed) {
+    public Assigned(String taskID, String userID) {
         this.taskID = taskID;
         this.userID = userID;
 //        this.completed = completed;
@@ -13,20 +15,27 @@ public class Assigned {
     public Assigned() {
     }
 
-    public String getTask() {
+    public String getTaskID() {
         return taskID;
     }
 
-    public void setTask(String task) {
-        this.taskID = task;
+    public void setTaskID(String taskID) {
+        this.taskID = taskID;
     }
 
-    public String getUser() {
+    public String getUserID() {
         return userID;
     }
 
-    public void setUser(String user) {
-        this.userID = user;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Assigned assigned = (Assigned) o;
+        return Objects.equals(taskID, assigned.taskID) && Objects.equals(userID, assigned.userID);
+    }
 }

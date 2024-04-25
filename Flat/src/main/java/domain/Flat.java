@@ -1,4 +1,7 @@
 package domain;
+
+import java.util.Objects;
+
 /**
  *
  * @author haydenaish
@@ -49,5 +52,13 @@ public class Flat {
 
     public void setHost(String host) {
         this.host = host;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Flat flat = (Flat) o;
+        return Objects.equals(flatID, flat.flatID) && Objects.equals(address, flat.address) && Objects.equals(name, flat.name) && Objects.equals(host, flat.host);
     }
 }

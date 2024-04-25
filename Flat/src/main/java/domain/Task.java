@@ -1,6 +1,7 @@
 package domain;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  *
@@ -26,19 +27,19 @@ public class Task {
     public Task() {
     }
     
-    public String getId() {
+    public String getTaskID() {
         return taskID;
     }
 
-    public void setId(String id) {
+    public void setTaskID(String id) {
         this.taskID = id;
     }
 
-    public String getName() {
+    public String getTaskName() {
         return taskName;
     }
 
-    public void setName(String name) {
+    public void setTaskName(String name) {
         this.taskName = name;
     }
 
@@ -50,24 +51,24 @@ public class Task {
         this.description = description;
     }
 
-    public LocalDateTime getrequestedDate() {
+    public LocalDateTime getRequestedDate() {
         return requestedDate;
     }
 
-    public void setrequestedDate(LocalDateTime requestedDate) {
+    public void setRequestedDate(LocalDateTime requestedDate) {
         this.requestedDate = requestedDate;
     }
 
-    public String getFlat() {
+    public String getFlatID() {
         return flatID;
     }
 
-    public void setFlat(String flatID) {
+    public void setFlatID(String flatID) {
         this.flatID = flatID;
     }
 
 
-    public boolean isCompleted() {
+    public boolean getCompleted() {
         return completed;
     }
 
@@ -75,5 +76,11 @@ public class Task {
         this.completed = completed;
     }
 
-    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return completed == task.completed && Objects.equals(taskID, task.taskID) && Objects.equals(taskName, task.taskName) && Objects.equals(description, task.description) && Objects.equals(requestedDate, task.requestedDate) && Objects.equals(flatID, task.flatID);
+    }
 }

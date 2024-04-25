@@ -20,10 +20,10 @@ import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 public interface TaskJdbiDAO extends TaskDAO{
 
     @Override
-    @SqlUpdate("UPDATE task SET completed = true WHERE taskID = :task.taskID")
-    void completeTask(@Bind("task") Task task);
+    @SqlUpdate("UPDATE task SET completed = true WHERE taskID = :taskID")
+    void completeTask(@BindBean Task task);
 
     @Override
-    @SqlUpdate("INSERT INTO task (taskID, taskName, Description, FlatID, RequestedDate, completed) values (:task.taskID,:task.taskName, :task.description, :task.FlatID, :task.date, :task.completed)")
-    void createTask(@Bind("task") Task task);
+    @SqlUpdate("INSERT INTO task (taskID, taskName, Description, FlatID, RequestedDate, completed) values (:taskID,:taskName, :description, :flatID, :requestedDate, :completed)")
+    void createTask(@BindBean Task task);
 }
