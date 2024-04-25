@@ -85,6 +85,6 @@ class UserJbdiDAOTest {
         assertThat(dao.getUserByUsername(user.getUsername()).getFlatID(),is("2A"));
         dao.setFlat(user.getUserID(), user.getFlatID());
 
-        JdbiDaoFactory.getFlatDAO().removeFlat(flat);
+        JdbiDaoFactory.getFlatDAO().removeFlat("2A");
     }
 }

@@ -42,7 +42,7 @@ class FlatJbdiDAOTest {
 
     @AfterEach
     void tearDown() {
-        dao.removeFlat(flat);
+        dao.removeFlat("1");
     }
     @Test
     void addFlat() {assertThat(dao.getFlat(flat.getflatID()).getflatID(),is(flat.getflatID()));}
@@ -56,7 +56,7 @@ class FlatJbdiDAOTest {
 
     @Test
     void removeFlat() {
-        dao.removeFlat(flat);
+        dao.removeFlat("1");
         assertThat(dao.getFlat(flat.getflatID()),not(is(flat)));
         dao.addFlat(flat);
     }
