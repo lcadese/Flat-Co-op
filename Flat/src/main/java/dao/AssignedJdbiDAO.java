@@ -9,35 +9,46 @@ import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
+import java.util.Collection;
+
 public interface AssignedJdbiDAO extends AssignedDAO{
-    @Override
-    @SqlQuery("select * from assigned where taskID = :taskID")
-    @RegisterBeanMapper(Assigned.class)
-    Assigned getAssigned(@BindBean Task task);
 
     @Override
-    @SqlQuery("select * from assigned where userID = :userID")
     @RegisterBeanMapper(Assigned.class)
-    Assigned getAssigned(@BindBean User user);
+    @SqlQuery("select * from assigned where taskID = :taskID")
+    Collection<Assigned> getMultAssigned(@BindBean Task task);
+
+    @Override
+    @RegisterBeanMapper(Assigned.class)
+    @SqlQuery("select * from assigned where userID = :userID")
+    Collection<Assigned> getMultAssigned(@BindBean User user);
 
     @Override
     @SqlQuery("select * from assigned where userID = :user.userID and taskID = :task.taskID")
     @RegisterBeanMapper(Assigned.class)
-    Assigned getAssigned(@Bind("user") User user,@Bind("task") Task task);
+    Assigned getAssigned(@BindBean("user") User user,@BindBean("task") Task task);
 
     @Override
-    @SqlUpdate("INSERT INTO flat (flatID,userID,completed) values (:task.taskID,:user.userID,false)")
+    @SqlQuery("select * from assigned where userID = :userID and taskID = :taskID")
+    @RegisterBeanMapper(Assigned.class)
+    Assigned getAssigned(@Bind("userID") String userID,@Bind("taskID") String taskID);
+
+    @Override
+    @SqlUpdate("INSERT INTO assigned (flatID,userID,completed) values (:task.taskID,:user.userID,false)")
     void createAssigned(@Bind("user") User user,@Bind("task") Task task);
 
     @Override
-    @SqlUpdate("INSERT INTO flat (flatID,userID,completed) values (:taskID,:userID,:completed)")
+    @SqlUpdate("INSERT INTO assigned (taskID,userID) values (:taskID,:userID)")
     void createAssigned(@BindBean Assigned assigned);
 
     @Override
-    @SqlUpdate("delete from flat where userID = :user.userID and taskID = :task.taskID")
-    void removeAssigned(@Bind("user") User user,@Bind("task") Task task);
+    @SqlUpdate("delete from assigned where userID = :user.userID and taskID = :task.taskID")
+    void removeAssigned(@BindBean("user") User user,@BindBean("task") Task task);
+    @Override
+    @SqlUpdate("delete from assigned where userID = :userID and taskID = :taskID")
+    void removeAssigned(@Bind("userID") String userID,@Bind("taskID") String taskID);
 
     @Override
-    @SqlUpdate("delete from flat where userID = :userID and taskID = :taskID")
+    @SqlUpdate("delete from assigned where userID = :userID and taskID = :taskID")
     void removeAssigned(@BindBean Assigned assigned);
 }
