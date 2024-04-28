@@ -10,7 +10,7 @@ import java.util.UUID;
 
 /**
  * UserResource handles the HTTP requests related to user operations.
- * 
+ *
  * @author Liam
  */
 public class UserResource extends Jooby {
@@ -61,11 +61,34 @@ public class UserResource extends Jooby {
                     return ctx.setResponseType("application/json").setResponseCode(StatusCode.NOT_FOUND).send(errorResponse);
                 }
             });
-            
+
             delete("/{userID}", ctx -> {
                 String userID = ctx.path("userID").value();
                 dao.removeUser(userID);
                 return ctx.send(StatusCode.NO_CONTENT);
+            });
+
+            put("/{userID}", ctx -> {
+                String userID = ctx.path("userID").value();
+                User user = gson.fromJson(ctx.body().value(), User.class);
+                if (user.getFlatID() == null || user.getFlatID().isEmpty()) {
+                    String errorResponse = gson.toJson(new ErrorMessage("Flat ID must be provided"));
+                    return ctx.setResponseType("application/json")
+                            .setResponseCode(StatusCode.BAD_REQUEST)
+                            .send(errorResponse);
+                }
+                try {
+                    System.out.println("Updating user " + userID + " to flat " + user.getFlatID());
+                    dao.setFlat(userID, user.getFlatID());
+                    System.out.println("Update successful");
+                    return ctx.setResponseType("application/json")
+                            .send(StatusCode.OK);
+                } catch (Exception e) {
+                    System.err.println("Error setting flat for user: " + e.getMessage());
+                    return ctx.setResponseType("application/json")
+                            .setResponseCode(StatusCode.SERVER_ERROR)
+                            .send(gson.toJson("Error setting flat for user: " + e.getMessage()));
+                }
             });
 
         });

@@ -1,5 +1,6 @@
 package service;
 
+import dao.FlatDAO;
 import dao.JdbiDaoFactory;
 import dao.UserDAO;
 import io.jooby.Jooby;
@@ -13,12 +14,14 @@ import io.jooby.handler.CorsHandler;
 import resources.UserResource;
 
 import java.io.IOException;
+import resources.FlatResource;
 
 public class Server extends Jooby {
 
     public Server() {
         // Initialize the data access object for users
         UserDAO userDAO = JdbiDaoFactory.getUserDAO();
+        FlatDAO flatDAO = JdbiDaoFactory.getFlatDAO();
 
         // Setup JSON handling with Gson
         install(new GsonModule());
@@ -35,6 +38,7 @@ public class Server extends Jooby {
 
         // Mount the resource 
         mount(new UserResource(userDAO));
+        mount(new FlatResource(flatDAO));
 
         //error handling
         error(StatusCodeException.class, (ctx, cause, statusCode) -> {

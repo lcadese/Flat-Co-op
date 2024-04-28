@@ -142,9 +142,41 @@
         "tags": [
           "User"
         ]
-      }
+      },
+      "put": {
+        "summary": "Set Flat for User",
+        "operationId": "put-user-userID",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "userID",
+          "in": "path",
+          "required": true
+        }
+      ]
     },
-    "/flat/": {
+    "/flat/create": {
       "post": {
         "summary": "Create a new flat",
         "operationId": "create-flat",
@@ -164,8 +196,10 @@
         },
         "tags": [
           "Flat"
-        ]
-      }
+        ],
+        "description": ""
+      },
+      "parameters": []
     },
     "/flat/{flatId}": {
       "get": {
@@ -184,37 +218,6 @@
           },
           "404": {
             "description": "Flat not found"
-          }
-        },
-        "parameters": [
-          {
-            "name": "flatId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "tags": [
-          "Flat"
-        ]
-      },
-      "put": {
-        "summary": "Update Flat",
-        "operationId": "update-flat",
-        "responses": {
-          "200": {
-            "description": "Flat updated successfully"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Flat"
-              }
-            }
           }
         },
         "parameters": [
@@ -313,11 +316,11 @@
           "User"
         ],
         "properties": {
-          "flatId": {
+          "flatID": {
             "type": "string",
             "description": "The id of the flat"
           },
-          "location": {
+          "address": {
             "type": "string",
             "description": "location of the flat"
           },
@@ -326,13 +329,13 @@
             "description": "name of the flat"
           },
           "host": {
-            "$ref": "#/components/schemas/User",
-            "description": "host of the flat"
+            "description": "host of the flat",
+            "type": "string"
           }
         },
         "required": [
-          "flatId",
-          "location",
+          "flatID",
+          "address",
           "name",
           "host"
         ]

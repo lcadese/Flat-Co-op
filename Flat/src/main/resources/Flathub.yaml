@@ -103,7 +103,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/User'
-  /flat/:
+      tags:
+        - User
+    parameters:
+      - schema:
+          type: string
+        name: userID
+        in: path
+        required: true
+  /flat/create:
     post:
       summary: Create a new flat
       operationId: create-flat
@@ -117,6 +125,8 @@ paths:
               $ref: '#/components/schemas/Flat'
       tags:
         - Flat
+      description: ''
+    parameters: []
   '/flat/{flatId}':
     get:
       summary: Get Flat by ID
@@ -130,25 +140,6 @@ paths:
                 $ref: '#/components/schemas/Flat'
         '404':
           description: Flat not found
-      parameters:
-        - name: flatId
-          in: path
-          required: true
-          schema:
-            type: string
-      tags:
-        - Flat
-    put:
-      summary: Update Flat
-      operationId: update-flat
-      responses:
-        '200':
-          description: Flat updated successfully
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Flat'
       parameters:
         - name: flatId
           in: path
@@ -216,21 +207,21 @@ components:
       x-tags:
         - User
       properties:
-        flatId:
+        flatID:
           type: string
           description: The id of the flat
-        location:
+        address:
           type: string
           description: location of the flat
         name:
           type: string
           description: name of the flat
         host:
-          $ref: '#/components/schemas/User'
           description: host of the flat
+          type: string
       required:
-        - flatId
-        - location
+        - flatID
+        - address
         - name
         - host
     Task:
