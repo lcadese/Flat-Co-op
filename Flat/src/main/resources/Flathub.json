@@ -141,8 +141,120 @@
         ],
         "tags": [
           "User"
+        ]
+      }
+    },
+    "/flat/": {
+      "post": {
+        "summary": "Create a new flat",
+        "operationId": "create-flat",
+        "responses": {
+          "201": {
+            "description": "Flat is successfully created"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Flat"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Flat"
+        ]
+      }
+    },
+    "/flat/{flatId}": {
+      "get": {
+        "summary": "Get Flat by ID",
+        "operationId": "get-flat",
+        "responses": {
+          "200": {
+            "description": "Flat found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Flat"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Flat not found"
+          }
+        },
+        "parameters": [
+          {
+            "name": "flatId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
-        "description": ""
+        "tags": [
+          "Flat"
+        ]
+      },
+      "put": {
+        "summary": "Update Flat",
+        "operationId": "update-flat",
+        "responses": {
+          "200": {
+            "description": "Flat updated successfully"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Flat"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "flatId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "tags": [
+          "Flat"
+        ]
+      },
+      "delete": {
+        "summary": "Delete Flat",
+        "operationId": "delete-flat",
+        "responses": {
+          "204": {
+            "description": "Flat deleted successfully"
+          },
+          "404": {
+            "description": "Flat not found"
+          }
+        },
+        "parameters": [
+          {
+            "name": "flatId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "tags": [
+          "Flat"
+        ]
       }
     }
   },
