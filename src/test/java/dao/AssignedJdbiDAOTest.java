@@ -32,7 +32,7 @@ class AssignedJdbiDAOTest {
             JdbiDaoFactory.setJdbcUri("jdbc:h2:mem:tests;INIT=runscript from 'src/main/java/dao/schema.sql'");
         }catch(java.lang.IllegalStateException ex){}
         userDAO = JdbiDaoFactory.getUserDAO();
-        user = new User("1","Dave is best","God","Dave","Dave","Dave@gmail.com",null);
+        user = new User("2","Dave is best","God","Dave","Dave","Dave@gmail.com",null);
 
         flatdao = JdbiDaoFactory.getFlatDAO();
         flat = new Flat("1","10 downing street","Car bomb",user.getUserID());
