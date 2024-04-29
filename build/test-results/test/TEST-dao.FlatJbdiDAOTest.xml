@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dao.FlatJbdiDAOTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-04-29T07:45:08" hostname="DESKTOP-FRUHT2G" time="0.023">
+<testsuite name="dao.FlatJbdiDAOTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-04-29T07:54:32" hostname="DESKTOP-FRUHT2G" time="0.061">
   <properties/>
-  <testcase name="addFlat()" classname="dao.FlatJbdiDAOTest" time="0.004"/>
-  <testcase name="getFlat()" classname="dao.FlatJbdiDAOTest" time="0.008"/>
-  <testcase name="removeFlat()" classname="dao.FlatJbdiDAOTest" time="0.009"/>
+  <testcase name="addFlat()" classname="dao.FlatJbdiDAOTest" time="0.037"/>
+  <testcase name="getFlat()" classname="dao.FlatJbdiDAOTest" time="0.01"/>
+  <testcase name="removeFlat()" classname="dao.FlatJbdiDAOTest" time="0.013"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

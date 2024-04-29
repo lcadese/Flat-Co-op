@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="dao.TaskJdbiDAOTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-04-29T07:45:09" hostname="DESKTOP-FRUHT2G" time="0.036">
+<testsuite name="dao.TaskJdbiDAOTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-04-29T07:54:32" hostname="DESKTOP-FRUHT2G" time="0.038">
   <properties/>
   <testcase name="completeTask()" classname="dao.TaskJdbiDAOTest" time="0.009"/>
-  <testcase name="getTask()" classname="dao.TaskJdbiDAOTest" time="0.006"/>
-  <testcase name="getTaskByFlat()" classname="dao.TaskJdbiDAOTest" time="0.008"/>
-  <testcase name="removeTask()" classname="dao.TaskJdbiDAOTest" time="0.006"/>
-  <testcase name="createTask()" classname="dao.TaskJdbiDAOTest" time="0.004"/>
+  <testcase name="getTask()" classname="dao.TaskJdbiDAOTest" time="0.005"/>
+  <testcase name="getTaskByFlat()" classname="dao.TaskJdbiDAOTest" time="0.006"/>
+  <testcase name="removeTask()" classname="dao.TaskJdbiDAOTest" time="0.009"/>
+  <testcase name="createTask()" classname="dao.TaskJdbiDAOTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
