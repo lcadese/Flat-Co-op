@@ -2,8 +2,8 @@ Flat/Frontend/node_modules/
 Flat/Frontend/flat-management-frontend/node_modules/
 Flat/build/
 Flat/.gradle/
-build/
-.gradle/
+/build/
+/.gradle/
 /.idea
 Flat/bin/
 /Flat/.idea
