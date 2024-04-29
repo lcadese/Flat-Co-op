@@ -46,6 +46,14 @@ class AssignedJdbiDAOTest {
 
     }
 
+    @AfterAll
+    public static void clean()
+    {
+       taskDAO.removeTask(task);
+       flatdao.removeFlat(flat);
+       userDAO.removeUser(user.getUserID());
+    }
+
     @BeforeEach
     public void setUp() {
         dao = JdbiDaoFactory.getAssignedDAO();

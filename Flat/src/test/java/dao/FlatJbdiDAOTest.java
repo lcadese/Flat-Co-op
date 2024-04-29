@@ -35,6 +35,12 @@ class FlatJbdiDAOTest {
         userDAO.addUser(user);
     }
 
+    @AfterAll
+    public static void clean()
+    {
+        userDAO.removeUser(user.getUserID());
+    }
+
     @BeforeEach
     public void setUp() {
         dao = JdbiDaoFactory.getFlatDAO();

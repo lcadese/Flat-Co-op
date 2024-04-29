@@ -37,6 +37,13 @@ class TaskJdbiDAOTest {
 
     }
 
+    @AfterAll
+    public static void clean()
+    {
+        flatdao.removeFlat(flat);
+        userDAO.removeUser(user.getUserID());
+    }
+
 
     @BeforeEach
     public void setUp() {
