@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dao.UserJbdiDAOTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-04-29T07:45:09" hostname="DESKTOP-FRUHT2G" time="0.049">
+  <properties/>
+  <testcase name="getUserByUsername()" classname="dao.UserJbdiDAOTest" time="0.008"/>
+  <testcase name="addUser()" classname="dao.UserJbdiDAOTest" time="0.003"/>
+  <testcase name="checkCredentials()" classname="dao.UserJbdiDAOTest" time="0.006"/>
+  <testcase name="removeUser()" classname="dao.UserJbdiDAOTest" time="0.011"/>
+  <testcase name="getUserById()" classname="dao.UserJbdiDAOTest" time="0.013"/>
+  <testcase name="setFlat()" classname="dao.UserJbdiDAOTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,301 @@
+openapi: 3.1.0
+x-stoplight:
+  id: sg61odlapqhwb
+info:
+  title: FlatHub
+  version: '1.0'
+  summary: API for our flat organization app
+  description: API for our flat organization app
+  contact:
+    name: Liam
+    email: cadli971@student.otago.ac.nz
+servers:
+  - url: 'http://localhost:8080'
+paths:
+  /user/signup:
+    post:
+      summary: Sign Up
+      operationId: user-signup
+      responses:
+        '201':
+          description: User is successfully created
+        '409':
+          description: That username already exists
+      description: User is able to create an account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      tags:
+        - User
+  /user/login:
+    post:
+      summary: Login
+      operationId: user-login
+      responses:
+        '200':
+          description: User login is correct
+        '401':
+          description: Invalid username or password
+      description: User is able to login from their account
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      tags:
+        - User
+  '/user/{userID}':
+    get:
+      summary: Get User
+      operationId: get-user
+      responses:
+        '200':
+          description: User found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+      parameters:
+        - name: userID
+          in: path
+          required: true
+          schema:
+            type: string
+      tags:
+        - User
+    delete:
+      summary: Delete User
+      operationId: delete-user
+      responses:
+        '204':
+          description: User deleted successfully
+        '404':
+          description: 'Cannot delete because that userID is not found '
+      parameters:
+        - name: userID
+          in: path
+          required: true
+          schema:
+            type: string
+      tags:
+        - User
+    put:
+      summary: Set Flat for User
+      operationId: put-user-userID
+      responses:
+        '200':
+          description: OK
+      description: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      tags:
+        - User
+    parameters:
+      - schema:
+          type: string
+        name: userID
+        in: path
+        required: true
+  /flat/create:
+    post:
+      summary: Create a new flat
+      operationId: create-flat
+      responses:
+        '201':
+          description: Flat is successfully created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Flat'
+      tags:
+        - Flat
+      description: ''
+    parameters: []
+  '/flat/{flatId}':
+    get:
+      summary: Get Flat by ID
+      operationId: get-flat
+      responses:
+        '200':
+          description: Flat found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Flat'
+        '404':
+          description: Flat not found
+      parameters:
+        - name: flatId
+          in: path
+          required: true
+          schema:
+            type: string
+      tags:
+        - Flat
+    delete:
+      summary: Delete Flat
+      operationId: delete-flat
+      responses:
+        '204':
+          description: Flat deleted successfully
+        '404':
+          description: Flat not found
+      parameters:
+        - name: flatId
+          in: path
+          required: true
+          schema:
+            type: string
+      tags:
+        - Flat
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      properties:
+        userID:
+          type: string
+          description: ID of the user
+        username:
+          type: string
+          description: Username of the user
+        firstName:
+          type: string
+          description: First name of the user
+        lastName:
+          type: string
+          description: Last name of the user
+        email:
+          type: string
+          description: Email of the user
+        flatID:
+          type: string
+          description: References FlatID
+        password:
+          type: string
+          description: Password for user
+      required:
+        - userID
+        - username
+        - firstName
+        - lastName
+        - email
+        - flatID
+        - password
+    Flat:
+      title: Flat
+      x-stoplight:
+        id: ycqcfje1hu3au
+      type: object
+      x-tags:
+        - User
+      properties:
+        flatID:
+          type: string
+          description: The id of the flat
+        address:
+          type: string
+          description: location of the flat
+        name:
+          type: string
+          description: name of the flat
+        host:
+          description: host of the flat
+          type: string
+      required:
+        - flatID
+        - address
+        - name
+        - host
+    Task:
+      title: Task
+      x-stoplight:
+        id: vy4lmku8e4aql
+      type: object
+      properties:
+        taskId:
+          type: string
+          description: Id for Task
+        taskName:
+          type: string
+          description: Name of Task
+        description:
+          type: string
+          description: description of task
+        flatID:
+          $ref: '#/components/schemas/Flat'
+          description: 'reference to flat '
+        requestedDate:
+          type: string
+          description: Date that task needs to be completed
+      required:
+        - taskId
+        - taskName
+        - description
+        - flatID
+        - requestedDate
+      x-tags:
+        - Task
+    Assigned:
+      title: Assigned
+      x-stoplight:
+        id: pkzjv045fsedu
+      type: object
+      properties:
+        taskId:
+          $ref: '#/components/schemas/Task'
+          description: Reference to task
+        userId:
+          $ref: '#/components/schemas/User'
+          description: reference to user
+        completed:
+          type: boolean
+          description: whether a assigned task is completed
+      required:
+        - taskId
+        - userId
+        - completed
+      x-tags:
+        - Task
+    Payment:
+      title: Payment
+      x-stoplight:
+        id: ip0uj5diusxe3
+      type: object
+      properties:
+        taskId:
+          $ref: '#/components/schemas/Task'
+          description: references task
+        userId:
+          $ref: '#/components/schemas/User'
+          description: References user
+        amount:
+          type: number
+          description: Amount the payment is for
+        payed:
+          type: boolean
+          description: Whether the payment is complete
+      required:
+        - taskId
+        - userId
+        - amount
+        - payed
+      x-tags:
+        - Payment

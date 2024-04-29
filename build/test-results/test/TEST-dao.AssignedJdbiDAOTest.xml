@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dao.AssignedJdbiDAOTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-04-29T07:45:08" hostname="DESKTOP-FRUHT2G" time="0.084">
+  <properties/>
+  <testcase name="removeAssigned()" classname="dao.AssignedJdbiDAOTest" time="0.056"/>
+  <testcase name="getMultAssigned()" classname="dao.AssignedJdbiDAOTest" time="0.014"/>
+  <testcase name="createAssigned()" classname="dao.AssignedJdbiDAOTest" time="0.006"/>
+  <testcase name="getAssigned()" classname="dao.AssignedJdbiDAOTest" time="0.006"/>
+  <system-out><![CDATA[19:45:08 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+ 19:45:08 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:tests user=FH
+ 19:45:08 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+ ]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
