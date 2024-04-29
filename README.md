@@ -1,3 +1,4 @@
+[![CI](https://github.com/lcadese/Flat-Co-op/actions/workflows/gradle.yml/badge.svg?branch=main)](https://github.com/lcadese/Flat-Co-op/actions/workflows/gradle.yml)
 ## Feasibility Study
 https://docs.google.com/document/d/1v9Tw4Ltn0yRUwumZ-bjPKNyZb1GMgd2czavlDw4zOhU/edit
 ## Slides
