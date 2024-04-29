@@ -34,4 +34,5 @@ public interface UserJbdiDAO extends UserDAO {
     @Override
     @SqlUpdate("update users set flatId = :flatID where userID = :userID")
     void setFlat(@Bind("userID") String userID, @Bind("flatID") String flatID);
+
 }

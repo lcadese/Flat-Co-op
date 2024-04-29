@@ -7,4 +7,5 @@ public interface FlatDAO {
     Flat getFlat(String FlatID);
     void removeFlat(Flat flat);
     void removeFlat(String flatID);
+   
 }

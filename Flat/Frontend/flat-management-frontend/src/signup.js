@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid'; // Import the UUID generation function
 
 const SignUp = ({ onSignUpSuccess }) => {
   const [username, setUsername] = useState('');
@@ -18,12 +17,10 @@ const SignUp = ({ onSignUpSuccess }) => {
       return;
     }
 
-    
-    const userID = uuidv4();
 
     try {
       const response = await axios.post('http://localhost:8080/user/signup', {
-        userID, 
+        userID: null,
         username,
         firstName,
         lastName,
