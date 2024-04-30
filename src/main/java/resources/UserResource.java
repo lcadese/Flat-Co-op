@@ -1,6 +1,7 @@
 package resources;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dao.UserDAO;
 import domain.ErrorMessage;
 import domain.User;
@@ -16,7 +17,9 @@ import java.util.UUID;
 public class UserResource extends Jooby {
 
     // Create a Gson instance
-    private final Gson gson = new Gson();
+//    private final Gson gson = new Gson();
+    private final Gson gson = new GsonBuilder().serializeNulls().create();
+    
 
     public UserResource(UserDAO dao) {
 
@@ -42,7 +45,9 @@ public class UserResource extends Jooby {
                 boolean credentialsValid = dao.checkCredentials(loginUser.getUsername(), loginUser.getPassword());
                 if (credentialsValid) {
                     User user = dao.getUserByUsername(loginUser.getUsername());
+                    System.out.println(user.toString());
                     String jsonResponse = gson.toJson(user);
+                    System.out.println(jsonResponse);
                     return ctx.setResponseType("application/json").send(jsonResponse);
                 } else {
                     String errorResponse = gson.toJson(new ErrorMessage("Invalid username or password"));

@@ -78,4 +78,9 @@ public class User {
         return Objects.equals(userID, user.userID) && Objects.equals(username, user.username) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(flatID, user.flatID) && Objects.equals(password, user.password);
     }
 
+    @Override
+    public String toString() {
+        return "User{" + "userID=" + userID + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", flatID=" + flatID + ", password=" + password + '}';
+    }
+
 }

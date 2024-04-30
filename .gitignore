@@ -11,6 +11,7 @@ build/
 # Database
 h2-windows/h2/FlatHub.trace.db
 h2-windows/h2/FlatHub.mv.db
+.DS_Store
 
 # Avoid ignoring Gradle wrapper jar file
 !gradle-wrapper.jar
