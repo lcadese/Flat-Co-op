@@ -164,6 +164,83 @@ paths:
             type: string
       tags:
         - Flat
+  paths: null
+  /tasks:
+    post:
+      summary: Create a new task
+      operationId: create-task
+      tags:
+        - Task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '201':
+          description: Task created successfully
+        '400':
+          description: Invalid input
+  '/tasks/{taskId}':
+    get:
+      summary: Get task by ID
+      operationId: get-task
+      tags:
+        - Task
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Task found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '404':
+          description: Task not found
+    put:
+      summary: Update task
+      operationId: update-task
+      tags:
+        - Task
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+      responses:
+        '200':
+          description: Task updated
+        '404':
+          description: Task not found
+    delete:
+      summary: Delete task
+      operationId: delete-task
+      tags:
+        - Task
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Task deleted
+        '404':
+          description: Task not found
 components:
   schemas:
     User:
@@ -217,18 +294,18 @@ components:
           type: string
           description: name of the flat
         host:
-          description: host of the flat
           type: string
       required:
         - flatID
         - address
         - name
-        - host
     Task:
       title: Task
       x-stoplight:
         id: vy4lmku8e4aql
       type: object
+      x-tags:
+        - Task
       properties:
         taskId:
           type: string
@@ -239,20 +316,22 @@ components:
         description:
           type: string
           description: description of task
-        flatID:
-          $ref: '#/components/schemas/Flat'
-          description: 'reference to flat '
         requestedDate:
           type: string
           description: Date that task needs to be completed
+        flatID:
+          description: 'reference to flat '
+          type: string
+        completed:
+          type: boolean
+          description: 'If the task is complete or not '
       required:
         - taskId
         - taskName
         - description
-        - flatID
         - requestedDate
-      x-tags:
-        - Task
+        - flatID
+        - completed
     Assigned:
       title: Assigned
       x-stoplight:
