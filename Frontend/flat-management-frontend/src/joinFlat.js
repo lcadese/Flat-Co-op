@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const JoinFlat = ({createFlat,joinFlat}) => {
+const JoinFlat = ({createFlat,joinFlat,userData}) => {
   const [flatID,setFlatID] = useState('');
   const [error, setError] = useState('');
 
@@ -10,13 +10,18 @@ const JoinFlat = ({createFlat,joinFlat}) => {
     try {
       const response = await axios.get('http://localhost:8080/flat/'+flatID);
       if (response.data) {
+      const userID = userData.userID;
+        await axios.put('http://localhost:8080/user/'+userID,{
+            userID,
+            flatID
+        });
+
         joinFlat(response.data);
       }
     } catch (error) {
       setError('Invalid Flat ID');
     }
   };
-
 
     return (
         <div>

@@ -77,7 +77,7 @@ class UserJbdiDAOTest {
 
     @Test
     void setFlat() {
-        Flat flat = new Flat("2A","10 downing street","Car bomb",user.getUserID());
+        Flat flat = new Flat("2A","10 downing street",user.getUserID());
 
         JdbiDaoFactory.getFlatDAO().addFlat(flat);
 

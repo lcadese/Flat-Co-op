@@ -35,7 +35,7 @@ class AssignedJdbiDAOTest {
         user = new User("1","Dave is best","God","Dave","Dave","Dave@gmail.com",null);
 
         flatdao = JdbiDaoFactory.getFlatDAO();
-        flat = new Flat("1","10 downing street","Car bomb",user.getUserID());
+        flat = new Flat("1","10 downing street",user.getUserID());
 
         taskDAO = JdbiDaoFactory.getTaskDAO();
         task = new Task("1","get bags","get Big bags", LocalDateTime.now(),flat.getflatID(),false);

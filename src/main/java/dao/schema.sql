@@ -16,16 +16,15 @@ create table if not exists users
  lastName varchar(50) not null,
  firstName varchar(50) not null,
  Email varchar(100),
- flatID varchar(10),
+ flatID varchar(50),
  constraint users_pk primary key (userID)
 );
 
 create table if not exists flat
 (
- flatID varchar(10) not null,
+ flatID varchar(50) not null,
  address varchar(200) not null,
- name varchar(50) not null,
- host varchar(10) not null,
+ host varchar(50) not null,
  constraint flat_pk primary key (flatID),
  constraint users_flat_fk foreign key (host) references users(userID)
 );
@@ -35,10 +34,10 @@ add constraint flat_users_fk foreign key (flatID) references flat(flatID);
 
 create table if not exists task
 (
- taskID varchar(10),
+ taskID varchar(50),
  taskName varchar(50) not null,
  description text not null,
- flatID varchar(10) not null,
+ flatID varchar(50) not null,
  completed bool not null,
  requestedDate timestamp not null,
  constraint task_pk primary key (taskID),
@@ -47,7 +46,7 @@ create table if not exists task
 
 create table if not exists assigned
 (
- taskID varchar(10),
+ taskID varchar(50),
  userID varchar(50),
  constraint assigned_pk primary key (taskID,userID),
  constraint assigned_users_fk foreign key (userID) references users(userID),
@@ -56,7 +55,7 @@ create table if not exists assigned
 
 create table if not exists payment
 (
- taskID varchar(10),
+ taskID varchar(50),
  userID varchar(50),
  amount Numeric(10),
  payed bool not null,
@@ -72,9 +71,9 @@ INSERT INTO users (userID, username, password, lastName, firstName, Email) VALUE
 ('user2', 'janeDoe', 'pass456', 'Doe', 'Jane', 'jane.doe@example.com');
 
 -- Inserting Flats
-INSERT INTO flat (flatID, address, name, host) VALUES
-('flat1', '1234 Main St, Dunedin, NZ', 'Cool Flat', 'user1'),
-('flat2', '5678 Side St, Dunedin, NZ', 'Flat', 'user2');
+INSERT INTO flat (flatID, address, host) VALUES
+('flat1', '1234 Main St, Dunedin, NZ', 'user1'),
+('flat2', '5678 Side St, Dunedin, NZ', 'user2');
 
 -- Updating Users to add flatID
 UPDATE users SET flatID = 'flat1' WHERE userID = 'user1';

@@ -33,8 +33,9 @@ function App() {
 
     // setView('createflat');
   };
-  const handleCreateFlat = () => {
-    console.log("isCreted")
+  const handleCreateFlat = (flatData) => {
+    setFlat(flatData)
+    console.log("In handle",  flatData);
     setView('loginSuccess');
   } 
 
@@ -44,8 +45,8 @@ function App() {
       {view === 'login' && <Login onLoginSuccess={handleLoginSuccess} />}
       {view === 'signup' && <SignUp onSignUpSuccess={handleSignupSuccess} />}
       {view === 'loginSuccess' && <LoginSuccess user={user} />}
-      {view === 'createFlat' && < CreateFlat onCreateSuccess = {handleCreateFlat}/>}
-      {view === 'JoinFlat' && <JoinFlat createFlat = {handleSendJoinFlat} joinFlat = {handleJoinFlat}/>}
+      {view === 'createFlat' && < CreateFlat onCreateSuccess = {handleCreateFlat} userData = {user}/>}
+      {view === 'JoinFlat' && <JoinFlat createFlat = {handleSendJoinFlat} joinFlat = {handleJoinFlat} userData = {user}/>}
     </div>
   );
 }
