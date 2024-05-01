@@ -49,6 +49,8 @@ function App() {
       {view === 'JoinFlat' && <JoinFlat createFlat = {handleSendJoinFlat} joinFlat = {handleJoinFlat} userData = {user}/>}
     </div>
   );
+
+
 }
 
 export default App;
