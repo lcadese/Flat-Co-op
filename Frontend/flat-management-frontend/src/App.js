@@ -6,7 +6,6 @@ import SignUp from './signup';
 import LoginSuccess from './loginSuccess';
 import CreateFlat from './createFlat';
 import JoinFlat from './joinFlat';
-import Navbar from './navbar';
 
 function App() {
   const [view, setView] = useState('welcome');
