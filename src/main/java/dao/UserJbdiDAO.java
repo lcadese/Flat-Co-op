@@ -20,7 +20,7 @@ public interface UserJbdiDAO extends UserDAO {
     public User getUserByUsername(@Bind("userName") String userName);
 
     @Override
-    @SqlUpdate("INSERT INTO users (userid,username,password,lastname,firstname,email,flatid) values (:userID,:username,:password,:firstName,:lastName,:email,:flatID)")
+    @SqlUpdate("INSERT INTO users (userid,username,password,lastname,firstname,email,flatid) values (:userID,:username,:password,:lastName, :firstName,:email,:flatID)")
     public void addUser(@BindBean User user);
 
     @Override
