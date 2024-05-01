@@ -9,16 +9,14 @@ import java.util.Objects;
 public class Flat {
     private String flatID;
     private String address;
-    private String name;
     private String host;
 
     public Flat() {
     }
 
-    public Flat(String flatID, String address, String name, String host) {
+    public Flat(String flatID, String address, String host) {
         this.flatID = flatID;
         this.address = address;
-        this.name = name;
         this.host = host;
     }
 
@@ -38,14 +36,6 @@ public class Flat {
         this.address = address;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getHost() {
         return host;
     }
@@ -59,6 +49,6 @@ public class Flat {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Flat flat = (Flat) o;
-        return Objects.equals(flatID, flat.flatID) && Objects.equals(address, flat.address) && Objects.equals(name, flat.name) && Objects.equals(host, flat.host);
+        return Objects.equals(flatID, flat.flatID) && Objects.equals(address, flat.address) && Objects.equals(host, flat.host);
     }
 }

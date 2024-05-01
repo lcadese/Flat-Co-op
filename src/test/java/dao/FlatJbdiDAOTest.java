@@ -44,7 +44,7 @@ class FlatJbdiDAOTest {
     @BeforeEach
     public void setUp() {
         dao = JdbiDaoFactory.getFlatDAO();
-        flat = new Flat("1", "10 downing street", "Car bomb", user.getUserID());
+        flat = new Flat("1", "10 downing street", user.getUserID());
 
         dao.addFlat(flat);
     }
