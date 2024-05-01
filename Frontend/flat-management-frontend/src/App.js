@@ -4,24 +4,30 @@ import Login from './login';
 import SignUp from './signup';
 import LoginSuccess from './loginSuccess';
 import CreateFlat from './createFlat';
+import JoinFlat from './joinFlat';
 
 function App() {
   const [view, setView] = useState('welcome');
   const [user, setUser] = useState(null);
+  const [flat, setFlat] = useState(null);
 
   const handleShowLogin = () => setView('login');
   const handleShowSignup = () => setView('signup');
   const handleSignupSuccess = () => setView('welcome');
+  const handleSendJoinFlat = () => setView('createFlat');
+  const handleJoinFlat = (flatData) => {
+    setFlat(flatData)
+    console.log("In handle",  flatData);
+    setView('loginSuccess');
+  }
   const handleLoginSuccess = (userData) => {
     setUser(userData);
     // setView('loginSuccess');
     console.log("In handle",  userData);
     console.log(userData.flatID);
     if (userData.flatID === null) {
-      console.log('test')
-      setView('createFlat');
+      setView('JoinFlat');
     } else {
-      console.log('test2')
       setView('loginSuccess');
     }
 
@@ -39,6 +45,7 @@ function App() {
       {view === 'signup' && <SignUp onSignUpSuccess={handleSignupSuccess} />}
       {view === 'loginSuccess' && <LoginSuccess user={user} />}
       {view === 'createFlat' && < CreateFlat onCreateSuccess = {handleCreateFlat}/>}
+      {view === 'JoinFlat' && <JoinFlat createFlat = {handleSendJoinFlat} joinFlat = {handleJoinFlat}/>}
     </div>
   );
 }
