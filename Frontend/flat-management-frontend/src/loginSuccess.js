@@ -4,7 +4,7 @@ const LoginSuccess = ({ user }) => {
   return (
     <div>
       <h1>Login Successful</h1>
-      <p>Welcome back, {user.firstName} {user.lastName}!</p>
+      <h2>Welcome back, {user.firstName} {user.lastName}!</h2>
     </div>
   );
 };
