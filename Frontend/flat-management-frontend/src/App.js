@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Welcome from './welcome';
 import Login from './login';
 import SignUp from './signup';
 import LoginSuccess from './loginSuccess';
 import CreateFlat from './createFlat';
 import JoinFlat from './joinFlat';
+import Navbar from './navbar';
 
 function App() {
   const [view, setView] = useState('welcome');
@@ -40,6 +42,7 @@ function App() {
   } 
 
   return (
+   
     <div className="App">
       {view === 'welcome' && <Welcome onShowLogin={handleShowLogin} onShowSignup={handleShowSignup} />}
       {view === 'login' && <Login onLoginSuccess={handleLoginSuccess} />}
@@ -47,7 +50,9 @@ function App() {
       {view === 'loginSuccess' && <LoginSuccess user={user} />}
       {view === 'createFlat' && < CreateFlat onCreateSuccess = {handleCreateFlat} userData = {user}/>}
       {view === 'JoinFlat' && <JoinFlat createFlat = {handleSendJoinFlat} joinFlat = {handleJoinFlat} userData = {user}/>}
+   
     </div>
+     
   );
 
 
