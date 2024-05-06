@@ -9,7 +9,6 @@ public class Assigned {
     public Assigned(String taskID, String userID) {
         this.taskID = taskID;
         this.userID = userID;
-//        this.completed = completed;
     }
 
     public Assigned() {

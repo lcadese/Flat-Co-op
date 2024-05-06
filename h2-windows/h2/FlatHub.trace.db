@@ -1627,3 +1627,87 @@ Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection wa
 2024-05-02 10:37:58 jdbc[47]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]USERS"; expected "UPDATE, USE"; SQL statement:
 USERS [42001-220]
+2024-05-02 11:40:46 jdbc[78]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Constraint "FLAT_USERS_FK" already exists; SQL statement:
+alter table users
+add constraint flat_users_fk foreign key (flatID) references flat(flatID) [90045-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:111)
+	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
+	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-05-02 11:40:46 jdbc[78]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ASSIGNED" not found (this database is empty); SQL statement:
+-- Inserting Assignments
+INSERT INTO assigned (taskID, userID) VALUES
+('task1', 'user1'),
+('task2', 'user2') [42104-220]
+2024-05-02 11:40:46 jdbc[78]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PAYMENT" not found (this database is empty); SQL statement:
+-- Inserting Payments
+INSERT INTO payment (taskID, userID, amount, payed) VALUES
+('task1', 'user1', 100.00, false),
+('task2', 'user2', 150.00, true) [42104-220]
+2024-05-02 11:41:10 jdbc[78]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "FLAT" because "FLAT_USERS_FK, TASK_FLAT_FK" depends on it; SQL statement:
+--drop table if exists pa [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-05-02 11:41:10 jdbc[78]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Cannot drop "USERS" because "USERS_FLAT_FK, PAYMENT_USERS_FK, ASSIGNED_USERS_FK" depends on it; SQL statement:
+drop table if exists users [90107-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:108)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:133)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:169)
+	at org.h2.command.Command.executeUpdate(Command.java:252)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:252)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-05-02 11:41:10 jdbc[78]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ASSIGNED" not found (this database is empty); SQL statement:
+-- Inserting Assignments
+INSERT INTO assigned (taskID, userID) VALUES
+('task1', 'user1'),
+('task2', 'user2') [42104-220]
+2024-05-02 11:41:10 jdbc[78]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PAYMENT" not found (this database is empty); SQL statement:
+-- Inserting Payments
+INSERT INTO payment (taskID, userID, amount, payed) VALUES
+('task1', 'user1', 100.00, false),
+('task2', 'user2', 150.00, true) [42104-220]

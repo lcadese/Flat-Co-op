@@ -1,5 +1,6 @@
 package service;
 
+import dao.AssignedDAO;
 import dao.FlatDAO;
 import dao.JdbiDaoFactory;
 import dao.TaskDAO;
@@ -17,6 +18,8 @@ import resources.UserResource;
 import java.io.IOException;
 import resources.FlatResource;
 import resources.TaskResource;
+import resources.AssignedResource;
+
 
 public class Server extends Jooby {
 
@@ -25,6 +28,7 @@ public class Server extends Jooby {
         UserDAO userDAO = JdbiDaoFactory.getUserDAO();
         FlatDAO flatDAO = JdbiDaoFactory.getFlatDAO();
         TaskDAO taskDAO = JdbiDaoFactory.getTaskDAO();
+        AssignedDAO assignedDAO = JdbiDaoFactory.getAssignedDAO();
 
         // Setup JSON handling with Gson
         install(new GsonModule());
@@ -43,6 +47,7 @@ public class Server extends Jooby {
         mount(new UserResource(userDAO));
         mount(new FlatResource(flatDAO));
         mount(new TaskResource(taskDAO));
+        mount(new AssignedResource(assignedDAO));
 
         //error handling
         error(StatusCodeException.class, (ctx, cause, statusCode) -> {

@@ -12,6 +12,95 @@ info:
 servers:
   - url: 'http://localhost:8080'
 paths:
+  '/assigned/task/{taskID}':
+    get:
+      summary: Get Assignments for a Task
+      operationId: getAssignmentsForTask
+      tags:
+        - Assigned
+      parameters:
+        - name: taskID
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of assignments for the task
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Assigned'
+  '/assigned/user/{userID}':
+    get:
+      summary: Get Assignments for a User
+      operationId: getAssignmentsForUser
+      tags:
+        - Assigned
+      parameters:
+        - name: userID
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of assignments for the user
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Assigned'
+  /assigned:
+    post:
+      summary: Create an Assignment
+      operationId: createAssignment
+      tags:
+        - Assigned
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: 
+                - taskId
+                - userId
+              properties:
+                taskId:
+                  type: string
+                  description: ID of the task to assign
+                userId:
+                  type: string
+                  description: ID of the user to be assigned to the task
+      responses:
+        '201':
+          description: Assignment created successfully
+        '400':
+          description: Invalid input
+  '/assigned/{taskID}/{userID}':
+    delete:
+      summary: Delete an Assignment
+      operationId: deleteAssignment
+      tags:
+        - Assigned
+      parameters:
+        - name: taskID
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: userID
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Assignment deleted successfully
   /user/signup:
     post:
       summary: Sign Up
@@ -337,6 +426,8 @@ components:
       x-stoplight:
         id: pkzjv045fsedu
       type: object
+      x-tags:
+        - Task
       properties:
         taskId:
           $ref: '#/components/schemas/Task'
@@ -344,15 +435,9 @@ components:
         userId:
           $ref: '#/components/schemas/User'
           description: reference to user
-        completed:
-          type: boolean
-          description: whether a assigned task is completed
       required:
         - taskId
         - userId
-        - completed
-      x-tags:
-        - Task
     Payment:
       title: Payment
       x-stoplight:
