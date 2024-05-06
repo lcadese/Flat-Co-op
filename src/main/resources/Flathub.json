@@ -19,6 +19,108 @@
     }
   ],
   "paths": {
+    "/payments": {
+      "post": {
+        "summary": "Create a new payment",
+        "operationId": "createPayment",
+        "tags": [
+          "Payment"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Payment"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Payment created successfully"
+          },
+          "400": {
+            "description": "Invalid input, object invalid"
+          }
+        }
+      }
+    },
+    "/payments/{taskID}/{userID}": {
+      "get": {
+        "summary": "Get payment by task and user ID",
+        "operationId": "getPayment",
+        "tags": [
+          "Payment"
+        ],
+        "parameters": [
+          {
+            "name": "taskID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Payment data retrieved successfully"
+          },
+          "404": {
+            "description": "Payment not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update payment status",
+        "operationId": "updatePaymentStatus",
+        "tags": [
+          "Payment"
+        ],
+        "parameters": [
+          {
+            "name": "taskID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Payment status updated successfully"
+          }
+        }
+      }
+    },
     "/assigned/task/{taskID}": {
       "get": {
         "summary": "Get Assignments for a Task",
@@ -100,23 +202,24 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "taskId",
-                  "userId"
-                ],
                 "properties": {
-                  "taskId": {
+                  "taskID": {
                     "type": "string",
                     "description": "ID of the task to assign"
                   },
-                  "userId": {
+                  "userID": {
                     "type": "string",
                     "description": "ID of the user to be assigned to the task"
                   }
-                }
+                },
+                "required": [
+                  "taskID",
+                  "userID"
+                ]
               }
             }
-          }
+          },
+          "description": ""
         },
         "responses": {
           "201": {
@@ -655,18 +758,18 @@
           "Task"
         ],
         "properties": {
-          "taskId": {
-            "$ref": "#/components/schemas/Task",
-            "description": "Reference to task"
+          "taskID": {
+            "description": "Reference to task",
+            "type": "string"
           },
-          "userId": {
-            "$ref": "#/components/schemas/User",
-            "description": "reference to user"
+          "userID": {
+            "description": "reference to user",
+            "type": "string"
           }
         },
         "required": [
-          "taskId",
-          "userId"
+          "taskID",
+          "userID"
         ]
       },
       "Payment": {
@@ -675,14 +778,17 @@
           "id": "ip0uj5diusxe3"
         },
         "type": "object",
+        "x-tags": [
+          "Payment"
+        ],
         "properties": {
-          "taskId": {
-            "$ref": "#/components/schemas/Task",
-            "description": "references task"
+          "taskID": {
+            "description": "references task",
+            "type": "string"
           },
-          "userId": {
-            "$ref": "#/components/schemas/User",
-            "description": "References user"
+          "userID": {
+            "description": "References user",
+            "type": "string"
           },
           "amount": {
             "type": "number",
@@ -694,13 +800,8 @@
           }
         },
         "required": [
-          "taskId",
-          "userId",
           "amount",
           "payed"
-        ],
-        "x-tags": [
-          "Payment"
         ]
       }
     }
