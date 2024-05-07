@@ -23,6 +23,7 @@ create table if not exists users
 create table if not exists flat
 (
  flatID varchar(50) not null,
+ name varchar(50) not null,
  address varchar(200) not null,
  host varchar(50) not null,
  constraint flat_pk primary key (flatID),
@@ -71,9 +72,9 @@ INSERT INTO users (userID, username, password, lastName, firstName, Email) VALUE
 ('user2', 'janeDoe', 'pass456', 'Doe', 'Jane', 'jane.doe@example.com');
 
 -- Inserting Flats
-INSERT INTO flat (flatID, address, host) VALUES
-('flat1', '1234 Main St, Dunedin, NZ', 'user1'),
-('flat2', '5678 Side St, Dunedin, NZ', 'user2');
+INSERT INTO flat (flatID, address, host, name) VALUES
+('flat1', '1234 Main St, Dunedin, NZ', 'user1','name1'),
+('flat2', '5678 Side St, Dunedin, NZ', 'user2','name2');
 
 -- Updating Users to add flatID
 UPDATE users SET flatID = 'flat1' WHERE userID = 'user1';

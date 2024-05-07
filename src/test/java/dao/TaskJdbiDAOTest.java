@@ -30,7 +30,7 @@ class TaskJdbiDAOTest {
         user = new User("1","Dave is best","God","Dave","Dave","Dave@gmail.com",null);
 
         flatdao = JdbiDaoFactory.getFlatDAO();
-        flat = new Flat("1","10 downing street",user.getUserID());
+        flat = new Flat("1","10 downing street",user.getUserID(),"car bomb");
 
         userDAO.addUser(user);
         flatdao.addFlat(flat);

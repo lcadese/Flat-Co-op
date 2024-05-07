@@ -48,7 +48,7 @@ public class Server extends Jooby {
 
         // Mount the resource 
         mount(new UserResource(userDAO));
-        mount(new FlatResource(flatDAO));
+        mount(new FlatResource(flatDAO,userDAO));
         mount(new TaskResource(taskDAO));
         mount(new AssignedResource(assignedDAO));
         mount(new PaymentResource(paymentDAO));

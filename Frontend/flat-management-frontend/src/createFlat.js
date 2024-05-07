@@ -4,24 +4,19 @@ import axios from 'axios';
 const CreateFlat = ({ onCreateSuccess,userData }) => {
     const [address, setAddress] = useState('');
     const [error, setError] = useState('');
-    const [flatID, setFlatID] = useState('');
+    const [name, setName] = useState('');
 
     const handleCreateFlat = async (e) => {
         e.preventDefault();
         try {
             const userID = userData.userID;
             const response = await axios.post('http://localhost:8080/flat/create', {
-                flatID,
+                flatID:null,
                 address,
-                host:userID
+                host:userID,
+                name
             });
             if (response.status === 201) {
-
-                await axios.put('http://localhost:8080/user/'+userID,{
-                    userID,
-                    flatID
-                });
-                // console.log("test")
                 onCreateSuccess(response.data);
             }
         } catch (error) {
@@ -34,8 +29,8 @@ const CreateFlat = ({ onCreateSuccess,userData }) => {
             <h2>Create Flat</h2>
             <form onSubmit={handleCreateFlat}>
                 <div>
-                    <label>Name/FlatID:</label>
-                    <input type="text" value={flatID} onChange={e => setFlatID(e.target.value)} />
+                    <label>Name:</label>
+                    <input type="text" value={name} onChange={e => setName(e.target.value)} />
                 </div>
                 <div>
                     <label>Address:</label>

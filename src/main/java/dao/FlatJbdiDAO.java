@@ -9,7 +9,7 @@ import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 public interface FlatJbdiDAO extends FlatDAO {
     @Override
-    @SqlUpdate("INSERT INTO flat (flatID,address,host) values (:flatID,:address,:host)")
+    @SqlUpdate("INSERT INTO flat (flatID,address,host,name) values (:flatID,:address,:host,:name)")
     void addFlat(@BindBean Flat flat);
 
     @Override

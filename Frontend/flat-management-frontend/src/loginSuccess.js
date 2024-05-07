@@ -24,7 +24,9 @@ const LoginSuccess = ({ user }) => {
       {userData ? (
         <>
           <h2>Welcome back, {userData.firstName} {userData.lastName}!</h2>
-          <h2>You are in Flat: {userData.flatID}</h2>
+          <h2>Use the following code to invite someone else to the flat:</h2>
+          <h2>{userData.flatID}</h2>
+
         </>
       ) : (
         <p>Loading user data...</p>

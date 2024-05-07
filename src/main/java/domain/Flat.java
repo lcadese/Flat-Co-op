@@ -10,14 +10,16 @@ public class Flat {
     private String flatID;
     private String address;
     private String host;
+    private String name;
 
     public Flat() {
     }
 
-    public Flat(String flatID, String address, String host) {
+    public Flat(String flatID, String address, String host, String name) {
         this.flatID = flatID;
         this.address = address;
         this.host = host;
+        this.name = name;
     }
 
     public String getflatID() {
@@ -44,11 +46,15 @@ public class Flat {
         this.host = host;
     }
 
+    public String getName() {return name;}
+
+    public void setName(String name) {this.name = name;}
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Flat flat = (Flat) o;
-        return Objects.equals(flatID, flat.flatID) && Objects.equals(address, flat.address) && Objects.equals(host, flat.host);
+        return Objects.equals(flatID, flat.flatID) && Objects.equals(address, flat.address) && Objects.equals(host, flat.host) && Objects.equals(name,flat.name);
     }
 }

@@ -32,7 +32,7 @@ class UserJbdiDAOTest {
     @BeforeEach
     public void setUp() {
         dao = JdbiDaoFactory.getUserDAO();
-        user = new User("1","Dave is best","God","Dave","Dave","Dave@gmail.com",null);
+        user = new User("1","Dave is best","God","Dave","Smith","Dave@gmail.com",null);
 
         dao.addUser(user);
     }
@@ -77,7 +77,7 @@ class UserJbdiDAOTest {
 
     @Test
     void setFlat() {
-        Flat flat = new Flat("2A","10 downing street",user.getUserID());
+        Flat flat = new Flat("2A","10 downing street",user.getUserID(),"car bomb");
 
         JdbiDaoFactory.getFlatDAO().addFlat(flat);
 
