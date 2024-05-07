@@ -9,6 +9,7 @@ import io.jooby.Jooby;
 import io.jooby.StatusCode;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 public class TaskResource extends Jooby {
 
@@ -80,8 +81,14 @@ public class TaskResource extends Jooby {
                             .send(gson.toJson(new ErrorMessage("Error updating task: " + e.getMessage())));
                 }
             });
+            get("/flatID/{flatID}",ctx ->{
+                String flatID = ctx.path("flatID").value();
+                Collection<Task> tasks = taskDAO.getTaskByFlat(flatID);
+                System.out.println("sending" + tasks);
+                return ctx.setResponseType("application/json").send(gson.toJson(tasks));
+            });
         });
-                }
+    }
 }
 
     
