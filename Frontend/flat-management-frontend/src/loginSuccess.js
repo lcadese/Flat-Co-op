@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const LoginSuccess = ({ user }) => {
+const LoginSuccess = ({ user ,onCalendarTest}) => {
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState('');
 
@@ -18,6 +18,13 @@ const LoginSuccess = ({ user }) => {
     fetchUserData();
   }, [user.userID]); // Depend on user.userID to refetch if it changes
 
+    const handleCalendar = async (e) => {
+      e.preventDefault();
+      const response = await axios.get('http://localhost:8080/tasks/flatID/'+userData.flatID);
+      onCalendarTest(response.data)
+    };
+
+
   return (
     <div>
       <h1>Login Successful</h1>
@@ -32,6 +39,7 @@ const LoginSuccess = ({ user }) => {
         <p>Loading user data...</p>
       )}
       {error && <p>{error}</p>}
+    <button onClick={handleCalendar}>Show Calendar</button>
     </div>
   );
 };
