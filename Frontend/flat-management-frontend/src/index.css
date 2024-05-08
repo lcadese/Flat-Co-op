@@ -2,6 +2,7 @@
     Bone - #DDD8C4
     Light Blue - #67AAF9
     Dark Blue - #16262E
+    Darker Blue - #0E181D
     Orange - #F28123
     Coral - #EF767A
 */
@@ -47,6 +48,7 @@ button {
   cursor: pointer;
   transition: background-color 0.3s;
   display: block;
+  
 }
 
 button:hover {
@@ -55,7 +57,7 @@ button:hover {
 
 /* Navbar */
 .active{
-  background-color: #67AAF9;
+  background-color: #334148;
 }
 
 .nav{
@@ -143,4 +145,24 @@ button[type="submit"]:hover {
   max-width: 20vw;
   margin: 1vw;
 }
+
+.button-container button:hover{
+  background-color: #0E181D;
+}
+
+.create-flat{
+    background-color: #16262E;
+    color: #fff;
+    padding: 10px 0;
+    margin-top: 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 400px;
+}
+
+.create-flat:hover{
+  background-color: #0E181D;
+}
+
 

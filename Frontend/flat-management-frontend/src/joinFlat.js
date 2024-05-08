@@ -25,13 +25,14 @@ const JoinFlat = ({createFlat,joinFlat,userData}) => {
 
     return (
         <div>
+          <h2>Join or Create a Flat</h2>
             <form onSubmit={handleJoin}>
                 <label>Flat Code:
                 </label><input required type="text" value={flatID} onChange={e => setFlatID(e.target.value)}/>
                 <button type="submit">Join Flat</button>
                 {error && <p>{error}</p>}
             </form>
-            <button onClick={createFlat}>Create Flat</button>
+            <button class="create-flat" onClick={createFlat}>Create Flat</button>
         </div>
     );
 };
