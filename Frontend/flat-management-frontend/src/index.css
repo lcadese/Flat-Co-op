@@ -133,3 +133,14 @@ button[type="submit"]:hover {
   background-color: #45a049;
 }
 
+.button-container{
+  display: flex;
+  justify-content: center;
+}
+
+.button-container button{
+  flex: 1;
+  max-width: 20vw;
+  margin: 1vw;
+}
+
