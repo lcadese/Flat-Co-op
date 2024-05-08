@@ -7,6 +7,7 @@
 */
 
 
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -53,17 +54,31 @@ button:hover {
 }
 
 /* Navbar */
-ul {
+.active{
+  background-color: #67AAF9;
+}
+
+.nav{
+  background-color: #16262E;
+  color: #DDD8C4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.nav a{
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  background-color: #16262E;
-  color: #DDD8C4;
-}
-
-li {
-  float: left;
+  display: flex;
+  gap: 1rem;
 }
 
 li a {
