@@ -1,0 +1,168 @@
+/* COLOR CODES 
+    Bone - #DDD8C4
+    Light Blue - #67AAF9
+    Dark Blue - #16262E
+    Darker Blue - #0E181D
+    Orange - #F28123
+    Coral - #EF767A
+*/
+
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Headings */
+h1 {
+  text-align: center;
+  color: #F28123;
+}
+
+h2 {
+  text-align: center;
+  color: #16262E;
+}
+
+button {
+  padding: 10px 20px;
+  margin: auto;
+  border: none;
+  border-radius: 4px;
+  background-color: #16262E;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block;
+  
+}
+
+button:hover {
+  background-color: #16262E;
+}
+
+/* Navbar */
+.active{
+  background-color: #334148;
+}
+
+.nav{
+  background-color: #16262E;
+  color: #DDD8C4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.nav a{
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Navbar Hover */
+li a:hover {
+  background-color: #DDD8C4;
+  color: #16262E;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 0;
+  margin-top: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.button-container{
+  display: flex;
+  justify-content: center;
+}
+
+.button-container button{
+  flex: 1;
+  max-width: 20vw;
+  margin: 1vw;
+}
+
+.button-container button:hover{
+  background-color: #0E181D;
+}
+
+.create-flat{
+    background-color: #16262E;
+    color: #fff;
+    padding: 10px 0;
+    margin-top: 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 400px;
+}
+
+.create-flat:hover{
+  background-color: #0E181D;
+}
+
+
