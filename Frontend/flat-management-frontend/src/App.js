@@ -84,6 +84,9 @@ function App() {
     case 'JoinFlat':
       Component = <JoinFlat createFlat={handleSendJoinFlat} joinFlat={handleJoinFlat} userData={user} />;
       break;
+      case 'calendar':
+    Component = <Calendar tasksData={tasks} />;
+    break;
     default:
       Component = null;
       break;
