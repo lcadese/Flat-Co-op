@@ -93,40 +93,19 @@ function App() {
   }
 
   return (
-
     <div className="App">
-      {/* {view === 'welcome' && <Welcome onShowLogin={handleShowLogin} onShowSignup={handleShowSignup}/>} */}
-
-
       <Router>
-
         <Navbar />
         <Routes>
           <Route
             path="/"
             element={Component} />
-          <Route path="/tasks" element={<Tasks />} />
+          <Route path="/tasks" element={<Tasks/>} />
           <Route path="/payments" element={<Payments />} />
         </Routes>
-
       </Router>
-
-      {/* 
-      {view === 'welcome' && <Welcome onShowLogin={handleShowLogin} onShowSignup={handleShowSignup} />}
-      {view === 'login' && <Login onLoginSuccess={handleLoginSuccess} />}
-      {view === 'signup' && <SignUp onSignUpSuccess={handleSignupSuccess} />}
-      {view === 'loginSuccess' && <LoginSuccess user={user} onCalendarTest = {handleCalendarTest}/>}
-      {view === 'createFlat' && < CreateFlat onCreateSuccess = {handleCreateFlat} userData = {user}/>}
-      {view === 'JoinFlat' && <JoinFlat createFlat = {handleSendJoinFlat} joinFlat = {handleJoinFlat} userData = {user}/>}
-      {view === 'calendar' && <Calendar tasksData = {tasks} />}
-      {view === 'JoinFlat' && <JoinFlat createFlat = {handleSendJoinFlat} joinFlat = {handleJoinFlat} userData = {user}/>} */}
-
-
     </div>
-
   );
-
-
-    }
+}
 
 export default App;
