@@ -76,7 +76,7 @@ function App() {
       Component = <SignUp onSignUpSuccess={handleSignupSuccess} />;
       break;
     case 'loginSuccess':
-      Component = <LoginSuccess user={user} />;
+      Component = <LoginSuccess user={user} onCalendarTest={handleCalendarTest} />;
       break;
     case 'createFlat':
       Component = <CreateFlat onCreateSuccess={handleCreateFlat} userData={user} />;
