@@ -15,6 +15,8 @@ const Login = ({ onLoginSuccess }) => {
       });
       if (response.data) {
         onLoginSuccess(response.data);
+      } else {
+        setError('Invalid username or password');
       }
     } catch (error) {
       setError('Invalid username or password');
@@ -27,11 +29,11 @@ const Login = ({ onLoginSuccess }) => {
       <form onSubmit={handleLogin}>
         <div>
           <label>Username:</label>
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
+          <input type="text" value={username} onChange={e => setUsername(e.target.value)} required />
         </div>
         <div>
           <label>Password:</label>
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+          <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
         </div>
         <button type="submit">Login</button>
         {error && <p>{error}</p>}
