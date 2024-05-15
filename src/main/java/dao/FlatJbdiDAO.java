@@ -1,11 +1,14 @@
 package dao;
 
 import domain.Flat;
+import domain.User;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
+
+import java.util.Collection;
 
 public interface FlatJbdiDAO extends FlatDAO {
     @Override
@@ -24,5 +27,10 @@ public interface FlatJbdiDAO extends FlatDAO {
     @Override
     @SqlUpdate("delete from flat where flatid = :flatID")
     void removeFlat(@Bind("flatID") String flatID);
+
+    @Override
+    @SqlQuery("select * from users where flatid = :flatID")
+    @RegisterBeanMapper(User.class)
+    Collection<User> getAllUsers(@Bind("flatID") String flatID);
     
 }

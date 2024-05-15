@@ -10,6 +10,7 @@ import io.jooby.StatusCode;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.UUID;
 
 public class TaskResource extends Jooby {
 
@@ -25,10 +26,14 @@ public class TaskResource extends Jooby {
             post("/", ctx -> {
                 System.out.println("Received request to create task: " + ctx.body().value());
                 Task task = gson.fromJson(ctx.body().value(), Task.class);
+                if (task.getTaskID() == null || task.getTaskID().isEmpty()) {
+                    task.setTaskID(UUID.randomUUID().toString()); // Set a new UUID
+                }
                 try {
                     taskDAO.createTask(task);
                     return ctx.send(StatusCode.CREATED);
                 } catch (Exception e) {
+                    System.out.println(e);
                     return ctx.setResponseType("application/json")
                             .setResponseCode(StatusCode.BAD_REQUEST)
                             .send(gson.toJson(new ErrorMessage("Error creating task: " + e.getMessage())));

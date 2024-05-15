@@ -5,9 +5,11 @@ import dao.FlatDAO;
 import dao.UserDAO;
 import domain.ErrorMessage;
 import domain.Flat;
+import domain.User;
 import io.jooby.Jooby;
 import io.jooby.StatusCode;
 
+import java.util.Collection;
 import java.util.UUID;
 
 /**
@@ -66,6 +68,13 @@ public class FlatResource extends Jooby {
                 }
             });
 
+        });
+        path("/flatUsers", () -> {
+            get("/{flatId}", ctx -> {
+                String flatId = ctx.path("flatId").value();
+                Collection<User> users = flatDAO.getAllUsers(flatId);
+                return ctx.setResponseType("application/json").send(gson.toJson(users));
+            });
         });
 
     }

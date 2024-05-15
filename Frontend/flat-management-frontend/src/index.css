@@ -102,7 +102,8 @@ button:hover, button[type="submit"]:hover {
 input[type="text"],
 input[type="password"],
 input[type="email"],
-input[type="date"] {
+input[type="date"],
+select{
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;

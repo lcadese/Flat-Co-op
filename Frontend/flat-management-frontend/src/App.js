@@ -69,7 +69,7 @@ function RouterComponent({ user, setUser, flat, setFlat, tasks, setTasks }) {
       <Route path="/createFlat" element={<CreateFlat onCreateSuccess={(flatData) => { setFlat(flatData); navigate('/loginSuccess'); }} userData={user} />} />
       <Route path="/joinFlat" element={<JoinFlat createFlat={() => navigate('/createFlat')} joinFlat={(flatData) => { setFlat(flatData); navigate('/loginSuccess'); }} userData={user} />} />
       <Route path="/calendar" element={<Calendar tasksData={tasks} />} />
-      <Route path="/tasks" element={<Tasks />} />
+      <Route path="/tasks" element={<Tasks flatData = {flat} />} />
       <Route path="/payments" element={<Payments />} />
     </Routes>
   );

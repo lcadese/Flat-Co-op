@@ -5,11 +5,8 @@ import domain.User;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.*;
 
-import static org.hamcrest.Matchers.not;
-
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FlatJbdiDAOTest {
@@ -47,11 +44,15 @@ class FlatJbdiDAOTest {
         flat = new Flat("1", "10 downing street", user.getUserID(),"car bomb");
 
         dao.addFlat(flat);
+        userDAO.setFlat(user.getUserID(),flat.getflatID());
+        user.setFlatID(flat.getflatID());
     }
 
     @AfterEach
     void tearDown() {
-        dao.removeFlat("1");
+        userDAO.setFlat(user.getUserID(),null);
+        user.setFlatID(null);
+        dao.removeFlat(flat.getflatID());
     }
 
     @Test
@@ -68,12 +69,20 @@ class FlatJbdiDAOTest {
 
     @Test
     void removeFlat() {
+        userDAO.setFlat(user.getUserID(),null);
+        user.setFlatID(null);
         dao.removeFlat(flat);
         assertThat(dao.getFlat(flat.getflatID()), not(is(flat)));
         dao.addFlat(flat);
         dao.removeFlat(flat.getflatID());
         assertThat(dao.getFlat(flat.getflatID()), not(is(flat)));
         dao.addFlat(flat);
+    }
+
+    @Test
+    void getAllUsers() {
+        System.out.println(userDAO.getUserById(user.getUserID()));
+        assertThat(dao.getAllUsers(flat.getflatID()),hasItem(user));
     }
 
 }
