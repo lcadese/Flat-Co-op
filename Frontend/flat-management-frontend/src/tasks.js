@@ -64,7 +64,13 @@ const Tasks = ({flatData}) => {
                 completed:false
             });
             if (response.status === 201) {
-                console.log(response.data);
+                for(let i=0; i < selected.length ; i++)
+                {
+                    const response2 = await axios.post('http://localhost:8080/assigned', {
+                       taskID:response.data.taskID,
+                       userID:people[selected[i].props.value].userID
+                    });
+                }
             }
         } catch (error) {
             console.log(error)

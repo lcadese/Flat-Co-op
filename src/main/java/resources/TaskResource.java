@@ -31,7 +31,7 @@ public class TaskResource extends Jooby {
                 }
                 try {
                     taskDAO.createTask(task);
-                    return ctx.send(StatusCode.CREATED);
+                    return ctx.setResponseType("application/json").setResponseCode(StatusCode.CREATED).send(gson.toJson(task));
                 } catch (Exception e) {
                     System.out.println(e);
                     return ctx.setResponseType("application/json")
