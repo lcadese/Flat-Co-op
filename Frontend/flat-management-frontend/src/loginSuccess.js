@@ -14,23 +14,18 @@ const LoginSuccess = ({ user, onCalendarTest }) => {
           const response = await axios.get(`http://localhost:8080/user/${user.userID}`);
           setUserData(response.data);
 
-          const response2 = await axios.get(`http://localhost:8080/assigned/user/${user.userID}`);
-
+          const response2 = await axios.get(`http://localhost:8080/tasks/userID/${user.userID}`);
           const temp = [];
-          const temp2 = [];
+          setTasks(response2);
           for(let i=0; i < response2.data.length ; i++)
           {
-            const response3 = await axios.get(`http://localhost:8080/tasks/${response2.data[i].taskID}`);
-            console.log(response3.data);
             temp.push(<div>
-                <h2>{response3.data.taskName}: </h2>
-                <h3>{response3.data.description}</h3>
-                <h3>by:{response3.data.requestedDate.substring(0,10)}</h3>
+                <h2>{response2.data[i].taskName}: </h2>
+                <h3>{response2.data[i].description}</h3>
+                <h3>by:{response2.data[i].requestedDate.substring(0,10)}</h3>
             </div>);
-            temp2.push(response3.data);
           }
           setTasksDisplay(temp);
-          setTasks(temp2);
         } catch (error) {
           setError('Failed to fetch user data '+error);
         }

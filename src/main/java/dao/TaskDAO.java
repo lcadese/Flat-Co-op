@@ -22,5 +22,6 @@ public interface TaskDAO {
     Task getTask(String taskID);
     Collection<Task> getTaskByFlat(String flatID);
     Collection<Task> getTaskByFlat(Flat flat);
+    Collection<Task> getTaskByUser(String userID);
     
 }

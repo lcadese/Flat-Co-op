@@ -9,6 +9,7 @@ import org.junit.jupiter.api.*;
 import java.time.LocalDateTime;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasItem;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.hamcrest.Matchers.*;
 
@@ -92,5 +93,14 @@ class TaskJdbiDAOTest {
     void getTaskByFlat() {
         assertThat(dao.getTaskByFlat(flat),hasItem(task));
         assertThat(dao.getTaskByFlat(flat.getflatID()),hasItem(task));
+    }
+
+    @Test
+    void getTaskByUser()
+    {
+        Assigned assigned = new Assigned(task.getTaskID(),user.getUserID());
+        JdbiDaoFactory.getAssignedDAO().createAssigned(assigned);
+        assertThat(dao.getTaskByUser(user.getUserID()),hasItem(task));
+        JdbiDaoFactory.getAssignedDAO().removeAssigned(assigned);
     }
 }

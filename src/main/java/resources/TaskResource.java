@@ -89,9 +89,15 @@ public class TaskResource extends Jooby {
             get("/flatID/{flatID}",ctx ->{
                 String flatID = ctx.path("flatID").value();
                 Collection<Task> tasks = taskDAO.getTaskByFlat(flatID);
-                System.out.println("sending" + tasks);
                 return ctx.setResponseType("application/json").send(gson.toJson(tasks));
             });
+
+            get("/userID/{userID}",ctx ->{
+                String userID = ctx.path("userID").value();
+                Collection<Task> tasks = taskDAO.getTaskByUser(userID);
+                return ctx.setResponseType("application/json").send(gson.toJson(tasks));
+            });
+
         });
     }
 }

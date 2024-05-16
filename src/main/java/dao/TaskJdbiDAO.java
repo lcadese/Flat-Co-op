@@ -56,4 +56,11 @@ public interface TaskJdbiDAO extends TaskDAO{
     @SqlQuery("Select * from task where flatID = :flatID")
     @RegisterBeanMapper(Task.class)
     Collection<Task> getTaskByFlat(@BindBean Flat flat);
+
+    @Override
+    @SqlQuery("SELECT Task.TASKID,TASKNAME,DESCRIPTION,FLATID,COMPLETED,REQUESTEDDATE FROM Task " +
+            "inner join assigned on task.taskId = assigned.taskid " +
+            "where userid = :userID")
+    @RegisterBeanMapper(Task.class)
+    Collection<Task> getTaskByUser(@Bind("userID") String userID);
 }
