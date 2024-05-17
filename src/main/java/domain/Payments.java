@@ -66,6 +66,16 @@ public class Payments {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.paymentID);
+        hash = 17 * hash + Objects.hashCode(this.userID);
+        hash = 17 * hash + Objects.hashCode(this.amount);
+        hash = 17 * hash + (this.payed ? 1 : 0);
+        return hash;
+    }
+
+    @Override
     public String toString() {
         return "Payments{" + "paymentID=" + paymentID + ", userID=" + userID + ", amount=" + amount + ", payed=" + payed + '}';
     }

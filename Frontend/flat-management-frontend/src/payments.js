@@ -56,6 +56,13 @@ const Payment = ({flatData}) => {
     const handleCreatePayment = async (e) => {
         e.preventDefault();
         try {
+            const response = await axios.get('http://localhost:8080/payments');
+            console.log(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+
+        try {
             for (const person of selected) {
                 const response = await axios.post('http://localhost:8080/payments', {
                     paymentID: null,

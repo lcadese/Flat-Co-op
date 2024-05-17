@@ -37,7 +37,8 @@ public class PaymentResource extends Jooby {
                 }
             });
 
-            get("", ctx -> {
+            get("/", ctx -> {
+//                System.out.println("reached");
                 return paymentDAO.getAllPayments();
             });
 

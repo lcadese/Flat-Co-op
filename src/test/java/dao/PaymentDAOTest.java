@@ -39,18 +39,14 @@ class PaymentDAOTest {
         flatdao = JdbiDaoFactory.getFlatDAO();
         flat = new Flat("1","10 downing street",user.getUserID(),"car bomb");
 
-        taskDAO = JdbiDaoFactory.getTaskDAO();
-        task = new Task("1","get bags","get Big bags", LocalDateTime.now(),flat.getflatID(),false);
-
+      
         userDAO.addUser(user);
         flatdao.addFlat(flat);
-        taskDAO.createTask(task);
 
     }
 
     @AfterAll
     public static void clean() {
-        taskDAO.removeTask(task);
         flatdao.removeFlat(flat);
         userDAO.removeUser(user.getUserID());
     }
@@ -59,8 +55,10 @@ class PaymentDAOTest {
     @BeforeEach
     public void setUp() {
         dao = JdbiDaoFactory.getPaymentDAO();
-        payment = new Payments(user.getUserID(),flat.getflatID(),new BigDecimal(1.0),false);
-
+        
+//        payment = new Payments(user.getUserID(),flat.getflatID(),new BigDecimal(1.0),false);
+        payment = new Payments("payment3", user.getUserID(),new BigDecimal(1.0),false);
+        
         dao.createPayment(payment);
     }
 
@@ -68,47 +66,57 @@ class PaymentDAOTest {
     void tearDown() {
         dao.removePayment(payment);
     }
-    @Test
-    void getMultPayment() {
-        assertThat(dao.getMultPayment(task),hasItem(payment));
-        assertThat(dao.getMultPayment(user),hasItem(payment));
-    }
 
     @Test
     void getPayment() {
-        assertThat(dao.getPayment(user,task),is(payment));
-        assertThat(dao.getPayment(user.getUserID(),task.getTaskID()),is(payment));
+        assertThat(dao.getPayment("payment3"),is(payment));
+    }
+    
+    @Test
+    void getAllPayments() {
+//        assertThat(dao.getPayment(user,task),is(payment));
+                // Assuming dao.getAllPayments() returns a List<Payment>
+        Collection<Payments> payments = dao.getAllPayments();
+        System.out.println(payments.toString());
+        
+        // Check that the size of the returned list is 1
+//        assertThat(payments, hasSize(1));
+        assertThat(payments, hasItem(payment));
     }
 
     @Test
     void createPayment() {
-        assertThat(dao.getPayment(user,task),is(payment));
+        Payments payment1 = new Payments("payment4", user.getUserID(), new BigDecimal(2.0), false);
+        Collection<Payments> payments = dao.getAllPayments();
+        System.out.println(payments.toString());
+        
+        // Check that the size of the returned list is 1
+//        assertThat(payments, hasSize(1));
+        assertThat(payments, not(hasItem(payment1)));
+        dao.createPayment(payment1);
+        System.out.println(payments.toString());
+        assertThat(dao.getPayment("payment4"),is(payment1));
+        dao.removePayment(payment1);
     }
-
+//
     @Test
     void removePayment() {
         dao.removePayment(payment);
-        assertThat(dao.getPayment(user,task),is(nullValue()));
+        assertThat(dao.getPayment(payment.getPaymentID()),is(nullValue()));
         dao.createPayment(payment);
 
-        dao.removePayment(user,task);
-        assertThat(dao.getPayment(user,task),is(nullValue()));
-        dao.createPayment(payment);
-
-        dao.removePayment(user.getUserID(),task.getTaskID());
-        assertThat(dao.getPayment(user,task),is(nullValue()));
-        dao.createPayment(payment);
+        dao.removePayment(payment.getPaymentID());
+        assertThat(dao.getPayment(payment.getPaymentID()),is(nullValue()));
+//        dao.createPayment(payment);
     }
 
     @Test
     void markAsComplete() {
         dao.setPayed(payment,true);
-        assertTrue(dao.getPayment(user,task).getPayed());
+        assertTrue(dao.getPayment(payment.getPaymentID()).getPayed());
 
-        dao.setPayed(user,task,false);
-        assertFalse(dao.getPayment(user, task).getPayed());
+        dao.setPayed(payment.getPaymentID(),false);
+        assertFalse(dao.getPayment(payment.getPaymentID()).getPayed());
 
-        dao.setPayed(user.getUserID(),task.getTaskID(),true);
-        assertTrue(dao.getPayment(user,task).getPayed());
     }
 }

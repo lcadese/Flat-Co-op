@@ -33,44 +33,24 @@ public interface PaymentJdbiDAO extends PaymentDAO{
     @SqlUpdate("UPDATE payment SET payed = :payed WHERE paymentID = :paymentID")
     void setPayed(@Bind("paymentID") String paymentID, @Bind("payed") Boolean payed);
 
-    @Override
-    @SqlUpdate("UPDATE payment SET payed = :payed WHERE taskID = :task.taskID AND userID = :user.userID")
-    void setPayed(@BindBean("user") User user,@BindBean("task") Task task, @Bind("payed") Boolean payed);
     
     @Override
     @SqlQuery("select * from payment")
     @RegisterBeanMapper(Payments.class)
     Collection<Payments> getAllPayments();
 
-    @Override
-    @SqlQuery("select * from payment where taskID = :taskID")
-    @RegisterBeanMapper(Payments.class)
-    Collection<Payments> getMultPayment(@BindBean Task task);
-
-    @Override
-    @SqlQuery("select * from payment where userID = :userID")
-    @RegisterBeanMapper(Payments.class)
-    Collection<Payments> getMultPayment(@BindBean User user);
-
-    @Override
-    @SqlQuery("select * from payment where userID = :user.userID and taskID = :task.taskID")
-    @RegisterBeanMapper(Payments.class)
-    Payments getPayment(@BindBean("user") User user,@BindBean("task") Task task);
 
     @Override
     @SqlQuery("select * from payment where paymentID = :paymentID")
     @RegisterBeanMapper(Payments.class)
     Payments getPayment(@Bind("paymentID") String paymentID);
 
-    @Override
-    @SqlUpdate("delete from payment where userID = :user.userID and taskID = :task.taskID")
-    void removePayment(@BindBean("user") User user,@BindBean("task") Task task);
 
     @Override
-    @SqlUpdate("delete from payment where userID = :userID and taskID = :taskID")
-    void removePayment(@Bind("userID") String userID,@Bind("taskID") String taskID);
+    @SqlUpdate("delete from payment where paymentID = :paymentID")
+    void removePayment(@Bind("paymentID") String paymentID);
 
     @Override
-    @SqlUpdate("delete from payment where userID = :userID and taskID = :taskID")
+    @SqlUpdate("delete from payment where paymentID = :paymentID")
     void removePayment(@BindBean Payments payment);
 }

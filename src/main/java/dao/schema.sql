@@ -1,12 +1,12 @@
--- drop table if exists payment;
--- drop table if exists assigned;
--- drop table if exists task;
--- 
--- alter table if exists users
--- drop constraint flat_users_fk;
--- 
--- drop table if exists flat;
--- drop table if exists users;
+drop table if exists payment;
+drop table if exists assigned;
+drop table if exists task;
+
+alter table if exists users
+drop constraint flat_users_fk;
+
+drop table if exists flat;
+drop table if exists users;
 
 create table if not exists users
 (
@@ -91,5 +91,5 @@ INSERT INTO assigned (taskID, userID) VALUES
 
 -- Inserting Payments
 INSERT INTO payment (paymentID, userID, amount, payed) VALUES
-('task1', 'user1', 100.00, false),
-('task2', 'user2', 150.00, true);
+('payment1', 'user1', 100.00, false),
+('payment', 'user2', 150.00, true);
