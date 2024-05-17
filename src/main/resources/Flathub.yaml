@@ -24,58 +24,67 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Payment'
+        description: ''
       responses:
         '201':
           description: Payment created successfully
         '400':
           description: 'Invalid input, object invalid'
-  '/payments/{taskID}/{userID}':
     get:
-      summary: Get payment by task and user ID
-      operationId: getPayment
+      summary: Get all payments
+      operationId: get-payments
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Payment'
+                  x-stoplight:
+                    id: bm6gwza8xgcbj
+      description: 'Get all payments '
       tags:
         - Payment
-      parameters:
-        - name: taskID
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: userID
-          in: path
-          required: true
-          schema:
-            type: string
+  '/payments/{paymentID}':
+    parameters:
+      - schema:
+          type: string
+        name: paymentID
+        in: path
+        required: true
+    get:
+      summary: Get payment by task and user ID
+      tags:
+        - Payment
       responses:
         '200':
           description: Payment data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
         '404':
           description: Payment not found
+      operationId: get-payments-paymentID
+      description: Payment data retrieved successfully
     put:
-      summary: Update payment status
-      operationId: updatePaymentStatus
-      tags:
-        - Payment
-      parameters:
-        - name: taskID
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: userID
-          in: path
-          required: true
-          schema:
-            type: string
+      summary: ''
+      operationId: put-payments-paymentID
+      responses:
+        '200':
+          description: Payment status updated successfully
+        '404':
+          description: Payment not found
       requestBody:
-        required: true
         content:
           application/json:
             schema:
               type: boolean
-      responses:
-        '200':
-          description: Payment status updated successfully
+      description: ''
+      tags:
+        - Payment
   '/assigned/task/{taskID}':
     get:
       summary: Get Assignments for a Task
@@ -265,22 +274,6 @@ paths:
         name: userID
         in: path
         required: true
-  /flat/create:
-    post:
-      summary: Create a new flat
-      operationId: create-flat
-      responses:
-        '201':
-          description: Flat is successfully created
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Flat'
-      tags:
-        - Flat
-      description: ''
-    parameters: []
   '/flat/{flatId}':
     get:
       summary: Get Flat by ID
@@ -318,6 +311,22 @@ paths:
             type: string
       tags:
         - Flat
+  /flat/create:
+    post:
+      summary: Create a new flat
+      operationId: create-flat
+      responses:
+        '201':
+          description: Flat is successfully created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Flat'
+      tags:
+        - Flat
+      description: ''
+    parameters: []
   paths: null
   /tasks:
     post:
@@ -552,9 +561,11 @@ components:
       x-tags:
         - Payment
       properties:
-        taskID:
+        paymentID:
           description: references task
           type: string
+          x-stoplight:
+            id: hm05uvl7055r0
         userID:
           description: References user
           type: string
@@ -567,3 +578,4 @@ components:
       required:
         - amount
         - payed
+      description: ''

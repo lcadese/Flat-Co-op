@@ -8,13 +8,13 @@ import java.util.Objects;
  * @author haydenaish
  */
 public class Payments {
-    private String taskID;
+    private String paymentID;
     private String userID;
     private BigDecimal amount;
     private boolean payed;
 
-    public Payments(String taskID, String userID, BigDecimal amount, boolean payed) {
-        this.taskID = taskID;
+    public Payments(String paymentID, String userID, BigDecimal amount, boolean payed) {
+        this.paymentID = paymentID;
         this.userID = userID;
         this.amount = amount;
         this.payed = payed;
@@ -23,13 +23,15 @@ public class Payments {
     public Payments() {
     }
 
-    public String getTaskID() {
-        return taskID;
+    public String getPaymentID() {
+        return paymentID;
     }
 
-    public void setTaskID(String taskID) {
-        this.taskID = taskID;
+    public void setPaymentID(String paymentID) {
+        this.paymentID = paymentID;
     }
+
+
 
     public String getUserID() {
         return userID;
@@ -60,7 +62,12 @@ public class Payments {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Payments payments = (Payments) o;
-        return payed == payments.payed && Objects.equals(taskID, payments.taskID) && Objects.equals(userID, payments.userID) && Objects.equals(amount, payments.amount);
+        return payed == payments.payed && Objects.equals(paymentID, payments.paymentID) && Objects.equals(userID, payments.userID) && Objects.equals(amount, payments.amount);
+    }
+
+    @Override
+    public String toString() {
+        return "Payments{" + "paymentID=" + paymentID + ", userID=" + userID + ", amount=" + amount + ", payed=" + payed + '}';
     }
 
 }

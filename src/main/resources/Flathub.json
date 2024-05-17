@@ -34,7 +34,8 @@
                 "$ref": "#/components/schemas/Payment"
               }
             }
-          }
+          },
+          "description": ""
         },
         "responses": {
           "201": {
@@ -44,68 +45,80 @@
             "description": "Invalid input, object invalid"
           }
         }
+      },
+      "get": {
+        "summary": "Get all payments",
+        "operationId": "get-payments",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Payment",
+                    "x-stoplight": {
+                      "id": "bm6gwza8xgcbj"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all payments ",
+        "tags": [
+          "Payment"
+        ]
       }
     },
-    "/payments/{taskID}/{userID}": {
+    "/payments/{paymentID}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "paymentID",
+          "in": "path",
+          "required": true
+        }
+      ],
       "get": {
         "summary": "Get payment by task and user ID",
-        "operationId": "getPayment",
         "tags": [
           "Payment"
         ],
-        "parameters": [
-          {
-            "name": "taskID",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "userID",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
-            "description": "Payment data retrieved successfully"
+            "description": "Payment data retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Payment"
+                }
+              }
+            }
           },
           "404": {
             "description": "Payment not found"
           }
-        }
+        },
+        "operationId": "get-payments-paymentID",
+        "description": "Payment data retrieved successfully"
       },
       "put": {
-        "summary": "Update payment status",
-        "operationId": "updatePaymentStatus",
-        "tags": [
-          "Payment"
-        ],
-        "parameters": [
-          {
-            "name": "taskID",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
+        "summary": "",
+        "operationId": "put-payments-paymentID",
+        "responses": {
+          "200": {
+            "description": "Payment status updated successfully"
           },
-          {
-            "name": "userID",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
+          "404": {
+            "description": "Payment not found"
           }
-        ],
+        },
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -114,11 +127,10 @@
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": "Payment status updated successfully"
-          }
-        }
+        "description": "",
+        "tags": [
+          "Payment"
+        ]
       }
     },
     "/assigned/task/{taskID}": {
@@ -420,31 +432,6 @@
         }
       ]
     },
-    "/flat/create": {
-      "post": {
-        "summary": "Create a new flat",
-        "operationId": "create-flat",
-        "responses": {
-          "201": {
-            "description": "Flat is successfully created"
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Flat"
-              }
-            }
-          }
-        },
-        "tags": [
-          "Flat"
-        ],
-        "description": ""
-      },
-      "parameters": []
-    },
     "/flat/{flatId}": {
       "get": {
         "summary": "Get Flat by ID",
@@ -503,6 +490,31 @@
           "Flat"
         ]
       }
+    },
+    "/flat/create": {
+      "post": {
+        "summary": "Create a new flat",
+        "operationId": "create-flat",
+        "responses": {
+          "201": {
+            "description": "Flat is successfully created"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Flat"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Flat"
+        ],
+        "description": ""
+      },
+      "parameters": []
     },
     "paths": null,
     "/tasks": {
@@ -847,9 +859,12 @@
           "Payment"
         ],
         "properties": {
-          "taskID": {
+          "paymentID": {
             "description": "references task",
-            "type": "string"
+            "type": "string",
+            "x-stoplight": {
+              "id": "hm05uvl7055r0"
+            }
           },
           "userID": {
             "description": "References user",
@@ -867,7 +882,8 @@
         "required": [
           "amount",
           "payed"
-        ]
+        ],
+        "description": ""
       }
     }
   }

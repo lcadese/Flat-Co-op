@@ -22,20 +22,25 @@ import java.util.Collection;
  */
 public interface PaymentJdbiDAO extends PaymentDAO{
     @Override
-    @SqlUpdate("INSERT INTO payment (taskID, UserID, Amount, Payed) values (:taskID,:userID, :amount, :payed)")
+    @SqlUpdate("INSERT INTO payment (paymentID, UserID, Amount, Payed) values (:paymentID,:userID, :amount, :payed)")
     void createPayment(@BindBean Payments payment);
 
     @Override
-    @SqlUpdate("UPDATE payment SET payed = :payed WHERE taskID = :payment.taskID AND userID = :payment.userID")
+    @SqlUpdate("UPDATE payment SET payed = :payed WHERE paymentID = :payment.paymentID")
     void setPayed (@BindBean("payment") Payments payment, @Bind("payed") Boolean payed);
 
     @Override
-    @SqlUpdate("UPDATE payment SET payed = :payed WHERE taskID = :taskID AND userID = :userID")
-    void setPayed(@Bind("userID") String user,@Bind("taskID") String task, @Bind("payed") Boolean payed);
+    @SqlUpdate("UPDATE payment SET payed = :payed WHERE paymentID = :paymentID")
+    void setPayed(@Bind("paymentID") String paymentID, @Bind("payed") Boolean payed);
 
     @Override
     @SqlUpdate("UPDATE payment SET payed = :payed WHERE taskID = :task.taskID AND userID = :user.userID")
     void setPayed(@BindBean("user") User user,@BindBean("task") Task task, @Bind("payed") Boolean payed);
+    
+    @Override
+    @SqlQuery("select * from payment")
+    @RegisterBeanMapper(Payments.class)
+    Collection<Payments> getAllPayments();
 
     @Override
     @SqlQuery("select * from payment where taskID = :taskID")
@@ -53,9 +58,9 @@ public interface PaymentJdbiDAO extends PaymentDAO{
     Payments getPayment(@BindBean("user") User user,@BindBean("task") Task task);
 
     @Override
-    @SqlQuery("select * from payment where userID = :userID and taskID = :taskID")
+    @SqlQuery("select * from payment where paymentID = :paymentID")
     @RegisterBeanMapper(Payments.class)
-    Payments getPayment(@Bind("userID") String userID,@Bind("taskID") String taskID);
+    Payments getPayment(@Bind("paymentID") String paymentID);
 
     @Override
     @SqlUpdate("delete from payment where userID = :user.userID and taskID = :task.taskID")

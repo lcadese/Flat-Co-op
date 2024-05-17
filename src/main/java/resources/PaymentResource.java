@@ -8,8 +8,10 @@ import domain.Payments;
 import io.jooby.Jooby;
 import io.jooby.StatusCode;
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public class PaymentResource extends Jooby {
+
     private final Gson gson;
 
     public PaymentResource(PaymentDAO paymentDAO) {
@@ -20,8 +22,13 @@ public class PaymentResource extends Jooby {
 
             post("/", ctx -> {
                 Payments payment = gson.fromJson(ctx.body().value(), Payments.class);
+                System.out.println(payment.toString());
+                if (payment.getPaymentID() == null || payment.getPaymentID().isEmpty()) {
+                    payment.setPaymentID(UUID.randomUUID().toString()); // Set a new UUID
+                }
                 try {
                     paymentDAO.createPayment(payment);
+                    System.out.println(payment.toString());
                     return ctx.send(StatusCode.CREATED);
                 } catch (Exception e) {
                     return ctx.setResponseType("application/json")
@@ -30,10 +37,14 @@ public class PaymentResource extends Jooby {
                 }
             });
 
-            get("/{taskID}/{userID}", ctx -> {
-                String taskID = ctx.path("taskID").value();
-                String userID = ctx.path("userID").value();
-                Payments payment = paymentDAO.getPayment(userID, taskID);
+            get("", ctx -> {
+                return paymentDAO.getAllPayments();
+            });
+
+            get("/{paymentID}", ctx -> {
+//                String taskID = ctx.path("taskID").value();
+                String paymentID = ctx.path("paymentID").value();
+                Payments payment = paymentDAO.getPayment(paymentID);
                 if (payment != null) {
                     return ctx.setResponseType("application/json").send(gson.toJson(payment));
                 } else {
@@ -43,12 +54,11 @@ public class PaymentResource extends Jooby {
                 }
             });
 
-            put("/{taskID}/{userID}", ctx -> {
-                String taskID = ctx.path("taskID").value();
-                String userID = ctx.path("userID").value();
+            put("/{paymentID}", ctx -> {
+                String paymentID = ctx.path("paymentID").value();
                 Boolean payed = gson.fromJson(ctx.body().value(), Boolean.class);
                 try {
-                    paymentDAO.setPayed(userID, taskID, payed);
+                    paymentDAO.setPayed(paymentID, payed);
                     return ctx.setResponseType("application/json").send(gson.toJson("Payment status updated"));
                 } catch (Exception e) {
                     return ctx.setResponseType("application/json")
@@ -57,18 +67,18 @@ public class PaymentResource extends Jooby {
                 }
             });
 
-            delete("/{taskID}/{userID}", ctx -> {
-                String taskID = ctx.path("taskID").value();
-                String userID = ctx.path("userID").value();
-                try {
-                    paymentDAO.removePayment(userID, taskID);
-                    return ctx.send(StatusCode.NO_CONTENT);
-                } catch (Exception e) {
-                    return ctx.setResponseType("application/json")
-                            .setResponseCode(StatusCode.BAD_REQUEST)
-                            .send(gson.toJson(new ErrorMessage("Error deleting payment: " + e.getMessage())));
-                }
-            });
+//            delete("/{taskID}/{userID}", ctx -> {
+//                String taskID = ctx.path("taskID").value();
+//                String userID = ctx.path("userID").value();
+//                try {
+//                    paymentDAO.removePayment(userID, taskID);
+//                    return ctx.send(StatusCode.NO_CONTENT);
+//                } catch (Exception e) {
+//                    return ctx.setResponseType("application/json")
+//                            .setResponseCode(StatusCode.BAD_REQUEST)
+//                            .send(gson.toJson(new ErrorMessage("Error deleting payment: " + e.getMessage())));
+//                }
+//            });
         });
     }
 }

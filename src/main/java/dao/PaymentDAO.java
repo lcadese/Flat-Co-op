@@ -20,13 +20,14 @@ public interface PaymentDAO {
     Collection<Payments> getMultPayment(Task task);
     Collection<Payments> getMultPayment(User user);
     Payments getPayment(User user,Task task);
-    Payments getPayment(String userID,String taskID);
+        Payments getPayment(String paymentID);
     void createPayment(Payments payment);
     void removePayment(User user,Task task);
     void removePayment(String userID,String taskID);
     void removePayment(Payments payment);
     void setPayed(Payments payment,Boolean payed);
-    void setPayed(String userID,String taskID,Boolean payed);
+    void setPayed(String paymentID,Boolean payed);
     void setPayed(User user,Task task,Boolean payed);
+    Collection<Payments> getAllPayments();
 
 }

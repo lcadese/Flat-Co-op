@@ -1738,3 +1738,31 @@ SELECT * FROM USERS where flatid = flat1 [42122-220]
 	at org.h2.server.web.WebThread.process(WebThread.java:188)
 	at org.h2.server.web.WebThread.run(WebThread.java:101)
 	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-05-17 09:32:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table if not exists payment\000d\000a(\000d\000a paymentID varchar(50),\000d\000a userID varchar(50),\000d\000a amount Numeric(10),\000d\000a payed bool not null,\000d\000a constraint payment_pk primary key (paymentID),\000d\000a constraint payment_users_fk foreign key (userID) references users(userID),\000d\000a[*])"; expected "identifier"; SQL statement:
+create table if not exists payment
+(
+ paymentID varchar(50),
+ userID varchar(50),
+ amount Numeric(10),
+ payed bool not null,
+ constraint payment_pk primary key (paymentID),
+ constraint payment_users_fk foreign key (userID) references users(userID),
+) [42001-220]
+2024-05-17 11:27:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table if not exists payment\000d\000a(\000d\000a paymentID varchar(50),\000d\000a userID varchar(50),\000d\000a amount Numeric(10),\000d\000a payed bool not null,\000d\000a constraint payment_pk primary key (paymentID),\000d\000a constraint payment_users_fk foreign key (userID) references users(userID),\000d\000a[*])"; expected "identifier"; SQL statement:
+create table if not exists payment
+(
+ paymentID varchar(50),
+ userID varchar(50),
+ amount Numeric(10),
+ payed bool not null,
+ constraint payment_pk primary key (paymentID),
+ constraint payment_users_fk foreign key (userID) references users(userID),
+) [42001-220]
+2024-05-17 11:27:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PAYMENT" not found; SQL statement:
+-- Inserting Payments
+INSERT INTO payment (taskID, userID, amount, payed) VALUES
+('task1', 'user1', 100.00, false),
+('task2', 'user2', 150.00, true) [42102-220]
