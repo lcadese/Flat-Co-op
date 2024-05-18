@@ -1,4 +1,4 @@
-
+// navbar.js
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
@@ -41,6 +41,14 @@ function Navbar({ user }) {
                 className={({ isActive }) => (isActive ? 'active' : '')}
               >
                 Payments
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="/profile" 
+                className={({ isActive }) => (isActive ? 'active' : '')}
+              >
+                Profile
               </NavLink>
             </li>
           </>

@@ -1,3 +1,4 @@
+// App.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
@@ -11,6 +12,7 @@ import Calendar from './calendar';
 import Navbar from './navbar';
 import Tasks from './tasks';
 import Payments from './payments';
+import Profile from './profile'; // Import the new Profile component
 
 function App() {
   const [user, setUser] = useState(null);
@@ -71,6 +73,7 @@ function RouterComponent({ user, setUser, flat, setFlat, tasks, setTasks }) {
       <Route path="/calendar" element={<Calendar tasksData={tasks} />} />
       <Route path="/tasks" element={<Tasks flatData = {flat} />} />
       <Route path="/payments" element={<Payments flatData = {flat}/>} />
+      <Route path="/profile" element={user ? <Profile user={user} /> : <div>Loading...</div>} /> {/* Add the Profile route */}
     </Routes>
   );
 }
