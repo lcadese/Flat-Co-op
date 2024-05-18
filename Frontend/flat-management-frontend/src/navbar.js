@@ -1,4 +1,3 @@
-// navbar.js
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
@@ -33,6 +32,22 @@ function Navbar({ user, onLogout }) {
       <ul>
         {user ? (
           <>
+            <li>
+              <NavLink 
+                to="/loginSuccess" 
+                className={({ isActive }) => (isActive ? 'active' : '')}
+              >
+                Dashboard
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="/calendar" 
+                className={({ isActive }) => (isActive ? 'active' : '')}
+              >
+                Calendar
+              </NavLink>
+            </li>
             <li>
               <NavLink 
                 to="/tasks" 
