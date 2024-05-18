@@ -1,9 +1,29 @@
-import { NavLink } from 'react-router-dom';
+
+import React from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 function Navbar({ user }) {
+  const navigate = useNavigate();
+
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    if (user) {
+      navigate('/loginSuccess');
+    } else {
+      navigate('/');
+    }
+  };
+
   return (
     <nav className="nav">
-      <NavLink to="/" className="site-title">Flat Hub</NavLink>
+      <NavLink 
+        to="/" 
+        className="site-title" 
+        onClick={handleLogoClick}
+        style={{ textDecoration: 'none', color: 'inherit' }}
+      >
+        Flat Hub
+      </NavLink>
       <ul>
         {user ? (
           <>
