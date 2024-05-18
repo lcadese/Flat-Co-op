@@ -2,7 +2,7 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-function Navbar({ user }) {
+function Navbar({ user, onLogout }) {
   const navigate = useNavigate();
 
   const handleLogoClick = (e) => {
@@ -12,6 +12,12 @@ function Navbar({ user }) {
     } else {
       navigate('/');
     }
+  };
+
+  const handleLogoutClick = (e) => {
+    e.preventDefault();
+    onLogout();
+    navigate('/');
   };
 
   return (
@@ -49,6 +55,15 @@ function Navbar({ user }) {
                 className={({ isActive }) => (isActive ? 'active' : '')}
               >
                 Profile
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                to="/" 
+                onClick={handleLogoutClick}
+                className={({ isActive }) => (isActive ? 'active' : '')}
+              >
+                Logout
               </NavLink>
             </li>
           </>
