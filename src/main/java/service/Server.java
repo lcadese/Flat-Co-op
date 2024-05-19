@@ -1,11 +1,6 @@
 package service;
 
-import dao.AssignedDAO;
-import dao.FlatDAO;
-import dao.JdbiDaoFactory;
-import dao.PaymentDAO;
-import dao.TaskDAO;
-import dao.UserDAO;
+import dao.*;
 import io.jooby.Jooby;
 import io.jooby.OpenAPIModule;
 import io.jooby.ServerOptions;
@@ -13,20 +8,17 @@ import io.jooby.exception.StatusCodeException;
 import io.jooby.gson.GsonModule;
 import io.jooby.handler.Cors;
 import io.jooby.handler.CorsHandler;
-
-import resources.UserResource;
+import resources.*;
 
 import java.io.IOException;
-import resources.FlatResource;
-import resources.TaskResource;
-import resources.AssignedResource;
-import resources.PaymentResource;
-
 
 public class Server extends Jooby {
 
     public Server() {
-        // Initialize the data access object for users
+        // Initialize the database
+        initializeDatabase();
+
+        // Initialize the data access objects
         UserDAO userDAO = JdbiDaoFactory.getUserDAO();
         FlatDAO flatDAO = JdbiDaoFactory.getFlatDAO();
         TaskDAO taskDAO = JdbiDaoFactory.getTaskDAO();
@@ -48,15 +40,24 @@ public class Server extends Jooby {
 
         // Mount the resource 
         mount(new UserResource(userDAO));
-        mount(new FlatResource(flatDAO,userDAO));
+        mount(new FlatResource(flatDAO, userDAO));
         mount(new TaskResource(taskDAO));
         mount(new AssignedResource(assignedDAO));
         mount(new PaymentResource(paymentDAO));
 
-        //error handling
+        // Error handling
         error(StatusCodeException.class, (ctx, cause, statusCode) -> {
             ctx.setResponseCode(statusCode).send(cause.getMessage());
         });
+    }
+
+    private void initializeDatabase() {
+        try {
+            JdbiDaoFactory.setJdbcUri("jdbc:h2:mem:testdb;INIT=runscript from 'src/main/java/dao/schema.sql'");
+        } catch (java.lang.IllegalStateException ex) {
+            // Handle the exception
+            ex.printStackTrace();
+        }
     }
 
     public static void main(String[] args) throws IOException {
