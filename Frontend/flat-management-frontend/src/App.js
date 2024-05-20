@@ -27,7 +27,15 @@ function App() {
   const handleCalendarTest = async (flatID) => {
     try {
       const response = await axios.get(`http://localhost:8080/tasks/flatID/${flatID}`);
-      setTasks(response.data);
+      const tasksWithUsers = await Promise.all(response.data.map(async task => {
+        const assignedUsersResponse = await axios.get(`http://localhost:8080/assigned/task/${task.taskID}`);
+        const assignedUsersDetails = await Promise.all(assignedUsersResponse.data.map(async assignment => {
+          const userResponse = await axios.get(`http://localhost:8080/user/${assignment.userID}`);
+          return `${userResponse.data.firstName}`;
+        }));
+        return { ...task, assignedUsers: assignedUsersDetails.join(', ') };
+      }));
+      setTasks(tasksWithUsers);
     } catch (error) {
       console.error('Failed to fetch tasks data', error);
     }
