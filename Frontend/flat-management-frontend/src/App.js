@@ -12,7 +12,7 @@ import Calendar from './calendar';
 import Navbar from './navbar';
 import Tasks from './tasks';
 import Payments from './payments';
-import Profile from './profile'; 
+import Profile from './profile';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -22,13 +22,21 @@ function App() {
   const handleLogout = () => {
     setUser(null);
     setFlat(null);
-    
+  };
+
+  const handleCalendarTest = async (flatID) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/tasks/flatID/${flatID}`);
+      setTasks(response.data);
+    } catch (error) {
+      console.error('Failed to fetch tasks data', error);
+    }
   };
 
   return (
     <div className="App">
       <Router>
-        <Navbar user={user} onLogout={handleLogout} />
+        <Navbar user={user} onLogout={handleLogout} onShowCalendar={() => handleCalendarTest(user.flatID)} />
         <RouterComponent 
           user={user}
           setUser={setUser}
@@ -36,13 +44,14 @@ function App() {
           setFlat={setFlat}
           tasks={tasks}
           setTasks={setTasks}
+          onShowCalendar={handleCalendarTest}
         />
       </Router>
     </div>
   );
 }
 
-function RouterComponent({ user, setUser, flat, setFlat, tasks, setTasks }) {
+function RouterComponent({ user, setUser, flat, setFlat, tasks, setTasks, onShowCalendar }) {
   const navigate = useNavigate();
 
   const handleLoginSuccess = async (userData) => {
@@ -60,12 +69,6 @@ function RouterComponent({ user, setUser, flat, setFlat, tasks, setTasks }) {
     }
   };
 
-  const handleCalendarTest = async (tasksData) => {
-    setTasks(tasksData);
-    console.log("In handle", tasksData);
-    navigate('/calendar');
-  }
-
   const handleSignupSuccess = () => navigate('/');
 
   return (
@@ -73,13 +76,13 @@ function RouterComponent({ user, setUser, flat, setFlat, tasks, setTasks }) {
       <Route path="/" element={<Welcome onShowLogin={() => navigate('/login')} onShowSignup={() => navigate('/signup')} />} />
       <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess} />} />
       <Route path="/signup" element={<SignUp onSignUpSuccess={handleSignupSuccess} />} />
-      <Route path="/loginSuccess" element={user ? <LoginSuccess user={user} onCalendarTest={handleCalendarTest} /> : <div>Loading...</div>} />
+      <Route path="/loginSuccess" element={user ? <LoginSuccess user={user} onCalendarTest={onShowCalendar} /> : <div>Loading...</div>} />
       <Route path="/createFlat" element={<CreateFlat onCreateSuccess={(flatData) => { setFlat(flatData); navigate('/loginSuccess'); }} userData={user} />} />
       <Route path="/joinFlat" element={<JoinFlat createFlat={() => navigate('/createFlat')} joinFlat={(flatData) => { setFlat(flatData); navigate('/loginSuccess'); }} userData={user} />} />
       <Route path="/calendar" element={<Calendar tasksData={tasks} />} />
-      <Route path="/tasks" element={<Tasks flatData = {flat} />} />
-      <Route path="/payments" element={<Payments flatData = {flat}/>} />
-      <Route path="/profile" element={user ? <Profile user={user} /> : <div>Loading...</div>} /> {}
+      <Route path="/tasks" element={<Tasks flatData={flat} />} />
+      <Route path="/payments" element={<Payments flatData={flat} />} />
+      <Route path="/profile" element={user ? <Profile user={user} /> : <div>Loading...</div>} />
     </Routes>
   );
 }

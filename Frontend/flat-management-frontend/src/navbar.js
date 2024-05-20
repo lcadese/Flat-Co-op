@@ -1,7 +1,8 @@
+// navbar.js
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
-function Navbar({ user, onLogout }) {
+function Navbar({ user, onLogout, onShowCalendar }) {
   const navigate = useNavigate();
 
   const handleLogoClick = (e) => {
@@ -17,6 +18,12 @@ function Navbar({ user, onLogout }) {
     e.preventDefault();
     onLogout();
     navigate('/');
+  };
+
+  const handleCalendarClick = async (e) => {
+    e.preventDefault();
+    await onShowCalendar(user.flatID);
+    navigate('/calendar');
   };
 
   return (
@@ -43,6 +50,7 @@ function Navbar({ user, onLogout }) {
             <li>
               <NavLink 
                 to="/calendar" 
+                onClick={handleCalendarClick}
                 className={({ isActive }) => (isActive ? 'active' : '')}
               >
                 Calendar
