@@ -40,12 +40,11 @@ const Tasks = ({flatData}) => {
     function addPerson(event){
         const value = event.target.value;
         event.target.value = "nan";
-        if (value == "nan")
+        if (value === "nan")
         {
             return null;
         }
         setSelected([...selected,<button onClick = {removePerson} value = {parseInt(value)}>{"Remove " + people[parseInt(value)].firstName + " " + people[parseInt(value)].lastName}</button>]);
-        const temp = options.filter(a => a.props.value !== parseInt(value));
         setOptions(
             options.filter(a => a.props.value !== parseInt(value))
         );

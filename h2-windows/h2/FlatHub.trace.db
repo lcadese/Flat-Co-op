@@ -1738,6 +1738,7 @@ SELECT * FROM USERS where flatid = flat1 [42122-220]
 	at org.h2.server.web.WebThread.process(WebThread.java:188)
 	at org.h2.server.web.WebThread.run(WebThread.java:101)
 	at java.base/java.lang.Thread.run(Thread.java:833)
+<<<<<<< Updated upstream
 2024-05-17 09:32:12 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table if not exists payment\000d\000a(\000d\000a paymentID varchar(50),\000d\000a userID varchar(50),\000d\000a amount Numeric(10),\000d\000a payed bool not null,\000d\000a constraint payment_pk primary key (paymentID),\000d\000a constraint payment_users_fk foreign key (userID) references users(userID),\000d\000a[*])"; expected "identifier"; SQL statement:
 create table if not exists payment
@@ -1766,3 +1767,65 @@ org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PAYMENT" not found; SQL statemen
 INSERT INTO payment (taskID, userID, amount, payed) VALUES
 ('task1', 'user1', 100.00, false),
 ('task2', 'user2', 150.00, true) [42102-220]
+=======
+2024-05-16 22:45:33 jdbc[54]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Ambiguous column name "TASKID"; SQL statement:
+SELECT TASKID,TASKNAME,DESCRIPTION,FLATID,COMPLETED,REQUESTEDDATE,TASKID FROM Task 
+inner join assigned on task.taskId = assigned.taskid
+where userid = '8995d6a6-7937-4bd5-8b3e-ef32aa74793c' [90059-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.mapColumn(ExpressionColumn.java:197)
+	at org.h2.expression.ExpressionColumn.mapColumns(ExpressionColumn.java:175)
+	at org.h2.command.query.Select.mapColumns(Select.java:1558)
+	at org.h2.command.query.Select.init(Select.java:1100)
+	at org.h2.command.Parser.parseQuery(Parser.java:2627)
+	at org.h2.command.Parser.parsePrepared(Parser.java:732)
+	at org.h2.command.Parser.parse(Parser.java:697)
+	at org.h2.command.Parser.parse(Parser.java:669)
+	at org.h2.command.Parser.prepareCommand(Parser.java:577)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:634)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:557)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-05-16 22:45:49 jdbc[54]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Ambiguous column name "TASKID"; SQL statement:
+SELECT TASKID,TASKNAME,DESCRIPTION,FLATID,COMPLETED,REQUESTEDDATE,Task.TASKID FROM Task 
+inner join assigned on task.taskId = assigned.taskid
+where userid = '8995d6a6-7937-4bd5-8b3e-ef32aa74793c' [90059-220]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.mapColumn(ExpressionColumn.java:197)
+	at org.h2.expression.ExpressionColumn.mapColumns(ExpressionColumn.java:175)
+	at org.h2.command.query.Select.mapColumns(Select.java:1558)
+	at org.h2.command.query.Select.init(Select.java:1100)
+	at org.h2.command.Parser.parseQuery(Parser.java:2627)
+	at org.h2.command.Parser.parsePrepared(Parser.java:732)
+	at org.h2.command.Parser.parse(Parser.java:697)
+	at org.h2.command.Parser.parse(Parser.java:669)
+	at org.h2.command.Parser.prepareCommand(Parser.java:577)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:634)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:557)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1109)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1096)
+	at org.h2.server.web.WebThread.process(WebThread.java:188)
+	at org.h2.server.web.WebThread.run(WebThread.java:101)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+>>>>>>> Stashed changes

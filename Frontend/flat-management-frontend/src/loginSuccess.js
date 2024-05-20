@@ -19,7 +19,7 @@ const LoginSuccess = ({ user, onCalendarTest }) => {
       };
       const fetchPaymentData = async () => {
         try {
-          const response = await axios.get(`http://localhost:8080/payments`);
+          const response = await axios.get(`http://localhost:8080/payments/userID/`+user.userID);
           const updatedPayments = [];
           for (const payment of response.data) {
             const userDetail = await fetchUserDetails(payment.userID);
@@ -96,7 +96,7 @@ const LoginSuccess = ({ user, onCalendarTest }) => {
       <button onClick={handleCalendar}>Show Calendar</button>
       <h1>Current tasks:</h1>
       {tasksDisplay}
-      <h1>Payments</h1>
+      <h1>Payments:</h1>
       <div>
         {payments.map(payment => (
           <div key={payment.paymentID}>

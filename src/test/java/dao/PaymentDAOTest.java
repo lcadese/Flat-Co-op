@@ -119,4 +119,9 @@ class PaymentDAOTest {
         assertFalse(dao.getPayment(payment.getPaymentID()).getPayed());
 
     }
+
+    @Test
+    void getPaymentsByUserID(){
+        assertThat(dao.getPaymentsByUserID(user.getUserID()),hasItem(payment));
+    }
 }

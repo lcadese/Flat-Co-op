@@ -5,9 +5,11 @@ import com.google.gson.GsonBuilder;
 import dao.PaymentDAO;
 import domain.ErrorMessage;
 import domain.Payments;
+import domain.Task;
 import io.jooby.Jooby;
 import io.jooby.StatusCode;
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.UUID;
 
 public class PaymentResource extends Jooby {
@@ -66,6 +68,12 @@ public class PaymentResource extends Jooby {
                             .setResponseCode(StatusCode.BAD_REQUEST)
                             .send(gson.toJson(new ErrorMessage("Error updating payment status: " + e.getMessage())));
                 }
+            });
+
+            get("/userID/{userID}",ctx ->{
+                String userID = ctx.path("userID").value();
+                Collection<Payments> payments = paymentDAO.getPaymentsByUserID(userID);
+                return ctx.setResponseType("application/json").send(gson.toJson(payments));
             });
 
 //            delete("/{taskID}/{userID}", ctx -> {

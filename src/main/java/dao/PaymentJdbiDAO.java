@@ -53,4 +53,9 @@ public interface PaymentJdbiDAO extends PaymentDAO{
     @Override
     @SqlUpdate("delete from payment where paymentID = :paymentID")
     void removePayment(@BindBean Payments payment);
+
+    @Override
+    @SqlQuery("select * from payment where userID = :userID")
+    @RegisterBeanMapper(Payments.class)
+    Collection<Payments> getPaymentsByUserID(@Bind("userID") String UserID);
 }
