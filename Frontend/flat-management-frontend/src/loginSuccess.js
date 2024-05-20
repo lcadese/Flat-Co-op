@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const LoginSuccess = ({ user, onCalendarTest }) => {
+const LoginSuccess = ({ user }) => {
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState('');
   const [tasks, setTasks] = useState([]);
@@ -80,20 +80,6 @@ const LoginSuccess = ({ user, onCalendarTest }) => {
     }
   };
 
-  const handleCalendar = async (e) => {
-    e.preventDefault();
-    if (userData && userData.flatID) {
-      try {
-        const response = await axios.get(`http://localhost:8080/tasks/flatID/${userData.flatID}`);
-        onCalendarTest(response.data);
-      } catch (error) {
-        setError('Failed to fetch tasks data');
-      }
-    } else {
-      setError('User data not loaded');
-    }
-  };
-
   return (
     <div>
       <h1>Login Successful</h1>
@@ -107,13 +93,12 @@ const LoginSuccess = ({ user, onCalendarTest }) => {
         <p>Loading user data...</p>
       )}
       {error && <p>{error}</p>}
-      <button onClick={handleCalendar}>Show Calendar</button>
-      <h1>Current tasks:</h1>
+      <h1 id="pad">Current tasks:</h1>
       {tasksDisplay}
-      <h1>Payments:</h1>
+      <h1 id="pad">Payments:</h1>
       <div>
         {payments.map(payment => (
-          <div key={payment.paymentID}>
+          <div key={payment.paymentID} id="pay">
             <span>User Name: {payment.userDetails?.firstName} {payment.userDetails?.lastName}, </span>
             <span>Amount: ${payment.amount} </span>
             <input

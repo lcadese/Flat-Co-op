@@ -64,8 +64,12 @@ body {
     background-color: var(--hover-color);
 }
 
-h1, h2 ,h3,span {
+h1, h2 ,h3,span,#pay {
     text-align: center;
+}
+
+#pad {
+    padding: 40px 10px 0px;
 }
 
 button, button[type="submit"] {

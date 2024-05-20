@@ -84,7 +84,7 @@ function RouterComponent({ user, setUser, flat, setFlat, tasks, setTasks, onShow
       <Route path="/" element={<Welcome onShowLogin={() => navigate('/login')} onShowSignup={() => navigate('/signup')} />} />
       <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess} />} />
       <Route path="/signup" element={<SignUp onSignUpSuccess={handleSignupSuccess} />} />
-      <Route path="/loginSuccess" element={user ? <LoginSuccess user={user} onCalendarTest={onShowCalendar} /> : <div>Loading...</div>} />
+      <Route path="/loginSuccess" element={user ? <LoginSuccess user={user}/> : <div>Loading...</div>} />
       <Route path="/createFlat" element={<CreateFlat onCreateSuccess={(flatData) => { setFlat(flatData); navigate('/loginSuccess'); }} userData={user} />} />
       <Route path="/joinFlat" element={<JoinFlat createFlat={() => navigate('/createFlat')} joinFlat={(flatData) => { setFlat(flatData); navigate('/loginSuccess'); }} userData={user} />} />
       <Route path="/calendar" element={<Calendar tasksData={tasks} />} />
