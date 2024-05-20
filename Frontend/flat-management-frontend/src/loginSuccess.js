@@ -4,6 +4,7 @@ import axios from 'axios';
 const LoginSuccess = ({ user, onCalendarTest }) => {
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState('');
+  const [tasks, setTasks] = useState([]);
   const [tasksDisplay, setTasksDisplay] = useState([]);
   const [payments, setPayments] = useState([]);
 
@@ -13,6 +14,19 @@ const LoginSuccess = ({ user, onCalendarTest }) => {
         try {
           const response = await axios.get(`http://localhost:8080/user/${user.userID}`);
           setUserData(response.data);
+
+         const response2 = await axios.get(`http://localhost:8080/tasks/userID/${user.userID}`);
+         const temp = [];
+         setTasks(response2);
+         for(let i=0; i < response2.data.length ; i++)
+         {
+          temp.push(<div>
+              <h2>{response2.data[i].taskName}: </h2>
+              <h3>{response2.data[i].description}</h3>
+              <h3>by:{response2.data[i].requestedDate.substring(0,10)}</h3>
+           </div>);
+          }
+          setTasksDisplay(temp);
         } catch (error) {
           setError('Failed to fetch user data ' + error);
         }
