@@ -26,29 +26,30 @@ const Tasks = ({flatData}) => {
         dataRes();
     }, []);
 
-    function removePerson(event)
-    {
-        console.log("help?",options);
-        const value = event.target.value;
-        setOptions([...options,<option value={parseInt(value)}>{people[parseInt(value)].firstName + " " + people[parseInt(value)].lastName}</option>]);
-        setSelected(
-            selected.filter(a => a.props.value !== parseInt(value))
+
+    function removePerson(index) {
+        const person = selected[index];
+        const personToAddBack = (
+            <option key={person.userID} value={people.findIndex(p => p.userID === person.userID)}>
+                {person.firstName + ' ' + person.lastName}
+            </option>
         );
+
+        setOptions(prevOptions => [...prevOptions, personToAddBack]);
+        setSelected(selected.filter((_, i) => i !== index));
     }
 
 
     function addPerson(event){
-        const value = event.target.value;
-        event.target.value = "nan";
-        if (value === "nan")
-        {
-            return null;
+                const value = parseInt(event.target.value);
+        event.target.value = 'nan';
+        if (isNaN(value)) {
+            return;
         }
-        setSelected([...selected,<button onClick = {removePerson} value = {parseInt(value)}>{"Remove " + people[parseInt(value)].firstName + " " + people[parseInt(value)].lastName}</button>]);
-        setOptions(
-            options.filter(a => a.props.value !== parseInt(value))
-        );
-        console.log("test",options);
+
+        const person = people[value];
+        setSelected([...selected, person]);
+        setOptions(options.filter(a => a.props.value !== value));
     }
 
     const handleCreateTask = async (e) => {
@@ -95,7 +96,14 @@ const Tasks = ({flatData}) => {
                 <button type="submit">Create Task</button>
             </form>
             <h2>Flat Mate's assigned:</h2>
-            {selected}
+            <div>
+                {selected.map((person, index) => (
+                    <div key={person.userID}>
+                        {person.firstName + ' ' + person.lastName}
+                        <button onClick={() => removePerson(index)}>Remove</button>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }
