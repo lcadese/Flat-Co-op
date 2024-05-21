@@ -1,3 +1,4 @@
+// login.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -13,13 +14,11 @@ const Login = ({ onLoginSuccess }) => {
         username,
         password
       });
-      if (response.data) {
+      if (response.status === 200) {
         onLoginSuccess(response.data);
-      } else {
-        setError('Invalid username or password');
       }
     } catch (error) {
-      setError('Invalid username or password');
+      setError('Failed to login');
     }
   };
 
@@ -27,14 +26,12 @@ const Login = ({ onLoginSuccess }) => {
     <div>
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
-        <div>
-          <label>Username:</label>
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} required />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
-        </div>
+        <label>Username: </label>
+        <input type="text" value={username} onChange={e => setUsername(e.target.value)} required />
+        <br /><br />
+        <label>Password: </label>
+        <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+        <br /><br />
         <button type="submit">Login</button>
         {error && <p>{error}</p>}
       </form>

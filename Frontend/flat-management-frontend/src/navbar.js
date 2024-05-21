@@ -22,8 +22,10 @@ function Navbar({ user, onLogout, onShowCalendar }) {
 
   const handleCalendarClick = async (e) => {
     e.preventDefault();
-    await onShowCalendar(user.flatID);
-    navigate('/calendar');
+    if (user && user.flatID) {
+      await onShowCalendar(user.flatID);
+      navigate('/calendar');
+    }
   };
 
   return (
@@ -116,3 +118,4 @@ function Navbar({ user, onLogout, onShowCalendar }) {
 }
 
 export default Navbar;
+

@@ -99,8 +99,8 @@ const LoginSuccess = ({ user }) => {
       <div>
         {payments.map(payment => (
           <div key={payment.paymentID} id="pay">
-            <span>User Name: {payment.userDetails?.firstName} {payment.userDetails?.lastName}, </span>
             <span>Amount: ${payment.amount} </span>
+            <span>- {payment.description}</span>
             <input
               type="checkbox"
               checked={payment.payed}
