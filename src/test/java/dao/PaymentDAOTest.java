@@ -57,7 +57,7 @@ class PaymentDAOTest {
         dao = JdbiDaoFactory.getPaymentDAO();
         
 //        payment = new Payments(user.getUserID(),flat.getflatID(),new BigDecimal(1.0),false);
-        payment = new Payments("payment3", user.getUserID(),new BigDecimal(1.0),false);
+        payment = new Payments("payment3", user.getUserID(),new BigDecimal(1.0),false,"description");
         
         dao.createPayment(payment);
     }
@@ -86,7 +86,7 @@ class PaymentDAOTest {
 
     @Test
     void createPayment() {
-        Payments payment1 = new Payments("payment4", user.getUserID(), new BigDecimal(2.0), false);
+        Payments payment1 = new Payments("payment4", user.getUserID(), new BigDecimal(2.0), false, "description");
         Collection<Payments> payments = dao.getAllPayments();
         System.out.println(payments.toString());
         
