@@ -25,6 +25,7 @@ public class PaymentResource extends Jooby {
             post("/", ctx -> {
                 Payments payment = gson.fromJson(ctx.body().value(), Payments.class);
                 System.out.println(payment.toString());
+                System.out.println(ctx.body().value());
                 if (payment.getPaymentID() == null || payment.getPaymentID().isEmpty()) {
                     payment.setPaymentID(UUID.randomUUID().toString()); // Set a new UUID
                 }

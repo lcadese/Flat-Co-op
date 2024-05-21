@@ -27,5 +27,6 @@ public interface PaymentDAO {
     void setPayed(String paymentID,Boolean payed);
     Collection<Payments> getAllPayments();
     Collection<Payments> getPaymentsByUserID(String UserID);
+    
 
 }

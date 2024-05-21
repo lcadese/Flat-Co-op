@@ -60,6 +60,7 @@ create table if not exists payment
  userID varchar(50),
  amount Numeric(10),
  payed bool not null,
+ desc varchar(100),
  constraint payment_pk primary key (paymentID),
  constraint payment_users_fk foreign key (userID) references users(userID)
 );

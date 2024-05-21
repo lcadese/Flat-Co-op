@@ -22,7 +22,7 @@ import java.util.Collection;
  */
 public interface PaymentJdbiDAO extends PaymentDAO{
     @Override
-    @SqlUpdate("INSERT INTO payment (paymentID, UserID, Amount, Payed) values (:paymentID,:userID, :amount, :payed)")
+    @SqlUpdate("INSERT INTO payment (paymentID, UserID, Amount, Payed, Desc) values (:paymentID,:userID, :amount, :payed, :desc)")
     void createPayment(@BindBean Payments payment);
 
     @Override

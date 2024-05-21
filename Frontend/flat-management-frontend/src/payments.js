@@ -10,6 +10,7 @@ const Payment = ({flatData}) => {
     const [selected, setSelected] = useState([]);
     const [amount, setAmount] = useState('');
     const [error, setError] = useState('');
+    const [desc, setDesc] = useState('');
 
     useEffect(() => {
         const dataRes = async () => {
@@ -61,14 +62,15 @@ const Payment = ({flatData}) => {
         } catch (error) {
             console.log(error)
         }
-
         try {
+            console.log(desc)
             for (const person of selected) {
                 const response = await axios.post('http://localhost:8080/payments', {
                     paymentID: null,
                     userID: person.userID,
                     amount,
-                    payed: false
+                    payed: false,
+                    desc
                 });
                 if (response.status === 201) {
                     console.log(response.data);
@@ -86,6 +88,8 @@ const Payment = ({flatData}) => {
             <form onSubmit={handleCreatePayment}>
                 <label>Amount: </label>
                 <input type="number" value={amount} onChange={e => setAmount(e.target.value)} required />
+                <label>Description: </label>
+                <input type="text" value={desc} onChange={e => setDesc(e.target.value)} required />
                 <label>Assign user:</label>
                 <select id="assign" onChange={addPerson}>
                     <option value="nan">Select Flat Mate</option>

@@ -12,12 +12,14 @@ public class Payments {
     private String userID;
     private BigDecimal amount;
     private boolean payed;
+    private String desc;
 
-    public Payments(String paymentID, String userID, BigDecimal amount, boolean payed) {
+    public Payments(String paymentID, String userID, BigDecimal amount, boolean payed, String desc) {
         this.paymentID = paymentID;
         this.userID = userID;
         this.amount = amount;
         this.payed = payed;
+        this.desc = desc;
     }
 
     public Payments() {
@@ -29,6 +31,14 @@ public class Payments {
 
     public void setPaymentID(String paymentID) {
         this.paymentID = paymentID;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
 
