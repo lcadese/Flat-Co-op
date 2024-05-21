@@ -1,46 +1,45 @@
-import React, { useEffect,useState } from 'react';
-import axios from 'axios'
-// export default function Payments(){
-//     return <h1>Add a Payment</h1>
-// }
+// payments.js
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const Payment = ({flatData}) => {
+const Payment = ({ flatData, user }) => {
     const [options, setOptions] = useState([]);
     const [people, setPeople] = useState([]);
     const [selected, setSelected] = useState([]);
     const [amount, setAmount] = useState('');
     const [error, setError] = useState('');
-    const [desc, setDesc] = useState('');
+    const [description, setdescription] = useState('');
 
     useEffect(() => {
         const dataRes = async () => {
-            const response = await axios.get('http://localhost:8080/flatUsers/'+flatData.flatID);
-            // console.log(response.data);
-            setPeople(response.data);
-            const temp = [];
-            for(let i=0; i < response.data.length ; i++)
-            {
-                temp.push(<option value={i}>{response.data[i].firstName + " " + response.data[i].lastName}</option>)
+            try {
+                const response = await axios.get(`http://localhost:8080/flatUsers/${flatData.flatID}`);
+                setPeople(response.data);
+                const temp = response.data.map((person, i) => (
+                    <option key={i} value={i}>
+                        {person.firstName} {person.lastName}
+                    </option>
+                ));
+                setOptions(temp);
+                setSelected([]);
+            } catch (error) {
+                console.error('Error fetching flat users:', error);
             }
-            setOptions(temp);
-            setSelected([]);
-        }
+        };
         dataRes();
-    }, []);
+    }, [flatData.flatID]);
 
     function removePerson(index) {
         const person = selected[index];
         const personToAddBack = (
             <option key={person.userID} value={people.findIndex(p => p.userID === person.userID)}>
-                {person.firstName + ' ' + person.lastName}
+                {person.firstName} {person.lastName}
             </option>
         );
 
         setOptions(prevOptions => [...prevOptions, personToAddBack]);
         setSelected(selected.filter((_, i) => i !== index));
     }
-
-    
 
     function addPerson(event) {
         const value = parseInt(event.target.value);
@@ -53,7 +52,7 @@ const Payment = ({flatData}) => {
         setSelected([...selected, person]);
         setOptions(options.filter(a => a.props.value !== value));
     }
-    
+
     const handleCreatePayment = async (e) => {
         e.preventDefault();
         try {
@@ -63,14 +62,14 @@ const Payment = ({flatData}) => {
             console.log(error)
         }
         try {
-            console.log(desc)
+            console.log(description)
             for (const person of selected) {
                 const response = await axios.post('http://localhost:8080/payments', {
                     paymentID: null,
                     userID: person.userID,
                     amount,
                     payed: false,
-                    desc
+                    description
                 });
                 if (response.status === 201) {
                     console.log(response.data);
@@ -89,7 +88,7 @@ const Payment = ({flatData}) => {
                 <label>Amount: </label>
                 <input type="number" value={amount} onChange={e => setAmount(e.target.value)} required />
                 <label>Description: </label>
-                <input type="text" value={desc} onChange={e => setDesc(e.target.value)} required />
+                <input type="text" value={description} onChange={e => setdescription(e.target.value)} required />
                 <label>Assign user:</label>
                 <select id="assign" onChange={addPerson}>
                     <option value="nan">Select Flat Mate</option>

@@ -60,7 +60,7 @@ create table if not exists payment
  userID varchar(50),
  amount Numeric(10),
  payed bool not null,
- desc varchar(100),
+ description varchar(100),
  constraint payment_pk primary key (paymentID),
  constraint payment_users_fk foreign key (userID) references users(userID)
 );
@@ -91,6 +91,6 @@ INSERT INTO assigned (taskID, userID) VALUES
 ('task2', 'user2');
 
 -- Inserting Payments
-INSERT INTO payment (paymentID, userID, amount, payed) VALUES
-('payment1', 'user1', 100.00, false),
-('payment', 'user2', 150.00, true);
+INSERT INTO payment (paymentID, userID, amount, payed, description) VALUES
+('payment1', 'user1', 100.00, FALSE, 'This is for John'),
+('payment2', 'user2', 150.00, TRUE, 'Please pay Keith');
