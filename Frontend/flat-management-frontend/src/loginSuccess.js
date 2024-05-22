@@ -16,13 +16,20 @@ const LoginSuccess = ({ user }) => {
           setUserData(response.data);
 
           const tasksResponse = await axios.get(`http://localhost:8080/tasks/userID/${user.userID}`);
-          const temp = tasksResponse.data.map((task) => (
-            <div key={task.taskID}>
-              <h2>{task.taskName}: </h2>
-              <h3>{task.description}</h3>
-              <h3>by: {task.requestedDate.substring(0, 10)}</h3>
-            </div>
-          ));
+          const temp = tasksResponse.data
+            .filter(task => !task.completed)  // Filter out completed tasks
+            .map((task) => (
+              <div key={task.taskID}>
+                <h2>{task.taskName}: </h2>
+                <h3>{task.description}</h3>
+                <h3>by: {task.requestedDate.substring(0, 10)}</h3>
+                <input
+                  type="checkbox"
+                  checked={task.completed}
+                  onChange={() => handleTaskCheckboxChange(task.taskID, task.completed)}
+                />
+              </div>
+            ));
           setTasksDisplay(temp);
         } catch (error) {
           setError('Failed to fetch user data: ' + error);
@@ -82,6 +89,31 @@ const LoginSuccess = ({ user }) => {
       setError('An error occurred while updating the payment status');
     }
   };
+
+  const handleTaskCheckboxChange = async (taskID, currentStatus) => {
+    try {
+      // Fetch the current task details
+      const taskResponse = await axios.get(`http://localhost:8080/tasks/${taskID}`);
+      const task = taskResponse.data;
+  
+      // Update the completed status
+      const updatedTask = { ...task, completed: !currentStatus };
+  
+      // Send the PUT request with the updated task object
+      await axios.put(`http://localhost:8080/tasks/${taskID}`, updatedTask, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+  
+      // Remove the task from the display if it's completed
+      setTasksDisplay(tasksDisplay.filter(task => task.key !== taskID));
+    } catch (error) {
+      console.error('Error updating task status', error);
+      setError('An error occurred while updating the task status');
+    }
+  };
+  
 
   return (
     <div>

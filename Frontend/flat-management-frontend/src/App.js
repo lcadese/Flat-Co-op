@@ -116,7 +116,7 @@ function RouterComponent({ user, setUser, flat, setFlat, tasks, setTasks, onFetc
       <Route path="/signup" element={<SignUp onSignUpSuccess={handleSignupSuccess} />} />
       <Route path="/loginSuccess" element={user && flat ? <LoginSuccess user={user} /> : <div>Loading...</div>} />
       <Route path="/createFlat" element={<CreateFlat onCreateSuccess={handleCreateFlat} userData={user} />} />
-      <Route path="/joinFlat" element={<JoinFlat createFlat={() => navigate('/createFlat')} joinFlat={(flatData) => { setFlat(flatData); localStorage.setItem('flat', JSON.stringify(flatData)); navigate('/loginSuccess'); }} userData={user} />} />
+      <Route path="/joinFlat" element={<JoinFlat createFlat={() => navigate('/createFlat')} joinFlat={handleCreateFlat} userData={user} />} />
       <Route path="/calendar" element={flat ? <Calendar tasksData={tasks} /> : <div>Loading...</div>} />
       <Route path="/tasks" element={flat ? <Tasks flatData={flat} /> : <div>Loading...</div>} />
       <Route path="/payments" element={flat && user ? <Payments flatData={flat} user={user} /> : <div>Loading...</div>} />
