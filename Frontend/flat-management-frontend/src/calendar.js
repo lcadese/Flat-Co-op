@@ -1,18 +1,22 @@
+// calendar.js
+
 import React from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { Tooltip } from 'react-tooltip';
 
 function test(tasks) {
-  const events = tasks.map(task => ({
-    title: `${task.taskName} - ${task.assignedUsers}`,
-    date: task.requestedDate.substring(0, 10),
-    extendedProps: {
-      description: task.taskName,
-      assignedUsers: task.assignedUsers
-    },
-    id: task.taskID
-  }));
+  const events = tasks
+    .filter(task => !task.completed) // Filter out completed tasks
+    .map(task => ({
+      title: `${task.taskName} - ${task.assignedUsers}`,
+      date: task.requestedDate.substring(0, 10),
+      extendedProps: {
+        description: task.taskName,
+        assignedUsers: task.assignedUsers
+      },
+      id: task.taskID
+    }));
   return events;
 }
 
