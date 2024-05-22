@@ -69,6 +69,8 @@
 - Navigate to payment tab in navbar
 - Enter payment details
 - Click create pay
+<br>
+<br>
 
 **8) View Payment:**
 - Navigate to calender tab in navbar
@@ -78,7 +80,7 @@
 
 **9) Mark as Complete:**
 - Navigate to dashboard in navbar
-- Mark payments as complete with checkbox as required
+- Mark payments or tasks as complete using checkbox as required
 <br>
 <br>
 
@@ -96,4 +98,8 @@
 
 [Feasibility Study](https://docs.google.com/document/d/1v9Tw4Ltn0yRUwumZ-bjPKNyZb1GMgd2czavlDw4zOhU/edit)
 
-[Slides](https://docs.google.com/presentation/d/1lBpntEKT-qJhh_yhGnO01gX-YvSJ_nLBGLA6onixSPc/edit#slide=id.g26bfd092671_0_4744)
+[Milestone 1 Slides](https://docs.google.com/presentation/d/1lBpntEKT-qJhh_yhGnO01gX-YvSJ_nLBGLA6onixSPc/edit#slide=id.g26bfd092671_0_4744)
+
+[Milestone 2.5 Slides](https://docs.google.com/presentation/d/1Qgc3WGZGrKrhpDWpHIndx_89exMNIFvN3chPMsavNBM/edit?usp=sharing)
+
+[Final Presentation Slides](https://docs.google.com/presentation/d/1F3PMVmFSD-gOTRjP4JCRCvr4gBBWTXIz2WZdkMj_X4c/edit?usp=sharing)
