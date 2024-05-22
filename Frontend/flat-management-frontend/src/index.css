@@ -64,7 +64,7 @@ body {
     background-color: var(--hover-color);
 }
 
-h1, h2 ,h3,span,#pay ,label{
+h1, h2 ,h3,span,#pay ,label,p{
     text-align: center;
 }
 
@@ -108,6 +108,7 @@ input[type="password"],
 input[type="email"],
 input[type="date"],
 input[type="number"],
+input[type="checkbox"],
 select{
     width: 60%;
     padding: 8px;
