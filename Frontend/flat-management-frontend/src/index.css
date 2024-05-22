@@ -189,4 +189,67 @@ label {
     font-size: 18px; /* Adjust this value as needed */
      
   }
+
+
+
+  .dashboard-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .welcome-message {
+    text-align: center;
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .section-heading {
+    font-size: 1.8em;
+    color: #333;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .error-message {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .tasks-container,
+  .payments-container {
+    margin-top: 20px;
+  }
+  
+  .task,
+  .payment {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .task h2,
+  .payment span {
+    font-size: 1.2em;
+    color: #555;
+  }
+  
+  .task h3 {
+    font-size: 1em;
+    color: #888;
+    margin-top: 5px;
+  }
+  
+  .payment input[type="checkbox"] {
+    margin-left: 10px;
+    transform: scale(1.2);
+  }
+  
   

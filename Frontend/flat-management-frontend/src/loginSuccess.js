@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './index.css';
 
 const LoginSuccess = ({ user }) => {
   const [userData, setUserData] = useState(null);
@@ -19,7 +20,7 @@ const LoginSuccess = ({ user }) => {
           const temp = tasksResponse.data
             .filter(task => !task.completed)  // Filter out completed tasks
             .map((task) => (
-              <div key={task.taskID}>
+              <div key={task.taskID} className="task">
                 <h2>{task.taskName}: <input
                   type="checkbox"
                   checked={task.completed}
@@ -115,25 +116,27 @@ const LoginSuccess = ({ user }) => {
   
 
   return (
-    <div>
+    <div className="dashboard-container">
       {loading ? (
         <p>Loading data...</p>
       ) : (
         <>
           {userData ? (
             <>
-              <h1>Welcome back, {userData.firstName} {userData.lastName}!</h1>
+              <h1 className="welcome-message">Welcome back, {userData.firstName} {userData.lastName}!</h1>
             </>
           ) : (
             <p>Loading user data...</p>
           )}
-          {error && <p>{error}</p>}
-          <h1 id="pad">Current tasks:</h1>
-          {tasksDisplay}
-          <h1 id="pad">Payments:</h1>
-          <div>
+          {error && <p className="error-message">{error}</p>}
+          <h1 className="section-heading">Current tasks:</h1>
+          <div className="tasks-container">
+            {tasksDisplay}
+          </div>
+          <h1 className="section-heading">Payments:</h1>
+          <div className="payments-container">
             {payments.filter(payment => !payment.payed).map(payment => (
-              <div key={payment.paymentID} id="pay">
+              <div key={payment.paymentID} className="payment">
                 <span>Amount: ${payment.amount} </span>
                 <span>- {payment.description}</span>
                 <input
