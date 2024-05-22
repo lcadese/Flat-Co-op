@@ -119,8 +119,8 @@ const Tasks = ({ flatData }) => {
                 {selected.map((index) => {
                     const person = people[index];
                     return (
-                        <div key={person.userID}>
-                            {person.firstName + ' ' + person.lastName}
+                        <div key={person.userID} id = "pay">
+                            <h3>{person.firstName + ' ' + person.lastName}</h3>
                             <button onClick={() => removePerson(index)}>Remove</button>
                         </div>
                     );
