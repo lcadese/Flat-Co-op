@@ -155,23 +155,35 @@ label {
     padding: 20px 0; 
 }
 .profile-container {
-    width: 100%;
-    max-width: 400px; /* Adjust this value as needed */
+    max-width: 600px;
     margin: 0 auto;
-    text-align: left; /* Align text to the left */
+    margin-top: 2vw;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .profile-container p {
-    margin-left: 0; /* Ensure no extra left margin */
-    margin-right: 0; /* Ensure no extra right margin */
-    padding-left: 10px; /* Adjust this value for desired indentation */
-    font-size: 25px;
+  .profile-heading {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
   }
   
-  .profile-container h1 {
-    text-align: center; /* Center align the heading */
-    margin-bottom: 20px; /* Space between heading and paragraphs */
+  .profile-details {
+    font-size: 1.2em;
+    color: #555;
   }
+  
+  .profile-details p {
+    margin: 10px 0;
+  }
+  
+  .profile-details strong {
+    color: #000;
+  }
+  
   
   #pay span {
     font-size: 18px; /* Adjust this value as needed */
