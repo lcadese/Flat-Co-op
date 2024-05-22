@@ -36,7 +36,7 @@ public class FlatResource extends Jooby {
                 try {
                     flatDAO.addFlat(flat);
                     userDAO.setFlat(flat.getHost(),flat.getflatID());
-                    return ctx.send(StatusCode.CREATED);
+                    return ctx.setResponseCode(StatusCode.CREATED).setResponseType("application/json").send(gson.toJson(flat));
                 } catch (Exception e) {
                     System.out.println(e);
                     return ctx.setResponseType("application/json")
