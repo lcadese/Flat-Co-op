@@ -1,7 +1,6 @@
 # GUIDE TO FLAT HUB
 
 **1) Clone Flat Hub Repository to Machine:** 
-- Visit GitHub 
 - Navigate to Flat Hub repository 
 - Click green code drop down
 - Copy web URL to clip board
@@ -9,14 +8,12 @@
 <br>
 <br>
 
-
 **2) Run Shell File**
 - Open terminal in Flat-Co-Op folder
-- Run the shell file names 'start.sh' (*This will run the relevant resources required*)
+- Run the shell file named 'start.sh' (*This will run the relevant resources required*)
 - Visit http://localhost:3000 in your web browser
 <br>
 <br>
-
 
 **3) Create Account:**
 - Click create account button on home page
@@ -32,7 +29,6 @@
 <br>
 <br>
 
-
 **5) Create Flat:**
 - Click create flat button
 - Enter details
@@ -40,51 +36,51 @@
 <br>
 <br>
 
-**4)  Log Back In:**
+**6)  Log Back In:**
 - Click log in button on home page
 - Enter details
 <br>
 <br>
 
-**6) Invite Flat Mates:**
+**7) Invite Flat Mates:**
 - Share the code shown on screen to fellow flatmates so they can join flat 
 - This code can also be found on the profile page
 <br>
 <br>
 
-**7) Add Task:**
+**8) Add Task:**
 - Navigate to tasks tab in navbar
 - Enter task details
 - Click create task button
 <br>
 <br>
 
-**8) View Task:**
+**9) View Task:**
 - Navigate to calender tab in navbar
 - Tasks should appear - hover to see additional flatmates assigned
 <br>
 <br>
 
-**9) Add Payment:**
+**10) Add Payment:**
 - Navigate to payment tab in navbar
 - Enter payment details
 - Click create pay
 <br>
 <br>
 
-**8) View Payment:**
+**11) View Payment:**
 - Navigate to calender tab in navbar
 - Payments should appear - hover to see additional flatmates assigned
 <br>
 <br>
 
-**9) Mark as Complete:**
+**12) Mark as Complete:**
 - Navigate to dashboard in navbar
 - Mark payments or tasks as complete using checkbox as required
 <br>
 <br>
 
-**10) Log Out:**
+**13) Log Out:**
 - Click log out button in top left of navbar
 
 
