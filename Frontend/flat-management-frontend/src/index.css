@@ -64,7 +64,7 @@ body {
     background-color: var(--hover-color);
 }
 
-h1, h2 ,h3,span,#pay {
+h1, h2 ,h3,span,#pay ,label{
     text-align: center;
 }
 
@@ -107,15 +107,16 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="date"],
+input[type="number"],
 select{
-    width: 100%;
+    width: 60%;
     padding: 8px;
-    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
     background-color: var(--background-color);
-    color: var(--text-color); 
+    color: var(--text-color);
+    margin: 0 20% 10px 20%;
 }
 
 .create-flat {
