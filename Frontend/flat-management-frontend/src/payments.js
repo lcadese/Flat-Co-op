@@ -99,8 +99,8 @@ const Payment = ({ flatData, user }) => {
             <h2>Flat Mate's assigned:</h2>
             <div>
                 {selected.map((person, index) => (
-                    <div key={person.userID}>
-                        {person.firstName + ' ' + person.lastName}
+                    <div key={person.userID} id ="pay">
+                        <h3>{person.firstName + ' ' + person.lastName}</h3>
                         <button onClick={() => removePerson(index)}>Remove</button>
                     </div>
                 ))}
