@@ -2,7 +2,7 @@ import React from 'react';
 
 const Profile = ({ user }) => {
   return (
-    <div>
+    <div className="profile-container">
       <h1>Profile</h1>
       <p><strong>Username:</strong> {user.username}</p>
       <p><strong>First Name:</strong> {user.firstName}</p>

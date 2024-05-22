@@ -20,14 +20,13 @@ const LoginSuccess = ({ user }) => {
             .filter(task => !task.completed)  // Filter out completed tasks
             .map((task) => (
               <div key={task.taskID}>
-                <h2>{task.taskName}: </h2>
-                <h3>{task.description}</h3>
-                <h3>by: {task.requestedDate.substring(0, 10)}</h3>
-                <input
+                <h2>{task.taskName}: <input
                   type="checkbox"
                   checked={task.completed}
                   onChange={() => handleTaskCheckboxChange(task.taskID, task.completed)}
-                />
+                /></h2>
+                <h3>{task.description}</h3>
+                <h3>by: {task.requestedDate.substring(0, 10)}</h3>
               </div>
             ));
           setTasksDisplay(temp);
@@ -117,16 +116,13 @@ const LoginSuccess = ({ user }) => {
 
   return (
     <div>
-      <h1>Login Successful</h1>
       {loading ? (
         <p>Loading data...</p>
       ) : (
         <>
           {userData ? (
             <>
-              <h2>Welcome back, {userData.firstName} {userData.lastName}!</h2>
-              <h2>Use the following code to invite someone else to the flat:</h2>
-              <h2>{userData.flatID}</h2>
+              <h1>Welcome back, {userData.firstName} {userData.lastName}!</h1>
             </>
           ) : (
             <p>Loading user data...</p>
