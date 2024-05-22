@@ -98,13 +98,24 @@ function RouterComponent({ user, setUser, flat, setFlat, tasks, setTasks, onFetc
 
   const handleSignupSuccess = () => navigate('/');
 
+  const handleCreateFlat = (flatData) =>  {
+    setFlat(flatData);
+    localStorage.setItem('flat', JSON.stringify(flatData));
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    storedUser.flatID = flatData.flatID;
+    setUser(storedUser)
+    localStorage.setItem('user',JSON.stringify(storedUser));
+    navigate('/loginSuccess');
+  }
+
+
   return (
     <Routes>
       <Route path="/" element={<Welcome onShowLogin={() => navigate('/login')} onShowSignup={() => navigate('/signup')} />} />
       <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess} />} />
       <Route path="/signup" element={<SignUp onSignUpSuccess={handleSignupSuccess} />} />
       <Route path="/loginSuccess" element={user && flat ? <LoginSuccess user={user} /> : <div>Loading...</div>} />
-      <Route path="/createFlat" element={<CreateFlat onCreateSuccess={(flatData) => { setFlat(flatData); localStorage.setItem('flat', JSON.stringify(flatData)); navigate('/loginSuccess'); }} userData={user} />} />
+      <Route path="/createFlat" element={<CreateFlat onCreateSuccess={handleCreateFlat} userData={user} />} />
       <Route path="/joinFlat" element={<JoinFlat createFlat={() => navigate('/createFlat')} joinFlat={(flatData) => { setFlat(flatData); localStorage.setItem('flat', JSON.stringify(flatData)); navigate('/loginSuccess'); }} userData={user} />} />
       <Route path="/calendar" element={flat ? <Calendar tasksData={tasks} /> : <div>Loading...</div>} />
       <Route path="/tasks" element={flat ? <Tasks flatData={flat} /> : <div>Loading...</div>} />
