@@ -108,7 +108,6 @@ input[type="password"],
 input[type="email"],
 input[type="date"],
 input[type="number"],
-input[type="checkbox"],
 select{
     width: 60%;
     padding: 8px;
