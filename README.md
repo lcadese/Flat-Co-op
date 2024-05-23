@@ -36,51 +36,46 @@
 <br>
 <br>
 
-**6)  Log Back In:**
-- Click log in button on home page
-- Enter details
-<br>
-<br>
 
-**7) Invite Flat Mates:**
+**6) Invite Flat Mates:**
 - Share the code shown on screen to fellow flatmates so they can join flat 
 - This code can also be found on the profile page
 <br>
 <br>
 
-**8) Add Task:**
+**7) Add Task:**
 - Navigate to tasks tab in navbar
 - Enter task details
 - Click create task button
 <br>
 <br>
 
-**9) View Task:**
+**8) View Task:**
 - Navigate to calender tab in navbar
 - Tasks should appear - hover to see additional flatmates assigned
 <br>
 <br>
 
-**10) Add Payment:**
+**9) Add Payment:**
 - Navigate to payment tab in navbar
 - Enter payment details
 - Click create pay
 <br>
 <br>
 
-**11) View Payment:**
+**10) View Payment:**
 - Navigate to calender tab in navbar
 - Payments should appear - hover to see additional flatmates assigned
 <br>
 <br>
 
-**12) Mark as Complete:**
+**11) Mark as Complete:**
 - Navigate to dashboard in navbar
 - Mark payments or tasks as complete using checkbox as required
 <br>
 <br>
 
-**13) Log Out:**
+**12) Log Out:**
 - Click log out button in top left of navbar
 
 
