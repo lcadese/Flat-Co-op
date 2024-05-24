@@ -1,4 +1,4 @@
-![Flat Management System Logo](Frontend\flat-management-frontend\public\flathub-logo-zip-file\png\logo-no-background.png)
+![Flat Management System Logo](Frontend/flat-management-frontend/public/flathub-logo-zip-file/png/logo-no-background.png)
 
 # Welcome to the Flat Management System
 A shared app to organise students’ lives
