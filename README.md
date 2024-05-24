@@ -1,18 +1,43 @@
+![Flat Management System Logo](Frontend\flat-management-frontend\public\flathub-logo-zip-file\png\logo-no-background.png)
+
+# Welcome to the Flat Management System
+A shared app to organise students’ lives
+
+
+
+
 # GUIDE TO FLAT HUB
 
 **1) Clone Flat Hub Repository to Machine:** 
-- Navigate to Flat Hub repository 
-- Click green code drop down
-- Copy web URL to clip board
-- Clone using method of choice
-<br>
+### Prerequisites
+- Ensure you have [Git](https://git-scm.com/downloads) installed.
+- Ensure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/get-npm) installed.
+- Ensure you have [Java](https://www.oracle.com/nz/java/technologies/downloads/) installed.
+- Ensure you have [Gradle](https://gradle.org/install/) installed.
+
+### Steps to Run the Application
+
+1. **Clone the Repository in Git Bash**
+    
+    ```sh
+    git clone git@github.com:lcadese/Flat-Co-op.git
+    cd Flat-Co-op/
+    ```
+
+2. **Set Permissions for `start.sh`**
+    ```sh
+    chmod +x start.sh
+    ```
+
+3. **Run the Start Script**
+    ```sh
+    ./start.sh
+    ```
 <br>
 
-**2) Run Shell File**
-- Open terminal in Flat-Co-Op folder
-- Run the shell file named 'start.sh' (*This will run the relevant resources required*)
-- Visit http://localhost:3000 in your web browser
-<br>
+
+**2) Visit App**
+- Visit http://localhost:3000 in your web browser if it hasnt already opened automatically.  
 <br>
 
 **3) Create Account:**

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './index.css';
 
 const LoginSuccess = ({ user }) => {
   const [userData, setUserData] = useState(null);
@@ -16,21 +15,7 @@ const LoginSuccess = ({ user }) => {
           const response = await axios.get(`http://localhost:8080/user/${user.userID}`);
           setUserData(response.data);
 
-          const tasksResponse = await axios.get(`http://localhost:8080/tasks/userID/${user.userID}`);
-          const temp = tasksResponse.data
-            .filter(task => !task.completed)  // Filter out completed tasks
-            .map((task) => (
-              <div key={task.taskID} className="task">
-                <h2>{task.taskName}: <input
-                  type="checkbox"
-                  checked={task.completed}
-                  onChange={() => handleTaskCheckboxChange(task.taskID, task.completed)}
-                /></h2>
-                <h3>{task.description}</h3>
-                <h3>by: {task.requestedDate.substring(0, 10)}</h3>
-              </div>
-            ));
-          setTasksDisplay(temp);
+          await fetchTasks(user.userID);  // Fetch tasks here
         } catch (error) {
           setError('Failed to fetch user data: ' + error);
         }
@@ -74,6 +59,28 @@ const LoginSuccess = ({ user }) => {
     }
   }, [user]);
 
+  const fetchTasks = async (userID) => {
+    try {
+      const tasksResponse = await axios.get(`http://localhost:8080/tasks/userID/${userID}`);
+      const temp = tasksResponse.data
+        .filter(task => !task.completed)  // Filter out completed tasks
+        .map((task) => (
+          <div key={task.taskID}>
+            <h2>{task.taskName}: <input
+              type="checkbox"
+              checked={task.completed}
+              onChange={() => handleTaskCheckboxChange(task.taskID, task.completed)}
+            /></h2>
+            <h3>{task.description}</h3>
+            <h3>by: {task.requestedDate.substring(0, 10)}</h3>
+          </div>
+        ));
+      setTasksDisplay(temp);
+    } catch (error) {
+      setError('Failed to fetch tasks data: ' + error);
+    }
+  };
+
   const handleCheckboxChange = async (paymentID, currentStatus) => {
     try {
       await axios.put(`http://localhost:8080/payments/${paymentID}`, !currentStatus, {
@@ -106,37 +113,34 @@ const LoginSuccess = ({ user }) => {
         }
       });
   
-      // Remove the task from the display if it's completed
-      setTasksDisplay(tasksDisplay.filter(task => task.key !== taskID));
+      // Re-fetch tasks after updating
+      await fetchTasks(user.userID);
     } catch (error) {
       console.error('Error updating task status', error);
       setError('An error occurred while updating the task status');
     }
   };
-  
 
   return (
-    <div className="dashboard-container">
+    <div>
       {loading ? (
         <p>Loading data...</p>
       ) : (
         <>
           {userData ? (
             <>
-              <h1 className="welcome-message">Welcome back, {userData.firstName} {userData.lastName}!</h1>
+              <h1>Welcome back, {userData.firstName} {userData.lastName}!</h1>
             </>
           ) : (
             <p>Loading user data...</p>
           )}
-          {error && <p className="error-message">{error}</p>}
-          <h1 className="section-heading">Current tasks:</h1>
-          <div className="tasks-container">
-            {tasksDisplay}
-          </div>
-          <h1 className="section-heading">Payments:</h1>
-          <div className="payments-container">
+          {error && <p>{error}</p>}
+          <h1 id="pad">Current tasks:</h1>
+          {tasksDisplay}
+          <h1 id="pad">Payments:</h1>
+          <div>
             {payments.filter(payment => !payment.payed).map(payment => (
-              <div key={payment.paymentID} className="payment">
+              <div key={payment.paymentID} id="pay">
                 <span>Amount: ${payment.amount} </span>
                 <span>- {payment.description}</span>
                 <input

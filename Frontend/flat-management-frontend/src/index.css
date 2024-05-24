@@ -155,102 +155,26 @@ label {
     padding: 20px 0; 
 }
 .profile-container {
-    max-width: 600px;
+    width: 100%;
+    max-width: 400px; /* Adjust this value as needed */
     margin: 0 auto;
-    margin-top: 2vw;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Align text to the left */
   }
   
-  .profile-heading {
-    text-align: center;
-    font-size: 2em;
-    color: #333;
-    margin-bottom: 20px;
+  .profile-container p {
+    margin-left: 0; /* Ensure no extra left margin */
+    margin-right: 0; /* Ensure no extra right margin */
+    padding-left: 10px; /* Adjust this value for desired indentation */
+    font-size: 25px;
   }
   
-  .profile-details {
-    font-size: 1.2em;
-    color: #555;
+  .profile-container h1 {
+    text-align: center; /* Center align the heading */
+    margin-bottom: 20px; /* Space between heading and paragraphs */
   }
-  
-  .profile-details p {
-    margin: 10px 0;
-  }
-  
-  .profile-details strong {
-    color: #000;
-  }
-  
   
   #pay span {
     font-size: 18px; /* Adjust this value as needed */
      
   }
-
-
-
-  .dashboard-container {
-    max-width: 800px;
-    margin: 0 auto;
-    margin-top: 2vw;
-    padding: 20px;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .welcome-message {
-    text-align: center;
-    font-size: 2.5em;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .section-heading {
-    font-size: 1.8em;
-    color: #333;
-    margin-top: 30px;
-    margin-bottom: 20px;
-  }
-  
-  .error-message {
-    color: red;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  .tasks-container,
-  .payments-container {
-    margin-top: 20px;
-  }
-  
-  .task,
-  .payment {
-    background-color: #fff;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .task h2,
-  .payment span {
-    font-size: 1.2em;
-    color: #555;
-  }
-  
-  .task h3 {
-    font-size: 1em;
-    color: #888;
-    margin-top: 5px;
-  }
-  
-  .payment input[type="checkbox"] {
-    margin-left: 10px;
-    transform: scale(1.2);
-  }
-  
   
