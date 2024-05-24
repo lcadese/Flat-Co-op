@@ -12,7 +12,7 @@ A shared app to organise students’ lives
 ### Prerequisites
 - Ensure you have [Git](https://git-scm.com/downloads) installed.
 - Ensure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/get-npm) installed.
-- Ensure you have [Java](https://www.oracle.com/nz/java/technologies/downloads/) installed.
+- Ensure you have [Java](https://www.oracle.com/nz/java/technologies/downloads/) installed. (JDK 22 not supported)
 - Ensure you have [Gradle](https://gradle.org/install/) installed.
 
 ### Steps to Run the Application
