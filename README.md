@@ -20,7 +20,7 @@ A shared app to organise students’ lives
 1. **Clone the Repository in Git Bash**
     
     ```sh
-    git clone git@github.com:lcadese/Flat-Co-op.git
+    git clone https://github.com/lcadese/Flat-Co-op.git
     cd Flat-Co-op/
     ```
 
